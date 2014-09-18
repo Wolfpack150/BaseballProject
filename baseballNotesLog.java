@@ -59,8 +59,8 @@ Classes:
 Should the following just be variables for a player or classes?
 
 4. Position
-	a. P
-	b. C
+	a. Pitcher3 sikud/usr/sbin/update-alternatives --config javahpsadpih
+	b. C  ksahdf;oialh
 	c. 1B
 	d. 2B
 	e. 3B
