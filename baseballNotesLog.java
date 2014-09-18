@@ -59,7 +59,7 @@ Classes:
 Should the following just be variables for a player or classes?
 
 4. Position
-	a. Pitcher - Yololololololo
+	a. Pitcher - TESTESTESTEST
 	b. C
 	c. 1B
 	d. 2B
