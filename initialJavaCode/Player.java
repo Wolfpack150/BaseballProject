@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+///Alex do the testing to commit to your github. only people do frequent coding will see :D
 public class MainActivity extends Activity {
 
     @Override
