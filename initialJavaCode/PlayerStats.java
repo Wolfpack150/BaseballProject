@@ -60,7 +60,10 @@ public class PlayerStats {
  	// public int defensiveIndifferences; <- Not needed
 
     //Default constructor
-    /*	The default constructor for this class will set the value of every value to zero */
+    /*********************************************	
+        The default constructor for this class 
+        will set the value of every value to zero 
+    ***********************************************/
 
     public PlayerStats(){
     	    this.m_innings = 0;
@@ -117,17 +120,13 @@ public class PlayerStats {
     }
 
     //Overload constructor:
-    /* This class should not have an overloading constructor. A Player's PlayerStats will
-    	only be created when the Player is created, meaning that they have not played any
+    /************************************************************
+        This class should not have an overloading constructor.
+        A Player's PlayerStats will only be created when the
+        Player is created, meaning that they have not played any
     	games yet, so he has no statistics
-    */
+    **************************************************************/
 
-    // Some function:
-    /*
-    public void doSomething(){
-        System.out.println("Yeah buddy! We created " + m_firstName + " " + m_lastName + "!");
-    }
-    */
 
     // NOTE:
     /*
