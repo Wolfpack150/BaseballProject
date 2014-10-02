@@ -31,7 +31,7 @@ public class Player {
 
     //Default constructor
     public Player(){
-        System.out.println("Constructor of " + this.m_firstName + " " + this.m_lastName);
+        //System.out.println("Constructor of " + this.m_firstName + " " + this.m_lastName);
     }
     //Overload constructor:
     // Example:
@@ -42,9 +42,23 @@ public class Player {
         this.doSomething();
     }
 
-    public void doSomething(){
-        System.out.println("Yeah buddy! We created " + m_firstName + " " + m_lastName + "!");
+    public void setFirstName(){
+        // m_firstName = some function that lets user type in first name
     }
+    public void setLastName(){
+        // m_LastName = some function that lets user type in Last name
+    }
+    public void setPosition(){
+        // m_position = input
+    }
+    public void setBats(some input){
+        // m_bats = input
+    }
+    public void setThrows(some input){
+        // m_throws = input
+    }
+
+
     // NOTE:
 	/*When the "Create Player" screen is opened, the user wiil fill
 	out as many of the categories as they know. As these variables are inserted,
