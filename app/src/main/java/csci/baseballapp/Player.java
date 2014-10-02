@@ -48,6 +48,9 @@ public class Player {
     public void setLastName(){
         // m_LastName = some function that lets user type in Last name
     }
+    public void setNumber(some input){
+        // m_number = input
+    }
     public void setPosition(){
         // m_position = input
     }
