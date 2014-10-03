@@ -27,6 +27,7 @@ public class Player {
 					this.m_number = number; <--- much easier
 		}
 		However, this is up for discussion!
+
 	*/
 
     //Default constructor

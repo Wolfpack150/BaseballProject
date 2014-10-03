@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="TEST"
+        android:text="FUCK THIS SCREEN FOR NOW IMO"
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal" />
 

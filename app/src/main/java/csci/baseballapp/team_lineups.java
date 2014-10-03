@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
+import java.util.List;
+
 
 public class team_lineups extends ListActivity {
 
@@ -14,9 +16,11 @@ public class team_lineups extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_lineups);
 
-      //  ArrayAdapter<Player> adapter1 = new ArrayAdapter<Player>
-      //        (this, android.R.layout.simple_list_item_1, );
-      // setListAdapter(adapter1);
+
+
+     // ArrayAdapter<Player> adapter1 = new ArrayAdapter<Player>
+     //        (this, android.R.layout.simple_list_item_1,players);
+     // setListAdapter(adapter1);
     }
 
 
