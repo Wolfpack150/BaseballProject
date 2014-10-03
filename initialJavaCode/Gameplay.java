@@ -3,13 +3,13 @@
  */
 public class Gameplay{
     // Player Variables
-    public int m_home_score = 0;
-    public int m_away_score = 0;
-    public int m_inningtype = 0;// this is for top or bottom of the inning
-    public double m_inning = 1; // game starts in the first inning
-    public int m_outs = 0;
-    public int m_balls = 0;
-    public int m_strikes = 0;
+    public int m_home_score;
+    public int m_away_score;
+    public int m_inningtype;// this is for top or bottom of the inning
+    public double m_inning; 
+    public int m_outs;
+    public int m_balls;
+    public int m_strikes;
 //  public Player m_first, m_second, m_third;
 //  public Team m_home, m_away;
 //  public Player m_home_pitcher, m_away_pitcher;
@@ -17,7 +17,13 @@ public class Gameplay{
 
     //Default constructor
     public Gameplay(){
-
+        m_home_score = 0;
+        m_away_score = 0;
+        m_inningtype = 0;
+        m_inning = 1; // game starts in the first inning
+        m_outs = 0;
+        m_balls = 0;
+        m_strikes = 0;
     }
     /********************
     Overload constructor:
@@ -172,6 +178,68 @@ public class Gameplay{
     *                                                                 *
     *                                                                 *
     ******************************************************************/
+    /******************************************************************
+    Hit
+        Any time a player gets a hit, then each of the following
+        statistics are affected: Plate appearances, at bats, hits
+        Pitcher's statistics affected: hits given, batters faces,
+        pitches thrown, pitch will be a strike.
+    ******************************************************************/
+    public void hit(){
+        m_pitcher.m_hitsGiven++;
+        m_pitcher.m_battersFaced++;
+        m_pitcher.m_pitchesThrown++;
+        m_pitcher.m_strikesThrown++:
+        m_hitter.m_plateAppearances++;
+        m_hitter.m_atBats++;
+        m_hitter.m_hits++;
+    }
+    /******************************************************************
+    Single
+        Will call hit function, but there are a few differences betweeen
+        singles, doubles, triples, and home runs, which include:
+        Hitter- the type of hit, total bases and possible RBI's and runs
+        Pitcher- type of hit given, possible RBI's and runs given
+    ******************************************************************/
+    public void single(){
+        hit();
+        m_pitcher.m_singlesGiven++;
+        m_hitter.m_singles++;
+        m_hitter.m_totalBases++;
+    }
+    /******************************************************************
+    Double
+    ******************************************************************/
+    public void double(){
+        hit();
+        m_pitcher.m_doublesGiven++;
+        m_hitter.m_doubles++;
+        m_hitter.m_totalBases += 2;
+    }
+    /******************************************************************
+    Triple
+    ******************************************************************/
+    public void triple(){
+        hit();
+        m_pitcher.m_triplesGiven++;
+        m_hitter.m_triples++;
+        m_hitter.m_totalBases += 3;
+    }
+    /******************************************************************
+    Home Run
+        This is the only one of the hit functions that need to access
+        RBI's and runs directly.
+    ******************************************************************/
+    public void homerun(){
+        hit();
+        m_pitcher.m_homerunsGiven++;
+        m_pitcher.m_runsGiven++;
+    //  m_pitcher.m_earnedRuns++;
+        m_hitter.m_homeruns++;
+        m_hitter.m_runs++;
+        m_hitter.m_runsBattedIn++;
+        m_hitter.m_totalBases += 4;
+    }
     /******************************************************************
     Sacrifice Bunt
     ******************************************************************/

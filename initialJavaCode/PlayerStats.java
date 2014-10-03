@@ -28,7 +28,7 @@ public class PlayerStats {
     public int m_intentionalBallsThrown;
     public int m_balks;
 
-    // Hitters Statistics
+    // Hitters Statisticss
     public int m_plateAppearances;
     public int m_atBats;
     public int m_hits;
