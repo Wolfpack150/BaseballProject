@@ -1,10 +1,8 @@
-/*Team Class
-  created by Leonel Gasca
- */
 package csci.baseballapp;
 
-//import java.lang.String;
-
+/**
+ * Created by lumpy on 10/3/14.
+ */
 public class Team {
     //Team Variables
     public String m_teamname;
@@ -18,16 +16,15 @@ public class Team {
     }
 
     //Class functions
-    public void setTeamname() // Function that allows user to enter the name of the team
+    public void setTeamName() // Function that allows user to enter the name of the team
     {
 
     }
 
-    public void addPlayer() //Function that allows usert to add new player to team
+    public void addPlayer() //Function that allows user to add new player to team
     {
-
-
         Player newPlayer = new Player();
         m_roster_size++; //Increments the size of the team by one each time new player is added
+
     }
 }
