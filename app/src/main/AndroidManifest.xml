@@ -16,9 +16,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Game_type" />
         <activity
-            android:name=".Game_type" />
-
+            android:name=".player_create"
+            android:label="@string/title_activity_player_create" >
+        </activity>
+        <activity
+            android:name=".score_screen"
+            android:label="@string/title_activity_score_screen" >
+        </activity>
+        <activity
+            android:name=".box"
+            android:label="@string/title_activity_box" >
+        </activity>
+        <activity
+            android:name=".team_lineups"
+            android:label="@string/title_activity_team_lineups" >
+        </activity>
     </application>
 
 </manifest>
