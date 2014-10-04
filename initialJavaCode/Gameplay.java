@@ -55,9 +55,9 @@ public class Gameplay{
     public void incrementOut(){
         m_outs++;
         if(m_outs == 3)
-            m_pitcher.m_innings += .8;
+            m_pitcher.stats.m_innings += .8;
         else
-            m_pitcher.m_innings += .1;
+            m_pitcher.stats.m_innings += .1;
 
         resetCount();
         if(m_outs == 0);// change innings and swap current teams
@@ -75,14 +75,14 @@ public class Gameplay{
     ******************************************************************/
     public void incrementStrike(){
         m_strikes++;
-        m_pitcher.m_pitchesThrown++;
-        m_pitcher.m_strikesThrown++;
+        m_pitcher.stats.m_pitchesThrown++;
+        m_pitcher.stats.m_strikesThrown++;
         if(m_strikes == 3){
-            m_pitcher.m_battersFaced++;
-            m_pitcher.m_strikeoutsGiven++;
-            m_hitter.m_strikeouts++;
-            m_hitter.m_plateAppearances++;
-            m_hitter.m_atBats++;
+            m_pitcher.stats.m_battersFaced++;
+            m_pitcher.stats.m_strikeoutsGiven++;
+            m_hitter.stats.m_strikeouts++;
+            m_hitter.stats.m_plateAppearances++;
+            m_hitter.stats.m_atBats++;
             incrementOut();
         }
     }
@@ -93,13 +93,13 @@ public class Gameplay{
     ******************************************************************/
     public void incrementBall(){
         m_balls++;
-        m_pitcher.m_pitchesThrown++;
-        m_pitcher.m_ballsThrown++;
+        m_pitcher.stats.m_pitchesThrown++;
+        m_pitcher.stats.m_ballsThrown++;
         if(m_balls == 4){
-            m_pitcher.m_battersFaced++;
-            m_pitcher.m_walksGiven++;
-            m_hitter.m_walks++;
-            m_hitter.m_plateAppearances++;
+            m_pitcher.stats.m_battersFaced++;
+            m_pitcher.stats.m_walksGiven++;
+            m_hitter.stats.m_walks++;
+            m_hitter.stats.m_plateAppearances++;
             // change runners on base
         }
     }
@@ -110,13 +110,13 @@ public class Gameplay{
     ******************************************************************/
     public void incrementIntentionalBall(){
         m_balls++;
-        m_pitcher.m_pitchesThrown++;
-        m_pitcher.m_intentioanlBallsThrown++;
+        m_pitcher.stats.m_pitchesThrown++;
+        m_pitcher.stats.m_intentioanlBallsThrown++;
         if(m_balls == 4){
-            m_pitcher.m_battersFaced++;
-            m_pitcher.m_intentionalWalksGiven++;
-            m_hitter.m_intentionalWalks++;
-            m_hitter.m_plateAppearances++;
+            m_pitcher.stats.m_battersFaced++;
+            m_pitcher.stats.m_intentionalWalksGiven++;
+            m_hitter.stats.m_intentionalWalks++;
+            m_hitter.stats.m_plateAppearances++;
             // change runners on base
         }
     }
@@ -129,8 +129,8 @@ public class Gameplay{
         if(m_strikes != 2)
             incrementStrike();
         else{
-            m_pitcher.m_pitchesThrown++;
-            m_pitcher.m_strikesThrown++;
+            m_pitcher.stats.m_pitchesThrown++;
+            m_pitcher.stats.m_strikesThrown++;
         }
     }
     /******************************************************************
@@ -146,12 +146,12 @@ public class Gameplay{
     Hit by pitch
     ******************************************************************/
     public void hitByPitch(){
-        m_pitcher.m_battersFaced++;
-        m_pitcher.m_pitchesThrown++;
-        m_pitcher.m_ballsThrown++;
-        m_pitcher.m_hitByPitchGiven++;
-        m_hitter.m_hitByPitch++;
-        m_hitter.m_plateAppearances++;
+        m_pitcher.stats.m_battersFaced++;
+        m_pitcher.stats.m_pitchesThrown++;
+        m_pitcher.stats.m_ballsThrown++;
+        m_pitcher.stats.m_hitByPitchGiven++;
+        m_hitter.stats.m_hitByPitch++;
+        m_hitter.stats.m_plateAppearances++;
         // change runners on base
     }
     /******************************************************************
@@ -162,14 +162,14 @@ public class Gameplay{
         LOOK TO PASSED BALL
     ******************************************************************/
     public void wildPitch(){
-        m_pitcher.m_wildPitch++;
+        m_pitcher.stats.m_wildPitch++;
         // change runners on base
     }
     /******************************************************************
     Hit by pitch
     ******************************************************************/
     public void balk(){
-        m_pitcher.m_balks++;
+        m_pitcher.stats.m_balks++;
         // advance runners
     }
     /******************************************************************
@@ -186,13 +186,13 @@ public class Gameplay{
         pitches thrown, pitch will be a strike.
     ******************************************************************/
     public void hit(){
-        m_pitcher.m_hitsGiven++;
-        m_pitcher.m_battersFaced++;
-        m_pitcher.m_pitchesThrown++;
-        m_pitcher.m_strikesThrown++:
-        m_hitter.m_plateAppearances++;
-        m_hitter.m_atBats++;
-        m_hitter.m_hits++;
+        m_pitcher.stats.m_hitsGiven++;
+        m_pitcher.stats.m_battersFaced++;
+        m_pitcher.stats.m_pitchesThrown++;
+        m_pitcher.stats.m_strikesThrown++:
+        m_hitter.stats.m_plateAppearances++;
+        m_hitter.stats.m_atBats++;
+        m_hitter.stats.m_hits++;
     }
     /******************************************************************
     Single
@@ -203,27 +203,27 @@ public class Gameplay{
     ******************************************************************/
     public void single(){
         hit();
-        m_pitcher.m_singlesGiven++;
-        m_hitter.m_singles++;
-        m_hitter.m_totalBases++;
+        m_pitcher.stats.m_singlesGiven++;
+        m_hitter.stats.m_singles++;
+        m_hitter.stats.m_totalBases++;
     }
     /******************************************************************
     Double
     ******************************************************************/
     public void double(){
         hit();
-        m_pitcher.m_doublesGiven++;
-        m_hitter.m_doubles++;
-        m_hitter.m_totalBases += 2;
+        m_pitcher.stats.m_doublesGiven++;
+        m_hitter.stats.m_doubles++;
+        m_hitter.stats.m_totalBases += 2;
     }
     /******************************************************************
     Triple
     ******************************************************************/
     public void triple(){
         hit();
-        m_pitcher.m_triplesGiven++;
-        m_hitter.m_triples++;
-        m_hitter.m_totalBases += 3;
+        m_pitcher.stats.m_triplesGiven++;
+        m_hitter.stats.m_triples++;
+        m_hitter.stats.m_totalBases += 3;
     }
     /******************************************************************
     Home Run
@@ -232,19 +232,19 @@ public class Gameplay{
     ******************************************************************/
     public void homerun(){
         hit();
-        m_pitcher.m_homerunsGiven++;
-        m_pitcher.m_runsGiven++;
-    //  m_pitcher.m_earnedRuns++;
-        m_hitter.m_homeruns++;
-        m_hitter.m_runs++;
-        m_hitter.m_runsBattedIn++;
-        m_hitter.m_totalBases += 4;
+        m_pitcher.stats.m_homerunsGiven++;
+        m_pitcher.stats.m_runsGiven++;
+    //  m_pitcher.stats.m_earnedRuns++;
+        m_hitter.stats.m_homeruns++;
+        m_hitter.stats.m_runs++;
+        m_hitter.stats.m_runsBattedIn++;
+        m_hitter.stats.m_totalBases += 4;
     }
     /******************************************************************
     Sacrifice Bunt
     ******************************************************************/
     public void sacrificeBunt(){
-        m_hitter.m_sacrificeBunt++;
+        m_hitter.stats.m_sacrificeBunt++;
         // advance runner?
         // RBI?
     }
@@ -252,7 +252,7 @@ public class Gameplay{
     Sacrifice Fly
     ******************************************************************/  
     public void sacrificeFly(){
-        m_hitter.m_sacrificeFly++;
+        m_hitter.stats.m_sacrificeFly++;
         // advance runner?
         // RBI?
     }
@@ -269,8 +269,8 @@ public class Gameplay{
         assist and a putout.
     ******************************************************************/
     public void assist(Player thrower, Player receiver){
-        thrower.m_assists++;
-        reciever.m_putOuts++;
+        thrower.stats.m_assists++;
+        reciever.stats.m_putOuts++;
     }
     /******************************************************************
     Putout
@@ -279,7 +279,7 @@ public class Gameplay{
         where the first baseman tags the bag (called 3U or 3 unassisted)
     ******************************************************************/
     public void putOut(Player fielder){
-        feilder.m_putOuts++;
+        feilder.stats.m_putOuts++;
     }
     /******************************************************************
     Error
@@ -317,7 +317,7 @@ public class Gameplay{
         Player will be input to the function
     ******************************************************************/
     public void stolenBase(Player stealer){
-        stealer.m_stolenBases++;
+        stealer.stats.m_stolenBases++;
         // change position on basepath?
     }
     /******************************************************************
@@ -326,7 +326,7 @@ public class Gameplay{
         Will increment outs
     ******************************************************************/
     public void caughtStealing(Player runnner, Player thrower, Player reciever){
-        runnner.m_caughtStealing++;
+        runnner.stats.m_caughtStealing++;
         assist(thrower, reciever);
         // change position on basepath?
         incrementOut();
