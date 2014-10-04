@@ -26,7 +26,7 @@ public class Game_type extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    
     public void gotoLineup(View v) {
         Intent intent = new Intent(this, team_lineups.class);
         startActivity(intent);

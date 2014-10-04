@@ -5,13 +5,13 @@ package csci.baseballapp;
  */
 public class Team {
     //Team Variables
-    public String m_teamname;
+    public String m_teamName;
     public Player[] m_roster;
     public int m_roster_size;
 
     //Default constructor for team
     public Team(){
-        m_teamname = "New Team";
+        m_teamName = "New Team";
         m_roster_size = 0;
     }
 

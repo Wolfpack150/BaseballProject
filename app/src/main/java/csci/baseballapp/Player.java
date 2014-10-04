@@ -42,16 +42,16 @@ public class Player {
     public void setLastName(){
         // m_LastName = some function that lets user type in Last name
     }
-    public void setNumber(some input){
+    public void setNumber(){
         // m_number = input
     }
     public void setPosition(){
         // m_position = input
     }
-    public void setBats(some input){
+    public void setBats(){
         // m_bats = input
     }
-    public void setThrows(some input){
+    public void setThrows(){
         // m_throws = input
     }
 
