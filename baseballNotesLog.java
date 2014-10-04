@@ -40,7 +40,7 @@ Classes:
 		i. Softball/baseball
 	b. Number Innings
 	c. Teams involved
-	d. Score
+	d. Game Score
 	e. Current Inning
 
 2. Team
@@ -53,7 +53,7 @@ Classes:
 		ii. Last
 	b. Number
 	c. Position
-	d. Hits
+	d. Hits Far
 	e. Throw
 
 Should the following just be variables for a player or classes?
