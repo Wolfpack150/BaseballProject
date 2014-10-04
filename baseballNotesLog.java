@@ -40,7 +40,7 @@ Classes:
 		i. Softball/baseball
 	b. Number Innings
 	c. Teams involved
-	d. Score
+	d. Game Score
 	e. Current Inning
 
 2. Team
