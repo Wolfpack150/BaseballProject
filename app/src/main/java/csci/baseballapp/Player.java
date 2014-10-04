@@ -11,7 +11,6 @@ public class Player {
     public String m_position = "Bench";
     public char m_bats = 'R';
     public char m_throws = 'R';
-    public PlayerStats stats;
     // Player statistics in new class?
 
     //NOTE:
@@ -28,16 +27,41 @@ public class Player {
 					this.m_number = number; <--- much easier
 		}
 		However, this is up for discussion!
+
 	*/
 
     //Default constructor
     public Player(){
-        System.out.println("Constructor of " + this.m_firstName + " " + this.m_lastName);
+        //System.out.println("Constructor of " + this.m_firstName + " " + this.m_lastName);
     }
-    /* Overload constructor:
-       Overloading constructor will not be needed. Each time a player's info is changed, a different
-       setter function will change the value/
-    */
+    //Overload constructor:
+    // Example:
+    public Player(String firstN, String lastN){
+        // super(); <-super class, not yet needed until inheritance
+        this.m_firstName = firstN;
+        this.m_lastName = lastN;
+        this.doSomething();
+    }
+
+    public void setFirstName(){
+        // m_firstName = some function that lets user type in first name
+    }
+    public void setLastName(){
+        // m_LastName = some function that lets user type in Last name
+    }
+    public void setNumber(some input){
+        // m_number = input
+    }
+    public void setPosition(){
+        // m_position = input
+    }
+    public void setBats(some input){
+        // m_bats = input
+    }
+    public void setThrows(some input){
+        // m_throws = input
+    }
+
 
     // NOTE:
 	/*When the "Create Player" screen is opened, the user wiil fill
