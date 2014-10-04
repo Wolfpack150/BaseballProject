@@ -53,7 +53,7 @@ Classes:
 		ii. Last
 	b. Number
 	c. Position
-	d. Hits
+	d. Hits Far
 	e. Throw
 
 Should the following just be variables for a player or classes?
