@@ -27,4 +27,9 @@ public class Team {
         m_roster_size++; //Increments the size of the team by one each time new player is added
 
     }
+
+    public void searchPlayer() //Search function
+    {
+        
+    }
 }
