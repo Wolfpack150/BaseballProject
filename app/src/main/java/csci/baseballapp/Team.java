@@ -28,8 +28,8 @@ public class Team {
 
     }
 
-    public void searchPlayer() //Search function
+    public void searchPlayer() //Function that searches for player in Player array
     {
-        
+        //should return type be void or player?
     }
 }
