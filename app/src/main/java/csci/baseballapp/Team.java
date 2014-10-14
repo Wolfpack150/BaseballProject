@@ -28,7 +28,7 @@ public class Team {
 
     }
 
-    public Player searchPlayer() //Function that searches for player in Player array
+    public Player searchPlayer(String m_position) //Function that searches for player in Player array
     {
         //should return type be void or player?
     }
