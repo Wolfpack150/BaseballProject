@@ -1,27 +1,24 @@
 package csci.baseballapp;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 
-public class MainActivity extends Activity {
+public class score_screen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Player newPlayer1 = new Player();
+        setContentView(R.layout.activity_score_screen);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.score_screen, menu);
         return true;
     }
 
@@ -35,12 +32,5 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void gotoGame(View v){  //event handler that allows button
-                                   //to move to next screen for game type
-
-        Intent intent = new Intent(this, Game_type.class);
-        startActivity(intent);
     }
 }

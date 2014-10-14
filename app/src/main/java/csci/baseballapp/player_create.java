@@ -8,20 +8,19 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class MainActivity extends Activity {
+public class player_create extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Player newPlayer1 = new Player();
+        setContentView(R.layout.activity_player_create);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.player_create, menu);
         return true;
     }
 
@@ -37,10 +36,12 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void gotoGame(View v){  //event handler that allows button
-                                   //to move to next screen for game type
-
-        Intent intent = new Intent(this, Game_type.class);
-        startActivity(intent);
+    public void ReturnPlayer (View v)
+    {
+        Intent intent = new Intent();
+        //this is where the information needs to be gathered and returned to the calling activity
+        setResult(RESULT_OK, intent);
+        finish();
     }
+
 }
