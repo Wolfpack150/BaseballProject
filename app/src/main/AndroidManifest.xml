@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game_type" />
+        <activity
+            android:name=".Game_type"
+            android:label="Game_type" />
         <activity
             android:name=".player_create"
             android:label="@string/title_activity_player_create" >

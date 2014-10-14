@@ -1,40 +1,39 @@
 package csci.baseballapp;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class team_lineups extends ListActivity {
+public class team_lineups extends Activity {
 
     private static final int REQUEST_CODE = 100;
+    List<Player> Players = new Player().getPlayers();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_lineups);
+
+        ArrayAdapter<Player> adapter;
+
+        {
+            adapter = new ArrayAdapter<Player>
+                    (this, android.R.layout.simple_list_item_1, Players);
         }
 
-    //This is the List/array that contains all of the players being made
-    private List<Player> Players = new ArrayList<Player>();
-    public List<Player> getPlayers() {return Players;}
 
-     //This is what allows our data structure of players to be shown on our activity
-      ArrayAdapter<Player> adapter1 = new ArrayAdapter<Player>
-            (this, android.R.layout.simple_list_item_1,getPlayers());
-
-     //I dont really know what this does, but I made it, and assume its important
-    @Override
-    public void setListAdapter(ListAdapter adapter) {
-        super.setListAdapter(adapter1);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,7 +52,6 @@ public class team_lineups extends ListActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-
     }
     //this guy opens the creates the player activity expecting a result returned from it
     public void CreateNewPlayer (MenuItem m){
@@ -67,8 +65,9 @@ public class team_lineups extends ListActivity {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             //get the data and save it to a new object
             //push the new object to an array
-            }
+            String FirstName = data.getStringExtra("FirstN");
+            String LastName = data.getStringExtra("LastN");
+            Toast.makeText(this, "adding "+ FirstName + "! TEST", Toast.LENGTH_LONG).show();
         }
-
     }
-
+}

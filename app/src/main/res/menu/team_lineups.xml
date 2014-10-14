@@ -6,10 +6,9 @@
         android:orderInCategory="100"
         android:showAsAction="never" />
     <item android:id="@+id/action_newplayer"
-          android:title="New Player"
-          android:orderInCategory="100"
-          android:showAsAction="always"
-          android:onClick="CreateNewPlayer"
+        android:title="New Player"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:onClick="CreateNewPlayer"
         />
-
 </menu>

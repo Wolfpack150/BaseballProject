@@ -1,5 +1,8 @@
 package csci.baseballapp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by lumpy on 10/3/14.
  */
@@ -12,6 +15,13 @@ public class Player {
     public char m_bats = 'R';
     public char m_throws = 'R';
     public PlayerStats stats;
+
+    private List<Player> Players = new ArrayList<Player>();
+    public List<Player> getPlayers() {return Players;}
+
+    public void addPlayer(Player item) {
+        Players.add(item);
+    }
     // Player statistics in new class?
 
     //NOTE:
@@ -32,8 +42,16 @@ public class Player {
 	*/
 
     //Default constructor
-    public Player(){
-        //System.out.println("Constructor of " + this.m_firstName + " " + this.m_lastName);
+    public Player () {}
+
+    public Player(String Fname, String Lname, int number, String pos, char bats, char Throws){
+        this.m_firstName = Fname;
+        this.m_lastName = Lname;
+        this.m_number = number;
+        this.m_position = pos;
+        this.m_bats = bats;
+        this.m_throws = Throws;
+
     }
 
     public void setFirstName(){

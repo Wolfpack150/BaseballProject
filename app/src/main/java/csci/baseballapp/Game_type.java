@@ -5,17 +5,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 /**
  * Created by tim on 9/18/14.
  */
 
 public class Game_type extends Activity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_type);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Button button = (Button) findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener()
+        {
+         @Override
+         public void onClick(View arg0)
+         {
+            Intent intent = new Intent(Game_type.this, team_lineups.class);
+             startActivity(intent);
+         }
+        });
     }
 
     @Override
@@ -27,9 +41,5 @@ public class Game_type extends Activity {
         return super.onOptionsItemSelected(item);
     }
     
-    public void gotoLineup(View v) {
-        Intent intent = new Intent(this, team_lineups.class);
-        startActivity(intent);
 
-    }
 }
