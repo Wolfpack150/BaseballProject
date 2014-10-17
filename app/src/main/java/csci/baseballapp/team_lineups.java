@@ -1,6 +1,7 @@
 package csci.baseballapp;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,11 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
+import org.apache.http.auth.AuthSchemeRegistry;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class team_lineups extends Activity {
+public class team_lineups extends ListActivity {
 
     private static final int REQUEST_CODE = 100;
     List<Player> Players = new Player().getPlayers();
@@ -23,12 +26,13 @@ public class team_lineups extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_lineups);
 
-        ArrayAdapter<Player> adapter;
-
-        {
-            adapter = new ArrayAdapter<Player>
+        ArrayAdapter<Player> adapter = new ArrayAdapter<Player>
                     (this, android.R.layout.simple_list_item_1, Players);
-        }
+
+
+        setListAdapter(adapter);
+
+        Players.add(new Player("Test", "Player", "69", "C", 'S', 'L'));
 
 
     }
@@ -67,7 +71,8 @@ public class team_lineups extends Activity {
             //push the new object to an array
             String FirstName = data.getStringExtra("FirstN");
             String LastName = data.getStringExtra("LastN");
-            Toast.makeText(this, "adding "+ FirstName + "! TEST", Toast.LENGTH_LONG).show();
+            String Pnumber = data.getStringExtra("Num");
+            Toast.makeText(this, "added "+ FirstName + " " + LastName, Toast.LENGTH_LONG).show();
         }
     }
 }

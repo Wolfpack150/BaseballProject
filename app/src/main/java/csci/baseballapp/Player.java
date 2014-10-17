@@ -10,7 +10,7 @@ public class Player {
     // Player Variables
     public String m_firstName = "New";
     public String m_lastName = "Player";
-    public int m_number;// = null; <--- ??
+    public String m_number;// = null; <--- ??
     public String m_position = "Bench";
     public char m_bats = 'R';
     public char m_throws = 'R';
@@ -21,6 +21,11 @@ public class Player {
 
     public void addPlayer(Player item) {
         Players.add(item);
+    }
+
+    @Override
+    public String toString(){
+        return m_firstName + " " + m_lastName + "       #" + m_number;
     }
     // Player statistics in new class?
 
@@ -44,7 +49,7 @@ public class Player {
     //Default constructor
     public Player () {}
 
-    public Player(String Fname, String Lname, int number, String pos, char bats, char Throws){
+    public Player(String Fname, String Lname, String number, String pos, char bats, char Throws){
         this.m_firstName = Fname;
         this.m_lastName = Lname;
         this.m_number = number;

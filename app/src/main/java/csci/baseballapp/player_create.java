@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,16 @@ public class player_create extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //populates the postion spinner using strings.xml defined strings
         setContentView(R.layout.activity_player_create);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
+                (this, R.array.position_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+
     }
 
     @Override
@@ -25,6 +36,9 @@ public class player_create extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.player_create, menu);
         return true;
+
+
+
     }
 
     @Override
@@ -48,8 +62,12 @@ public class player_create extends Activity {
         intent.putExtra("FirstN", Fname);
 
         EditText et2 = (EditText) findViewById(R.id.editText2);
-        String Lname = et.getText().toString();
+        String Lname = et2.getText().toString();
         intent.putExtra("LastN", Lname);
+
+        EditText et3 = (EditText) findViewById(R.id.editText3);
+        String Number = et3.getText().toString();
+        intent.putExtra("Num",Number);
 
         setResult(RESULT_OK, intent);
         finish();
