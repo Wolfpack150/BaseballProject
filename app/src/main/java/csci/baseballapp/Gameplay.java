@@ -12,11 +12,12 @@ public class Gameplay{
     public int m_outs;
     public int m_balls;
     public int m_strikes;
-// Temporarily using these variables
-    public Player m_hitter, m_pitcher;
-//  public Player m_first, m_second, m_third;
-//  public Team m_home, m_away;
-//  public Player m_home_pitcher, m_away_pitcher;
+    // Temporarily using these variables
+    public Team m_hitting, m_fielding;
+    public Player m_hitter, m_pitcher, m_homeHitter, m_awayHitter, m_homePitcher, m_awayPitcher;
+    //  public Player m_first, m_second, m_third;
+    public Team m_home, m_away;
+
 //  public Plays possibles;
 
     //Default constructor
@@ -28,15 +29,14 @@ public class Gameplay{
         m_outs = 0;
         m_balls = 0;
         m_strikes = 0;
+        m_hitting = m_away;
+        m_fielding = m_home;
+    /*  The following declarations should probably be in the Team class, because they will will
+        not be changing (unless a substitution is made
+        m_theirHitter = first player in Home/Team team lineup (1st player in Home team lineup array?)
+        m_theirPitcher = Home/Visitor team starting pitcher (using search function)
+     */
     }
-    /********************
-     Overload constructor:
-     Example:
-
-     public Gameplay(){
-
-     }
-     *********************/
     /******************************************************************
      *                                                                 *
      *                            BASIC                                *
@@ -48,8 +48,6 @@ public class Gameplay{
      For new batter or resets outs for new inning
      ******************************************************************/
     public void resetCount(){
-        if(m_outs == 3)
-            m_outs = 0;
         m_strikes = 0;
         m_balls = 0;
     }
@@ -57,14 +55,44 @@ public class Gameplay{
      Increment Out Function
      ******************************************************************/
     public void incrementOut(){
-        m_outs++;
-        if(m_outs == 3)
+        resetCount();
+        if(m_outs == 2) {
             m_pitcher.stats.m_innings += .8;
+            swapTeams();
+            m_outs = 0;
+        }
         else
             m_pitcher.stats.m_innings += .1;
+        m_outs++;
+    }
+    /******************************************************************
+     Swap teams at the end of an inning
+     Defense -> Offense
+     Offense -> Defense
+     Change inning and/or inning type
+     This function will also check to see if the game could possibly be over
+     - the functionality above could be moved to a new function.
+     - right now it is set to check at >= 9 innings, but should be changed
+     to the inning length specified at the beginning of the game.
+     ******************************************************************/
+    public void swapTeams(){
+        if(m_hitting == m_home){
+            m_hitting = m_away;
+            m_fielding = m_home;
+            m_inning++;
+            m_inningtype = 0;
+        }
+        else{
+            m_hitting = m_home;
+            m_fielding = m_away;
+            m_inningtype = 1;
+        }
+        if((m_inning >= 9 && m_inningtype == 1 && m_home_score > m_away_score) || (m_inning >= 10 && m_inningtype == 0 && m_home_score < m_away_score)){
+            // ask to end game or continue
+        }
+        //    m_pitcher = m_fielding.m_theirPitcher
+        //    m_hitter = m_hitting.m_theirHitter
 
-        resetCount();
-        if(m_outs == 0);// change innings and swap current teams
     }
     /******************************************************************
      *                                                                 *
@@ -334,5 +362,28 @@ public class Gameplay{
         assist(thrower, reciever);
         // change position on basepath?
         incrementOut();
+    }
+    /******************************************************************
+     *                                                                 *
+     *                 Retrieving stats for box score                  *
+     *                                                                 *
+     *                                                                 *
+     ******************************************************************/
+    /******************************************************************
+     getStats
+     the function is in place
+
+     ******************************************************************/
+    public void getStats(Team thisTeam){
+
+    }
+    public double computeAverage(Player thisPlayer){
+        return (thisPlayer.stats.m_hits / thisPlayer.stats.m_atBats);
+    }
+    public double computeOnBase(Player thisPlayer){
+        return ((thisPlayer.stats.m_hits + thisPlayer.stats.m_walks + thisPlayer.stats.m_intentionalWalks + thisPlayer.stats.m_hitByPitch) / thisPlayer.stats.m_atBats);
+    }
+    public double computeSlugging(Player thisPlayer) {
+        return (thisPlayer.stats.m_totalBases / thisPlayer.stats.m_atBats);
     }
 }
