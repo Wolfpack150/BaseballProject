@@ -16,10 +16,8 @@ public class Team {
     }
 
     //Class functions
-    public void setTeamName() // Function that allows user to enter the name of the team
-    {
+    public void setTeamName(String name) {m_teamName = name;} // Function that allows user to enter the name of the team
 
-    }
 
     public void addPlayer() //Function that allows user to add new player to team
     {
