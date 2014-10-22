@@ -1,11 +1,9 @@
 package csci.baseballapp;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 
 public class player_create extends Activity {
@@ -35,13 +33,4 @@ public class player_create extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public void ReturnPlayer (View v)
-    {
-        Intent intent = new Intent();
-        //this is where the information needs to be gathered and returned to the calling activity
-        setResult(RESULT_OK, intent);
-        finish();
-    }
-
 }
