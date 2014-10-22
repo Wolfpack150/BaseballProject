@@ -22,4 +22,6 @@
         <item>RF</item>
     </string-array>
 
+    <string name="title_activity_play_ball">PlayBall</string>
+
 </resources>

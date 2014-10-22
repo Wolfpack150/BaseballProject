@@ -36,6 +36,10 @@
             android:name=".team_lineups"
             android:label="@string/title_activity_team_lineups" >
         </activity>
+        <activity
+            android:name=".PlayBall"
+            android:label="@string/title_activity_play_ball" >
+        </activity>
     </application>
 
 </manifest>
