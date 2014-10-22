@@ -14,12 +14,15 @@ import android.widget.EditText;
 
 public class Game_type extends Activity {
 
+    EditText homeTeamName, visitorTeamName, numberInnings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_type);
         getActionBar().setDisplayHomeAsUpEnabled(true);
-
+        homeTeamName = (EditText) findViewById(R.id.homeNameInput);
+        visitorTeamName = (EditText) findViewById(R.id.visNameInput);
+        numberInnings = (EditText) findViewById(R.id.visNameInput);
         Button button = (Button) findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +42,7 @@ public class Game_type extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void setGametype (View v)
     {
         Gameplay game = new Gameplay();
@@ -47,17 +51,12 @@ public class Game_type extends Activity {
 
         //Intent intent = new Intent();
         //This gets the data from an EditText field
-        EditText homeTeamName = (EditText) findViewById(R.id.homeNameInput);
         String homeName = homeTeamName.getText().toString();
         homeTeam.setTeamName(homeName);
         //intent.putExtra("Home", homeName);
-
-        EditText visitorTeamName = (EditText) findViewById(R.id.visNameInput);
         String visitorName = visitorTeamName.getText().toString();
         //intent.putExtra("Visitor", visitorName);
         visitorTeam.setTeamName(visitorName);
-
-        EditText numberInnings = (EditText) findViewById(R.id.innings);
         int innings = Integer.parseInt(numberInnings.getText().toString());
         //intent.putExtra("Innings",innings);
         game.m_numInnings = innings;
