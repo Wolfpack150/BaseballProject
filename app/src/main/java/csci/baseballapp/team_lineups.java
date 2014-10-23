@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import org.apache.http.auth.AuthSchemeRegistry;
 
+import java.io.PipedOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,20 +21,22 @@ public class team_lineups extends ListActivity {
 
     private static final int REQUEST_CODE = 100;
     List<Player> Players = new Player().getPlayers();
+    ArrayAdapter<Player> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_lineups);
 
-        ArrayAdapter<Player> adapter = new ArrayAdapter<Player>
+        adapter = new ArrayAdapter<Player>
                     (this, android.R.layout.simple_list_item_1, Players);
 
 
+
+
+        Players.add(new Player("Test", "Player", "69", "C", "S", "L"));
+
         setListAdapter(adapter);
-
-        Players.add(new Player("Test", "Player", "69", "C", 'S', 'L'));
-
 
     }
 
@@ -72,7 +75,16 @@ public class team_lineups extends ListActivity {
             String FirstName = data.getStringExtra("FirstN");
             String LastName = data.getStringExtra("LastN");
             String Pnumber = data.getStringExtra("Num");
-            Toast.makeText(this, "added "+ FirstName + " " + LastName, Toast.LENGTH_LONG).show();
+            String Position = data.getStringExtra("pos");
+            String Bats  = data.getStringExtra("Bats");
+            String Hits = data.getStringExtra("Hits");
+            //do the test thing
+            Toast.makeText(this,
+                "added "+ FirstName + " " + LastName +
+                " pos: " + Position + " Bats " + Bats + " Hits: " + Hits,
+            Toast.LENGTH_LONG).show();
+            Players.add(new Player(FirstName, LastName, Pnumber, Position, Bats, Hits));
+            adapter.notifyDataSetChanged();
         }
     }
 }
