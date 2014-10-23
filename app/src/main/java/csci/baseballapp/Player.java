@@ -14,6 +14,7 @@ public class Player {
     public String m_position = "Bench";
     public String m_bats = "R";
     public String m_throws = "R";
+    public int m_positionArray;
     public PlayerStats stats;
 
     private List<Player> Players = new ArrayList<Player>();
@@ -77,7 +78,17 @@ public class Player {
     public void setThrows(){
         // m_throws = input
     }
+    public   PositionsArray(){
+        double[] positionArray = { 1,2,4,5 };
+            double H = positionArray[0];
+        for (int i =1; i < positionArray.length; i++) {
+            if (positionArray[i] > H)  H = positionArray[i];
+                
 
+        }
+
+
+    }
 
     // NOTE:
 	/*When the "Create Player" screen is opened, the user wiil fill

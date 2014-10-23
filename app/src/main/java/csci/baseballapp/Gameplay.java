@@ -337,4 +337,6 @@ public class Gameplay{
         // change position on basepath?
         incrementOut();
     }
+
+    public void
 }
