@@ -78,6 +78,7 @@ public class team_lineups extends ListActivity {
             String Position = data.getStringExtra("pos");
             String Bats  = data.getStringExtra("Bats");
             String Hits = data.getStringExtra("Hits");
+            //do the test thing
             Toast.makeText(this,
                 "added "+ FirstName + " " + LastName +
                 " pos: " + Position + " Bats " + Bats + " Hits: " + Hits,
