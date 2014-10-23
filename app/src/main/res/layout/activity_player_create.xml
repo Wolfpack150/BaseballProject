@@ -54,6 +54,7 @@
 
     <RadioGroup
         android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_weight="0.11">
 
@@ -61,20 +62,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="R"
+            android:onClick="BatsClick"
             android:checked="true"
-            android:id="@+id/radioButton" />
+            android:id="@+id/radioButtonR" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="L"
-            android:id="@+id/radioButton2" />
+            android:onClick="BatsClick"
+            android:id="@+id/radioButtonL" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="S"
-            android:id="@+id/radioButton3" />
+            android:onClick="BatsClick"
+            android:id="@+id/radioButtonS" />
     </RadioGroup>
 
     <TextView
@@ -88,6 +92,7 @@
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_gravity="center_horizontal|left">
 
         <RadioButton
@@ -95,14 +100,16 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="R"
-            android:id="@+id/radioButton5"
+            android:onClick="HitsClick"
+            android:id="@+id/radioButtonHR"
             android:layout_gravity="right" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="L"
-            android:id="@+id/radioButton4"
+            android:onClick="HitsClick"
+            android:id="@+id/radioButtonHL"
             android:layout_gravity="left" />
     </RadioGroup>
 

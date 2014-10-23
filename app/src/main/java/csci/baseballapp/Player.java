@@ -12,8 +12,8 @@ public class Player {
     public String m_lastName = "Player";
     public String m_number;// = null; <--- ??
     public String m_position = "Bench";
-    public char m_bats = 'R';
-    public char m_throws = 'R';
+    public String m_bats = "R";
+    public String m_throws = "R";
     public PlayerStats stats;
 
     private List<Player> Players = new ArrayList<Player>();
@@ -49,7 +49,7 @@ public class Player {
     //Default constructor
     public Player () {}
 
-    public Player(String Fname, String Lname, String number, String pos, char bats, char Throws){
+    public Player(String Fname, String Lname, String number, String pos, String bats, String Throws){
         this.m_firstName = Fname;
         this.m_lastName = Lname;
         this.m_number = number;
