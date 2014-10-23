@@ -2,4 +2,4 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/"></GridLayout>
+    android:id="@+id/play_ball_layout"></GridLayout>
