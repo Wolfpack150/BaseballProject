@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:text="First Name"
+        android:selectAllOnFocus="true"
         android:ems="10"
         android:id="@+id/editText"
         android:layout_gravity="center_horizontal" />
@@ -21,6 +22,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:text="Last Name"
+        android:selectAllOnFocus="true"
         android:ems="10"
         android:id="@+id/editText2"
         android:layout_gravity="center_horizontal" />
@@ -28,10 +30,12 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:text="Player #"
+        android:selectAllOnFocus="true"
+        android:inputType="number"
+        android:ems="10"
         android:id="@+id/editText3"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal" />
 
     <Spinner
@@ -50,6 +54,7 @@
 
     <RadioGroup
         android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_weight="0.11">
 
@@ -57,19 +62,55 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="R"
-            android:id="@+id/radioButton" />
+            android:onClick="BatsClick"
+            android:checked="true"
+            android:id="@+id/radioButtonR" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="L"
-            android:id="@+id/radioButton2" />
+            android:onClick="BatsClick"
+            android:id="@+id/radioButtonL" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="S"
-            android:id="@+id/radioButton3" />
+            android:onClick="BatsClick"
+            android:id="@+id/radioButtonS" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Throws"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal|left">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="R"
+            android:onClick="HitsClick"
+            android:id="@+id/radioButtonHR"
+            android:layout_gravity="right" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L"
+            android:onClick="HitsClick"
+            android:id="@+id/radioButtonHL"
+            android:layout_gravity="left" />
     </RadioGroup>
 
     <Button
@@ -77,6 +118,8 @@
         android:layout_height="wrap_content"
         android:text="Create Player"
         android:id="@+id/button2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="ReturnPlayer"
+        />
 
 </LinearLayout>

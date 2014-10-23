@@ -9,4 +9,19 @@
     <string name="title_activity_box">box</string>
     <string name="title_activity_team_lineups">team_lineups</string>
 
+    <string-array name="position_array">
+        <item>Position</item>
+        <item>P</item>
+        <item>C</item>
+        <item>1B</item>
+        <item>2B</item>
+        <item>3B</item>
+        <item>SS</item>
+        <item>LF</item>
+        <item>CF</item>
+        <item>RF</item>
+    </string-array>
+
+    <string name="title_activity_play_ball">PlayBall</string>
+
 </resources>

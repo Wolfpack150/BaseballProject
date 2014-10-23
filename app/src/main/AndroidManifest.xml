@@ -9,14 +9,17 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game_type" />
+        <activity
+            android:name=".Game_type"
+            android:label="Game_type" />
         <activity
             android:name=".player_create"
             android:label="@string/title_activity_player_create" >
@@ -32,6 +35,10 @@
         <activity
             android:name=".team_lineups"
             android:label="@string/title_activity_team_lineups" >
+        </activity>
+        <activity
+            android:name=".PlayBall"
+            android:label="@string/title_activity_play_ball" >
         </activity>
     </application>
 

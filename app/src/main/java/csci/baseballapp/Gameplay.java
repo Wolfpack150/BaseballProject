@@ -5,6 +5,7 @@ package csci.baseballapp;
  */
 public class Gameplay{
     // Player Variables
+    public int m_numInnings;
     public int m_home_score;
     public int m_away_score;
     public int m_inningtype;// this is for top or bottom of the inning
@@ -21,6 +22,7 @@ public class Gameplay{
 
     //Default constructor
     public Gameplay(){
+        m_numInnings = 0;
         m_home_score = 0;
         m_away_score = 0;
         m_inningtype = 0;
