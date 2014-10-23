@@ -88,8 +88,6 @@ public class Player {
         }
 
 
-    }
-
     // NOTE:
 	/*When the "Create Player" screen is opened, the user wiil fill
 	out as many of the categories as they know. As these variables are inserted,
