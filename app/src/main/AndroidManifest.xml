@@ -19,7 +19,7 @@
         </activity>
         <activity
             android:name=".Game_type"
-            android:label="Game_type" />
+            android:label="@string/title_activity_game_type" />
         <activity
             android:name=".player_create"
             android:label="@string/title_activity_player_create" >
