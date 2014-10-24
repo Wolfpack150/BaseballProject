@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.auth.AuthSchemeRegistry;
@@ -27,17 +29,18 @@ public class team_lineups extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_lineups);
-
         adapter = new ArrayAdapter<Player>
                     (this, android.R.layout.simple_list_item_1, Players);
-
-
-
-
         Players.add(new Player("Test", "Player", "69", "C", "S", "L"));
-
         setListAdapter(adapter);
 
+        Bundle receiveNamesandInnings = getIntent().getExtras();
+        String homeName = receiveNamesandInnings.getString("HomeTeamName");
+        String visName = receiveNamesandInnings.getString("VisitorTeamName");
+        TextView homeNameTextView = (TextView) findViewById(R.id.homeTeamName);
+        homeNameTextView.setText("Home Team: " + homeName);
+        Button nextLineupButton = (Button) findViewById(R.id.visTeamButton);
+        nextLineupButton.setText("Finish " + homeName + "lineup");
     }
 
 

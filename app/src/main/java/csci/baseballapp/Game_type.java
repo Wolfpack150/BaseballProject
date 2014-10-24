@@ -52,15 +52,15 @@ public class Game_type extends Activity {
         numberInnings = (EditText) findViewById(R.id.visNameInput);
 
         String homeName, visName, gameInnings;
-        homeName = String.valueOf(homeTeamName.getText());
-        visName = String.valueOf(visitorTeamName.getText());
-        gameInnings = String.valueOf(numberInnings.getText());
+        homeName = homeTeamName.getText().toString();
+        visName = visitorTeamName.getText().toString();
+        gameInnings = numberInnings.getText().toString();
 
         Intent goToCreateLineup = new Intent(this, team_lineups.class);
         goToCreateLineup.putExtra("HomeTeamName", homeName);
         goToCreateLineup.putExtra("VisitorTeamName", visName);
         goToCreateLineup.putExtra("NumberInnings", gameInnings);
 
-        setResult(RESULT_OK, goToCreateLineup);
+        startActivity(goToCreateLineup);
     }
 }
