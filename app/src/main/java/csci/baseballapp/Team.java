@@ -25,4 +25,18 @@ public class Team {
         m_roster_size++; //Increments the size of the team by one each time new player is added
 
     }
+
+    public Player searchPlayer(String position) //Function that searches for player in Player array
+    {
+        int i;
+
+        for(i = 0; i < m_roster_size; i++)
+        {
+            if(position == m_roster[i].m_position)
+            {
+                break;
+            }
+        }
+        return m_roster[i];
+    }
 }
