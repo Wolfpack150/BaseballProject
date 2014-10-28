@@ -14,7 +14,10 @@ public class Player {
     public String m_position = "Bench";
     public String m_bats = "R";
     public String m_throws = "R";
+    public String m_hitter = "h";
     public int m_positionArray;
+    public int currBase;
+    public int base;
     public PlayerStats stats;
 
     private List<Player> Players = new ArrayList<Player>();
@@ -50,13 +53,18 @@ public class Player {
     //Default constructor
     public Player () {}
 
-    public Player(String Fname, String Lname, String number, String pos, String bats, String Throws){
+    public Player(String Fname,String Lname,String number,String pos,String bats,String Throws
+                  , String hitter)
+
+
+    {
         this.m_firstName = Fname;
         this.m_lastName = Lname;
         this.m_number = number;
         this.m_position = pos;
         this.m_bats = bats;
         this.m_throws = Throws;
+        this.m_hitter = hitter;
 
     }
 
@@ -78,14 +86,28 @@ public class Player {
     public void setThrows(){
         // m_throws = input
     }
-    public   PositionsArray(){
-        double[] positionArray = { 1,2,4,5 };
-            double H = positionArray[0];
-        for (int i =1; i < positionArray.length; i++) {
-            if (positionArray[i] > H)  H = positionArray[i];
-                
-
+    private void initBatter () {
+        //basePosition[0] = m_hitter;
         }
+    private void move(int currBase, int newBase, int Player) {
+       // basePosition[1] = null;
+       // base position[3] = Player;
+    }
+    private void onPlay(int numBase) {
+        int i = 4;
+        for (i = 0; i > 0; i--) {
+            if (basePosition[i] != null)
+                base = askWheretoMove();
+            move(Player, currBase, base);
+        }
+        // move(m_hitter, numBase);
+
+    }
+
+
+
+
+}
 
 
     // NOTE:
