@@ -26,8 +26,21 @@ public class Team {
 
     }
 
-    public Player searchPlayer(String m_position) //Function that searches for player in Player array
+    public Player searchPlayer(String position) //Function that searches for player in Player array
     {
         //should return type be void or player?
+        Player result;
+        int i;
+
+        for(i = 0; i < m_roster_size; i++)
+        {
+            result = m_roster[i];
+            if(position == result.m_position)
+            {
+                return result;
+            }
+        }
+        System.out.print("Player not found.");
+        return null;
     }
 }
