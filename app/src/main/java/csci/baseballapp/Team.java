@@ -28,18 +28,17 @@ public class Team {
 
     public Player searchPlayer(String position) //Function that searches for player in Player array
     {
-        Player result;
+        //Player result;
         int i;
 
         for(i = 0; i < m_roster_size; i++)
         {
-            result = m_roster[i];
-            if(position == result.m_position)
+            //result = m_roster[i];
+            if(position == m_roster[i].m_position)
             {
-                return result;
+                break;
             }
         }
-        System.out.print("Player not found.");
-        return null;
+        return m_roster[i];
     }
 }
