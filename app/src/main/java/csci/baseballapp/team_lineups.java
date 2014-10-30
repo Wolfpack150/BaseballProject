@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.Toast;
@@ -61,7 +62,7 @@ public class team_lineups extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
     //this guy opens the creates the player activity expecting a result returned from it
-    public void CreateNewPlayer (MenuItem m){
+    public void CreateNewPlayer (View m){
         Intent intent = new Intent(team_lineups.this, player_create.class);
         startActivityForResult(intent, REQUEST_CODE);
     }
