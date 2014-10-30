@@ -79,7 +79,7 @@
         android:text="Done"
         android:id="@+id/button"
         android:layout_gravity="center_horizontal"
-        android:onClick="gotoLineup"
+        android:onClick="goToHomeLineup"
         android:layout_alignParentBottom="true" />
 
 

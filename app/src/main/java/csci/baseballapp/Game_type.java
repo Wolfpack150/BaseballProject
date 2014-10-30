@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 /**
  * Created by tim on 9/18/14.
@@ -44,7 +42,7 @@ public class Game_type extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void gotoLineup(View view) {
+    public void goToHomeLineup(View view) {
         EditText homeTeamName, visitorTeamName, numberInnings;
 
         homeTeamName = (EditText) findViewById(R.id.homeNameInput);
@@ -56,11 +54,11 @@ public class Game_type extends Activity {
         visName = visitorTeamName.getText().toString();
         gameInnings = numberInnings.getText().toString();
 
-        Intent goToCreateLineup = new Intent(this, team_lineups.class);
-        goToCreateLineup.putExtra("HomeTeamName", homeName);
-        goToCreateLineup.putExtra("VisitorTeamName", visName);
-        goToCreateLineup.putExtra("NumberInnings", gameInnings);
+        Intent goToCreateHomeLineup = new Intent(this, TeamLineupHome.class);
+        goToCreateHomeLineup.putExtra("HomeTeamName", homeName);
+        goToCreateHomeLineup.putExtra("VisitorTeamName", visName);
+        goToCreateHomeLineup.putExtra("NumberInnings", gameInnings);
 
-        startActivity(goToCreateLineup);
+        startActivity(goToCreateHomeLineup);
     }
 }
