@@ -93,21 +93,14 @@ public class Player {
        // basePosition[1] = null;
        // base position[3] = Player;
     }
-    private void onPlay(int numBase) {
-        int i = 4;
-        for (i = 0; i > 0; i--) {
-            if (basePosition[i] != null)
-                base = askWheretoMove();
-            move(Player, currBase, base);
-        }
-        // move(m_hitter, numBase);
-
-    }
 
 
 
 
-}
+
+
+
+
 
 
     // NOTE:
