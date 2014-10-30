@@ -9,6 +9,7 @@
     <string name="title_activity_box">Box Score</string>
     <string name="title_activity_team_lineups">Team Lineups</string>
     <string name="title_activity_game_type">Game Type</string>
+
     <string-array name="position_array">
         <item>Position</item>
         <item>P</item>
@@ -23,5 +24,6 @@
     </string-array>
 
     <string name="title_activity_play_ball">Play Ball</string>
+    <string name="title_activity_team_lineup_visitor">TeamLineupVisitor</string>
 
 </resources>
