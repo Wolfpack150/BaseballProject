@@ -1,6 +1,12 @@
-<GridLayout
+<LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/play_ball_layout"
-    ></GridLayout>
+    android:id="@+id/play_ball_layout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/inningsView" />
+</LinearLayout>
