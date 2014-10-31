@@ -4,14 +4,25 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class PlayBall extends Activity {
-
+    Gameplay game;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ball);
+
+        Bundle receivePrevExtras = getIntent().getBundleExtra("prevExtras");
+        /*
+        String inningsString = receivePrevExtras.getString("NumberInnings");
+        int innings = Integer.parseInt(inningsString);
+        */
+        Team homeTeam = (Team) getIntent().getSerializableExtra("HomeTeamClass");
+        Team visTeam = (Team) getIntent().getSerializableExtra("VisTeamClass");
+        TextView displayInning = (TextView) findViewById(R.id.inningsView);
+        displayInning.setText("Innings: " + homeTeam.m_teamName);
     }
 
 

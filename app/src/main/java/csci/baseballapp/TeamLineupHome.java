@@ -20,6 +20,7 @@ public class TeamLineupHome extends ListActivity {
     List<Player> Players = new Player().getPlayers();
     ArrayAdapter<Player> adapter;
     Bundle receivePrevExtras;
+    String homeName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class TeamLineupHome extends ListActivity {
         setListAdapter(adapter);
 
         receivePrevExtras = getIntent().getExtras();
-        String homeName = receivePrevExtras.getString("HomeTeamName");
+        homeName = receivePrevExtras.getString("HomeTeamName");
         TextView homeNameTextView = (TextView) findViewById(R.id.homeTeamName);
         homeNameTextView.setText("Home Team: " + homeName);
         Button nextLineupButton = (Button) findViewById(R.id.visTeamButton);
@@ -86,9 +87,11 @@ public class TeamLineupHome extends ListActivity {
     }
 
     public void goToVisitorLineup(View view) {
+        Team homeTeam = new Team(homeName, Players, Players.size());
+
         Intent goToCreateVisitorLineup = new Intent(this, TeamLineupVisitor.class);
         goToCreateVisitorLineup.putExtra("prevExtras", receivePrevExtras);
-
+        goToCreateVisitorLineup.putExtra("HomeTeamClass", (java.io.Serializable) homeTeam);
         startActivity(goToCreateVisitorLineup);
     }
 }
