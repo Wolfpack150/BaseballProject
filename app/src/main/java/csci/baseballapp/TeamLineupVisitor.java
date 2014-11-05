@@ -1,43 +1,44 @@
 package csci.baseballapp;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import org.apache.http.auth.AuthSchemeRegistry;
-
-import java.io.PipedOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class team_lineups extends ListActivity {
+public class TeamLineupVisitor extends ListActivity {
 
     private static final int REQUEST_CODE = 100;
     List<Player> Players = new Player().getPlayers();
     ArrayAdapter<Player> adapter;
+    Bundle receivePrevExtras;
+    Team homeTeam;
+    String visName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_team_lineups);
-
+        setContentView(R.layout.activity_team_lineup_visitor);
         adapter = new ArrayAdapter<Player>
                     (this, android.R.layout.simple_list_item_1, Players);
-
-
-
-
         Players.add(new Player("Test", "Player", "69", "C", "S", "L"));
-
         setListAdapter(adapter);
 
+        receivePrevExtras = getIntent().getBundleExtra("prevExtras");
+        homeTeam = (Team) getIntent().getSerializableExtra("HomeTeamClass");
+        visName = receivePrevExtras.getString("VisitorTeamName");
+        TextView visNameTextView = (TextView) findViewById(R.id.visTeamName);
+        visNameTextView.setText("Visitor Team: " + visName);
+        Button gameButton = (Button) findViewById(R.id.goToGameButton);
+        gameButton.setText("Finish " + visName + " lineup");
     }
 
 
@@ -62,7 +63,7 @@ public class team_lineups extends ListActivity {
     }
     //this guy opens the creates the player activity expecting a result returned from it
     public void CreateNewPlayer (MenuItem m){
-        Intent intent = new Intent(team_lineups.this, player_create.class);
+        Intent intent = new Intent(TeamLineupVisitor.this, player_create.class);
         startActivityForResult(intent, REQUEST_CODE);
     }
 
@@ -80,11 +81,20 @@ public class team_lineups extends ListActivity {
             String Hits = data.getStringExtra("Hits");
             //do the test thing
             Toast.makeText(this,
-                "added "+ FirstName + " " + LastName +
-                " pos: " + Position + " Bats " + Bats + " Hits: " + Hits,
-            Toast.LENGTH_LONG).show();
+                    "added "+ FirstName + " " + LastName +
+                            " pos: " + Position + " Bats " + Bats + " Hits: " + Hits,
+                    Toast.LENGTH_LONG).show();
             Players.add(new Player(FirstName, LastName, Pnumber, Position, Bats, Hits));
             adapter.notifyDataSetChanged();
         }
+    }
+
+    public void goToGame(View view) {
+        Team visTeam = new Team(visName, Players, Players.size());
+        Intent goToPlayBall = new Intent(this, PlayBall.class);
+        goToPlayBall.putExtra("Innings", receivePrevExtras);
+        goToPlayBall.putExtra("HomeTeamClass", homeTeam);
+        goToPlayBall.putExtra("VisTeamClass", visTeam);
+        startActivity(goToPlayBall);
     }
 }

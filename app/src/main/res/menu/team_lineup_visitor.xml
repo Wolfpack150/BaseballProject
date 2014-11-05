@@ -1,14 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="csci.baseballapp.TeamLineupHome" >
+    tools:context="csci.baseballapp.TeamLineupVisitor" >
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never" />
-    <item android:id="@+id/action_newplayer"
-        android:title="New Player"
-        android:orderInCategory="100"
-        android:showAsAction="always"
-        android:onClick="CreateNewPlayer"
-        />
 </menu>

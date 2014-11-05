@@ -1,18 +1,22 @@
 package csci.baseballapp;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by lumpy on 10/3/14.
  */
-public class Team {
+public class Team implements Serializable {
     //Team Variables
     public String m_teamName;
-    public Player[] m_roster;
+    public List<Player> m_roster;
     public int m_roster_size;
 
     //Default constructor for team
-    public Team(){
-        m_teamName = "New Team";
-        m_roster_size = 0;
+    public Team(String name, List<Player> roster, int size){
+        m_teamName = name;
+        m_roster = roster;
+        m_roster_size = size;
     }
 
     //Class functions

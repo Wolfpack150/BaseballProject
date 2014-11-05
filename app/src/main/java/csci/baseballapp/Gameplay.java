@@ -16,13 +16,15 @@ public class Gameplay{
 // Temporarily using these variables
     public Player m_hitter, m_pitcher;
 //  public Player m_first, m_second, m_third;
-//  public Team m_home, m_away;
+    public Team m_home, m_away;
 //  public Player m_home_pitcher, m_away_pitcher;
 //  public Plays possibles;
 
     //Default constructor
-    public Gameplay(){
-        m_numInnings = 0;
+    public Gameplay(Team homeTeam, Team visTeam, int innings){
+        m_home = homeTeam;
+        m_away = visTeam;
+        m_numInnings = innings;
         m_home_score = 0;
         m_away_score = 0;
         m_inningtype = 0;

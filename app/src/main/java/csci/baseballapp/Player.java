@@ -1,12 +1,13 @@
 package csci.baseballapp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by lumpy on 10/3/14.
  */
-public class Player {
+public class Player implements Serializable {
     // Player Variables
     public String m_firstName = "New";
     public String m_lastName = "Player";
