@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background2"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -21,7 +22,7 @@
         android:id="@+id/homeNameInput"
         android:layout_marginTop="5dp"
         android:layout_gravity="left"
-        android:text="Home Team Name"
+        android:hint="Home Team Name"
         android:selectAllOnFocus="true"
         android:singleLine="false" />
 
@@ -31,7 +32,7 @@
         android:id="@+id/visNameInput"
         android:layout_marginTop="15dp"
         android:layout_gravity="left"
-        android:text="Visitor Team Name"
+        android:hint="Visitor Team Name"
         android:selectAllOnFocus="true"/>
 
     <EditText
@@ -42,44 +43,65 @@
         android:id="@+id/innings"
         android:layout_marginTop="15dp"
         android:layout_gravity="left"
-        android:text="Number of Innings"
+        android:hint="Number of Innings"
         android:selectAllOnFocus="true"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Sport"
+        android:textSize="20sp"
         android:id="@+id/pickSport"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="center_horizontal"
         android:layout_centerHorizontal="true" />
+
     <RadioGroup
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_bg_button"
+            android:button="@android:color/transparent"
             android:text="Baseball"
             android:id="@+id/baseballButton"
             android:layout_marginTop="10dp"
             android:layout_gravity="left"
+            android:layout_marginLeft="80dp"
             android:checked="true" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_bg_button"
+            android:button="@android:color/transparent"
             android:text="Softball"
             android:id="@+id/softballButton"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="left"
-            android:checked="false" />
-</RadioGroup>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Done"
-        android:id="@+id/button"
-        android:layout_gravity="center_horizontal"
-        android:onClick="gotoLineup"
-        android:layout_alignParentBottom="true" />
+            android:layout_marginLeft="60dp"
+            android:checked="false"
+            android:layout_gravity="center_horizontal" />
 
+    </RadioGroup>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:background="@drawable/bg_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:id="@+id/button"
+            android:onClick="gotoLineup"
+            android:layout_alignParentBottom="true"
+            android:textColor="#FFFFFF"/>
+
+    </RelativeLayout>
 
 </LinearLayout>
