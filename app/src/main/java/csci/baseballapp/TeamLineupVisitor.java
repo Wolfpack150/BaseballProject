@@ -62,7 +62,7 @@ public class TeamLineupVisitor extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
     //this guy opens the creates the player activity expecting a result returned from it
-    public void CreateNewPlayer (MenuItem m){
+    public void CreateNewPlayer (View view){
         Intent intent = new Intent(TeamLineupVisitor.this, player_create.class);
         startActivityForResult(intent, REQUEST_CODE);
     }

@@ -29,7 +29,7 @@ public class Team implements Serializable {
         m_roster_size++; //Increments the size of the team by one each time new player is added
 
     }
-
+    /*
     public Player searchPlayer(String position) //Function that searches for player in Player array
     {
         int i;
@@ -43,4 +43,5 @@ public class Team implements Serializable {
         }
         return m_roster[i];
     }
+    */
 }

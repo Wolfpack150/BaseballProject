@@ -1,5 +1,6 @@
 package csci.baseballapp;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +10,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ListAdapter;
 import android.widget.Toast;
 
+import org.apache.http.auth.AuthSchemeRegistry;
+import java.io.PipedOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,6 +32,7 @@ public class TeamLineupHome extends ListActivity {
         setContentView(R.layout.activity_team_lineup_home);
         adapter = new ArrayAdapter<Player>
                     (this, android.R.layout.simple_list_item_1, Players);
+
         Players.add(new Player("Test", "Player", "69", "C", "S", "L"));
         setListAdapter(adapter);
 
@@ -59,7 +65,7 @@ public class TeamLineupHome extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
     //this guy opens the creates the player activity expecting a result returned from it
-    public void CreateNewPlayer (MenuItem m){
+    public void CreateNewPlayer (View view){
         Intent intent = new Intent(TeamLineupHome.this, player_create.class);
         startActivityForResult(intent, REQUEST_CODE);
     }
