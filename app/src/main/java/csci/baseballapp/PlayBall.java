@@ -1,11 +1,14 @@
 package csci.baseballapp;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.TabActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 
@@ -25,6 +28,19 @@ public class PlayBall extends Activity {
         Team visTeam = (Team) getIntent().getSerializableExtra("VisTeamClass");
         TextView displayInning = (TextView) findViewById(R.id.inningsView);
         displayInning.setText("Innings: " + homeTeam.m_teamName);
+
+        TabHost tabhost = (TabHost) findViewById(R.id.tabHost);
+        tabhost.setup();
+
+        TabHost.TabSpec tabSpec = tabhost.newTabSpec("playball");
+        tabSpec.setContent(R.id.playBallTab);
+        tabSpec.setIndicator("Gameplay");
+        tabhost.addTab(tabSpec);
+
+        tabSpec = tabhost.newTabSpec("boxscore");
+        tabSpec.setContent(R.id.boxScoreTab);
+        tabSpec.setIndicator("Box Score");
+        tabhost.addTab(tabSpec);
     }
 
 

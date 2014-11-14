@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class box extends Activity {
@@ -11,7 +12,10 @@ public class box extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_box);
+        TextView textView = new TextView(this);
+        textView.setText("Box Score");
+        //setContentView(R.layout.activity_box);
+        setContentView(textView);
     }
 
 
