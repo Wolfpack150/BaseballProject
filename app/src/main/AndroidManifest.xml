@@ -19,34 +19,32 @@
         </activity>
         <activity
             android:name=".Game_type"
-            android:label="@string/title_activity_game_type" />
+            android:label="@string/title_activity_game_type"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".player_create"
-            android:label="@string/title_activity_player_create" >
+            android:label="@string/title_activity_player_create"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".score_screen"
-            android:label="@string/title_activity_score_screen" >
-        </activity>
-        <activity
-            android:name=".box"
-            android:label="@string/title_activity_box" >
+            android:label="@string/title_activity_score_screen"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".TeamLineupHome"
-            android:label="@string/title_activity_team_lineups" >
+            android:label="@string/title_activity_team_lineups"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".PlayBall"
-            android:label="@string/title_activity_play_ball" >
+            android:label="@string/title_activity_play_ball"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".TeamLineupVisitor"
             android:label="@string/title_activity_team_lineup_visitor"
-            android:parentActivityName=".TeamLineupHome" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="csci.baseballapp.TeamLineupHome" />
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

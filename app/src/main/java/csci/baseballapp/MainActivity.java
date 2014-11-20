@@ -40,6 +40,6 @@ public class MainActivity extends Activity {
                                    //to move to next screen for game type
 
         Intent intent = new Intent(this, Game_type.class);
-    startActivity(intent);
+        startActivity(intent);
 }
 }

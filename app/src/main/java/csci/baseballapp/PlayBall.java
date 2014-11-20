@@ -2,22 +2,35 @@ package csci.baseballapp;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.TabActivity;
-import android.content.Intent;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TabHost;
-import android.widget.TextView;
 
 
 public class PlayBall extends Activity {
-    Gameplay game;
+    //Gameplay game;
+    ActionBar.Tab GameTab, BoxTab;
+    Fragment gamefragmenttab = new PitchByPitchFragment();
+    Fragment boxfragmenttab = new BoxFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ball);
+        ActionBar gameplayBar = getActionBar();
+        gameplayBar.setDisplayShowHomeEnabled(false);
+        gameplayBar.setDisplayShowTitleEnabled(false);
+        gameplayBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        GameTab = gameplayBar.newTab().setText("Game View");
+        BoxTab = gameplayBar.newTab().setText("Box Score");
+
+        GameTab.setTabListener(new TabListener(gamefragmenttab));
+        BoxTab.setTabListener(new TabListener(boxfragmenttab));
+
+        gameplayBar.addTab(GameTab);
+        gameplayBar.addTab(BoxTab);
 
         Bundle receivePrevExtras = getIntent().getBundleExtra("prevExtras");
         /*
@@ -26,21 +39,8 @@ public class PlayBall extends Activity {
         */
         Team homeTeam = (Team) getIntent().getSerializableExtra("HomeTeamClass");
         Team visTeam = (Team) getIntent().getSerializableExtra("VisTeamClass");
-        TextView displayInning = (TextView) findViewById(R.id.inningsView);
-        displayInning.setText("Innings: " + homeTeam.m_teamName);
-
-        TabHost tabhost = (TabHost) findViewById(R.id.tabHost);
-        tabhost.setup();
-
-        TabHost.TabSpec tabSpec = tabhost.newTabSpec("playball");
-        tabSpec.setContent(R.id.playBallTab);
-        tabSpec.setIndicator("Gameplay");
-        tabhost.addTab(tabSpec);
-
-        tabSpec = tabhost.newTabSpec("boxscore");
-        tabSpec.setContent(R.id.boxScoreTab);
-        tabSpec.setIndicator("Box Score");
-        tabhost.addTab(tabSpec);
+        //TextView displayInning = (TextView) findViewById(R.id.inningsView);
+        //displayInning.setText("Innings: " + homeTeam.m_teamName);
     }
 
 
@@ -62,4 +62,5 @@ public class PlayBall extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

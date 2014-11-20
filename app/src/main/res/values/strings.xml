@@ -25,5 +25,7 @@
 
     <string name="title_activity_play_ball">Play Ball</string>
     <string name="title_activity_team_lineup_visitor">TeamLineupVisitor</string>
+    <string name="title_activity_pitch_by_pitch">PitchByPitch</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
