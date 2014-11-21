@@ -1,9 +1,11 @@
 package csci.baseballapp;
 
+import java.io.Serializable;
+
 /**
  * Created by lumpy on 9/24/14.
  */
-public class Gameplay {
+public class Gameplay implements Serializable {
     // Player Variables
     public int m_numInnings;
     public int m_home_score;
@@ -55,12 +57,17 @@ public class Gameplay {
      *                                                                 *
      *                                                                 *
      ******************************************************************/
+    public String inningToString(){
+        if(m_inningtype == 0) return "Top";
+        else return "Bottom";
+    }
     /**
      * ***************************************************************
      * Reset Count
      * For new batter or resets outs for new inning
      * ****************************************************************
      */
+
     public void resetCount() {
         if (m_outs == 3)
             m_outs = 0;
@@ -416,7 +423,6 @@ public class Gameplay {
 
         // address--;
         return 1;
-
     }
 
     public void move(int currBase, int base, Player P) {

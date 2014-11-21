@@ -3,21 +3,32 @@ package csci.baseballapp;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
 public class PlayBall extends Activity {
-    //Gameplay game;
+    Gameplay game;
+    //Bundle receivePrevExtras;
     ActionBar.Tab GameTab, BoxTab;
-    Fragment gamefragmenttab = new PitchByPitchFragment();
-    Fragment boxfragmenttab = new BoxFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ball);
+        Team homeTeam = (Team) getIntent().getSerializableExtra("HomeTeamClass");
+        Team visTeam = (Team) getIntent().getSerializableExtra("VisTeamClass");
+        game = new Gameplay(homeTeam, visTeam, 9);
+        Fragment gamefragmenttab = new PitchByPitchFragment();
+        Bundle gameBundle = new Bundle();
+        gameBundle.putSerializable("gameBundleKey", game);
+        gamefragmenttab.setArguments(gameBundle);
+
+        Fragment boxfragmenttab = new BoxFragment();
+        //gamefragmenttab.setArguments(gameBundle);
+
         ActionBar gameplayBar = getActionBar();
         gameplayBar.setDisplayShowHomeEnabled(false);
         gameplayBar.setDisplayShowTitleEnabled(false);
@@ -32,13 +43,11 @@ public class PlayBall extends Activity {
         gameplayBar.addTab(GameTab);
         gameplayBar.addTab(BoxTab);
 
-        Bundle receivePrevExtras = getIntent().getBundleExtra("prevExtras");
+        //receivePrevExtras = getIntent().getBundleExtra("prevExtras");
         /*
         String inningsString = receivePrevExtras.getString("NumberInnings");
         int innings = Integer.parseInt(inningsString);
         */
-        Team homeTeam = (Team) getIntent().getSerializableExtra("HomeTeamClass");
-        Team visTeam = (Team) getIntent().getSerializableExtra("VisTeamClass");
         //TextView displayInning = (TextView) findViewById(R.id.inningsView);
         //displayInning.setText("Innings: " + homeTeam.m_teamName);
     }
