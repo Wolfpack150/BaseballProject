@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#ff898897">
+        android:background="#ff898897"
+        android:id="@+id/topBar">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -121,6 +122,15 @@
             </RelativeLayout>
             </LinearLayout>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gameviewtest2"
+        android:layout_below="@+id/topBar"
+        android:layout_above="@+id/bottomBar">
+        </RelativeLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -131,7 +141,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/primary"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottomBar">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
