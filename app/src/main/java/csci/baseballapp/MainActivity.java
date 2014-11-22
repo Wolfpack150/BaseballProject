@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 
 public class MainActivity extends Activity {
@@ -40,6 +41,6 @@ public class MainActivity extends Activity {
                                    //to move to next screen for game type
 
         Intent intent = new Intent(this, Game_type.class);
-    startActivity(intent);
+        startActivity(intent);
 }
 }

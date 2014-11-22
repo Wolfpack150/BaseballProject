@@ -1,28 +1,56 @@
 package csci.baseballapp;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
 
 
 public class PlayBall extends Activity {
     Gameplay game;
+    //Bundle receivePrevExtras;
+    ActionBar.Tab GameTab, BoxTab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ball);
+        Team homeTeam = (Team) getIntent().getSerializableExtra("HomeTeamClass");
+        Team visTeam = (Team) getIntent().getSerializableExtra("VisTeamClass");
+        game = new Gameplay(homeTeam, visTeam, 9);
+        Fragment gamefragmenttab = new PitchByPitchFragment();
+        Bundle gameBundle = new Bundle();
+        gameBundle.putSerializable("gameBundleKey", game);
+        gamefragmenttab.setArguments(gameBundle);
 
-        Bundle receivePrevExtras = getIntent().getBundleExtra("prevExtras");
+        Fragment boxfragmenttab = new BoxFragment();
+        //gamefragmenttab.setArguments(gameBundle);
+
+        ActionBar gameplayBar = getActionBar();
+        gameplayBar.setDisplayShowHomeEnabled(false);
+        gameplayBar.setDisplayShowTitleEnabled(false);
+        gameplayBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        GameTab = gameplayBar.newTab().setText("Game View");
+        BoxTab = gameplayBar.newTab().setText("Box Score");
+
+        GameTab.setTabListener(new TabListener(gamefragmenttab));
+        BoxTab.setTabListener(new TabListener(boxfragmenttab));
+
+        gameplayBar.addTab(GameTab);
+        gameplayBar.addTab(BoxTab);
+
+        //receivePrevExtras = getIntent().getBundleExtra("prevExtras");
         /*
         String inningsString = receivePrevExtras.getString("NumberInnings");
         int innings = Integer.parseInt(inningsString);
         */
-        Team homeTeam = (Team) getIntent().getSerializableExtra("HomeTeamClass");
-        Team visTeam = (Team) getIntent().getSerializableExtra("VisTeamClass");
-        TextView displayInning = (TextView) findViewById(R.id.inningsView);
-        displayInning.setText("Innings: " + homeTeam.m_teamName);
+        //TextView displayInning = (TextView) findViewById(R.id.inningsView);
+        //displayInning.setText("Innings: " + homeTeam.m_teamName);
     }
 
 
@@ -44,4 +72,9 @@ public class PlayBall extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+    public void showDialog(View view){
+        PitchDialogFragment pitchDialog = new PitchDialogFragment();
+        pitchDialog.show(getFragmentManager(), "Pitch Dialog");
+    }
+
 }

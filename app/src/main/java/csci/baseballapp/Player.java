@@ -52,10 +52,8 @@ public class Player implements Serializable {
 	*/
 
     //Default constructor
-    public Player () {}
-
-    public Player(String Fname,String Lname,String number,String pos,String bats,String Throws
-                  , String hitter)
+    public Player(){};
+    public Player(String Fname,String Lname,String number,String pos,String bats,String Throws)
 
 
     {
@@ -65,7 +63,6 @@ public class Player implements Serializable {
         this.m_position = pos;
         this.m_bats = bats;
         this.m_throws = Throws;
-        this.m_hitter = hitter;
 
     }
 
