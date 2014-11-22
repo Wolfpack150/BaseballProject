@@ -15,6 +15,10 @@ public class Player implements Serializable {
     public String m_position = "Bench";
     public String m_bats = "R";
     public String m_throws = "R";
+    public String m_hitter = "h";
+    public int m_positionArray;
+    public int currBase;
+    public int base;
     public PlayerStats stats;
 
     private List<Player> Players = new ArrayList<Player>();
@@ -48,9 +52,11 @@ public class Player implements Serializable {
 	*/
 
     //Default constructor
-    public Player () {}
+    public Player(){};
+    public Player(String Fname,String Lname,String number,String pos,String bats,String Throws)
 
-    public Player(String Fname, String Lname, String number, String pos, String bats, String Throws){
+
+    {
         this.m_firstName = Fname;
         this.m_lastName = Lname;
         this.m_number = number;
@@ -78,6 +84,21 @@ public class Player implements Serializable {
     public void setThrows(){
         // m_throws = input
     }
+    private void initBatter () {
+        //basePosition[0] = m_hitter;
+        }
+    private void move(int currBase, int newBase, int Player) {
+       // basePosition[1] = null;
+       // base position[3] = Player;
+    }
+
+
+
+
+
+
+
+
 
 
     // NOTE:
