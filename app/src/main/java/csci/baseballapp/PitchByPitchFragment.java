@@ -45,7 +45,7 @@ public class PitchByPitchFragment extends Fragment {
         strikeCount.setText(String.valueOf(game.m_strikes));
         TextView outCount = (TextView) rootView.findViewById(R.id.outCountView);
         outCount.setText(String.valueOf(game.m_outs));
-        Button pitchButton = (Button) rootView.findViewById(R.id.pitchButton1);
+        //Button pitchButton = (Button) rootView.findViewById(R.id.pitchButton1);
         /*pitchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
