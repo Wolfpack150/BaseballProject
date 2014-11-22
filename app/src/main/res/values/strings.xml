@@ -23,6 +23,46 @@
         <item>RF</item>
     </string-array>
 
+    <string-array name="pitchList">
+        <item>Ball</item>
+        <item>Strike</item>
+        <item>Foul</item>
+        <item>In Play</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="inPlayList">
+        <item>Ground Ball</item>
+        <item>Line Drive</item>
+        <item>Fly Ball</item>
+        <item>Pop Fly</item>
+        <item>Bunt</item>
+    </string-array>
+
+    <string-array name="safeOutList">
+        <item>Safe</item>
+        <item>Out</item>
+    </string-array>
+
+    <string-array name="safeList">
+        <item>Single</item>
+        <item>Double</item>
+        <item>Triple</item>
+        <item>Homerun</item>
+        <item>Error</item>
+        <item>Fileders Choice</item>
+    </string-array>
+
+    <string-array name="otherOptionsList">
+        <item>Intentional Ball</item>
+        <item>Intentional Walk</item>
+        <item>Hit By Pitch</item>
+        <item>Cathcers Interference</item>
+        <item>Balk</item>
+    </string-array>
+
+
+
     <string name="title_activity_play_ball">Play Ball</string>
     <string name="title_activity_team_lineup_visitor">TeamLineupVisitor</string>
     <string name="title_activity_pitch_by_pitch">PitchByPitch</string>

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class PlayBall extends Activity {
@@ -70,6 +71,10 @@ public class PlayBall extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void showDialog(View view){
+        PitchDialogFragment pitchDialog = new PitchDialogFragment();
+        pitchDialog.show(getFragmentManager(), "Pitch Dialog");
     }
 
 }
