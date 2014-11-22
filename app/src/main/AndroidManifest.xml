@@ -20,11 +20,13 @@
         <activity
             android:name=".Game_type"
             android:label="@string/title_activity_game_type"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".player_create"
             android:label="@string/title_activity_player_create"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name=".score_screen"
