@@ -157,8 +157,9 @@ public class Gameplay implements Serializable {
             //m_pitcher.stats.m_battersFaced++;
             //m_pitcher.stats.m_intentionalWalksGiven++;
             //m_hitter.stats.m_intentionalWalks++;
-            /*m_hitter.stats.m_plateAppearances++*/;
+            //m_hitter.stats.m_plateAppearances++;
             // change runners on base
+            resetCount();
         }
     }
 

@@ -255,7 +255,7 @@ public class PlayBall extends Activity {
             case 0:
                 game.incrementBall();
                 updateGameView();
-                if(game.m_balls != 0) showPitchDialogRefined();
+                showPitchDialogRefined();
                 break;
             case 1:
                 game.incrementStrike();
@@ -326,6 +326,7 @@ public class PlayBall extends Activity {
             case 0:
                 game.incrementIntentionalBall();
                 updateGameView();
+                if(game.m_balls != 0) showPitchDialogRefined();
                 break;
             case 1:
                 game.hitByPitch();
