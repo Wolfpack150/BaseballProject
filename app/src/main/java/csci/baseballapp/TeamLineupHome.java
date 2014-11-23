@@ -95,7 +95,7 @@ public class TeamLineupHome extends ListActivity {
             int PositionArr = data.getIntExtra("posnum",0);
             Player editP = new Player(FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
             Players.set(data.getIntExtra("ListPosition",0),editP);
-            adapter.notifyDataSetChanged();
+            adapter.notifyDataSetChanged(); //important
         }
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             //get the data and save it to a new object
