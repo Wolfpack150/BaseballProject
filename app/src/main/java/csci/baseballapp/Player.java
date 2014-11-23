@@ -53,10 +53,11 @@ public class Player implements Serializable {
 
     //Default constructor
     public Player(){};
-    public Player(String Fname,String Lname,String number,String pos,String bats,String Throws)
+    public Player(String Fname,String Lname,String number,String pos,String bats,String Throws,int posArr)
 
 
     {
+        this.m_positionArray = posArr;
         this.m_firstName = Fname;
         this.m_lastName = Lname;
         this.m_number = number;

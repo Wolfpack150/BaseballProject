@@ -46,6 +46,10 @@
             android:label="@string/title_activity_team_lineup_visitor"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".EditPlayer"
+            android:label="@string/title_activity_edit_player" >
+        </activity>
     </application>
 
 

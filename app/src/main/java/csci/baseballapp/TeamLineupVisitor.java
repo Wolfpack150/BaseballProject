@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class TeamLineupVisitor extends ListActivity {
 
     private static final int REQUEST_CODE = 100;
+    private static final int EDIT_R_CODE = 150;
     List<Player> Players = new Player().getPlayers();
     ArrayAdapter<Player> adapter;
     Bundle receivePrevExtras;
@@ -29,7 +31,7 @@ public class TeamLineupVisitor extends ListActivity {
         setContentView(R.layout.activity_team_lineup_visitor);
         adapter = new ArrayAdapter<Player>
                     (this, android.R.layout.simple_list_item_1, Players);
-        Players.add(new Player("Test", "Player", "69", "C", "S", "L"));
+        Players.add(new Player("Test", "Player", "69", "C", "S", "L",0));
         setListAdapter(adapter);
 
         receivePrevExtras = getIntent().getBundleExtra("prevExtras");
@@ -39,7 +41,18 @@ public class TeamLineupVisitor extends ListActivity {
         visNameTextView.setText("Visitor Team: " + visName);
         Button gameButton = (Button) findViewById(R.id.goToGameButton);
         gameButton.setText("Finish " + visName + " lineup");
+
     }
+
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        // process click on item #position
+        Player item = (Player) l.getItemAtPosition(position);
+        Intent intent = new Intent(TeamLineupVisitor.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos" ,position);
+        startActivityForResult(intent, EDIT_R_CODE);
+    }
+
 
 
 
@@ -70,6 +83,20 @@ public class TeamLineupVisitor extends ListActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == EDIT_R_CODE && resultCode == RESULT_OK)
+        {
+            String FirstName = data.getStringExtra("FirstN");
+            String LastName = data.getStringExtra("LastN");
+            String Pnumber = data.getStringExtra("Num");
+            String Position = data.getStringExtra("pos");
+            String Bats  = data.getStringExtra("Bats");
+            String Hits = data.getStringExtra("Hits");
+            int PositionArr = data.getIntExtra("posnum",0);
+            Player editP = new Player(FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
+            Players.set(data.getIntExtra("ListPosition",0),editP);
+            adapter.notifyDataSetChanged();
+        }
+
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             //get the data and save it to a new object
             //push the new object to an array
@@ -79,12 +106,13 @@ public class TeamLineupVisitor extends ListActivity {
             String Position = data.getStringExtra("pos");
             String Bats  = data.getStringExtra("Bats");
             String Hits = data.getStringExtra("Hits");
+            int PositionArr = data.getIntExtra("posnum",0);
             //do the test thing
             Toast.makeText(this,
                     "added "+ FirstName + " " + LastName +
                             " pos: " + Position + " Bats " + Bats + " Hits: " + Hits,
                     Toast.LENGTH_LONG).show();
-            Players.add(new Player(FirstName, LastName, Pnumber, Position, Bats, Hits));
+            Players.add(new Player(FirstName, LastName, Pnumber, Position, Bats, Hits,PositionArr));
             adapter.notifyDataSetChanged();
         }
     }
