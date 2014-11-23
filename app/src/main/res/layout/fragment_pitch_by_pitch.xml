@@ -92,7 +92,7 @@
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/innCurrView"
                     android:gravity="center_vertical"
-                    android:text="B "
+                    android:text=" B "
                     android:textSize="15pt" />
 
                 <TextView
@@ -109,7 +109,7 @@
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/ballCountView"
                     android:gravity="center_vertical"
-                    android:text="S "
+                    android:text=" S "
                     android:textSize="15pt" />
 
                 <TextView
@@ -126,7 +126,7 @@
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/strikeCountView"
                     android:gravity="center_vertical"
-                    android:text="O "
+                    android:text=" O "
                     android:textSize="15pt" />
 
                 <TextView
@@ -145,16 +145,20 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/bottomBar"
         android:layout_below="@+id/topBar"
-        android:background="@drawable/gameviewtest"></RelativeLayout>
+        android:background="@drawable/gameviewtest">
 
-    <at.markushi.ui.CircleButton
-        android:id="@+id/pitchButton1"
-        android:layout_width="64dip"
-        android:layout_height="64dip"
-        android:onClick="showDialog"
-        android:src="@drawable/pitchbutton"
-        app:cb_color="#ffffffff"
-        app:cb_pressedRingWidth="8dip" />
+        <at.markushi.ui.CircleButton
+            android:id="@+id/pitchButton1"
+            android:layout_width="120dip"
+            android:layout_height="120dip"
+            android:onClick="showDialog"
+            android:src="@drawable/pitchbutton"
+            app:cb_color="#ffffffff"
+            app:cb_pressedRingWidth="8dip"
+            android:layout_marginBottom="333dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/bottomBar"
