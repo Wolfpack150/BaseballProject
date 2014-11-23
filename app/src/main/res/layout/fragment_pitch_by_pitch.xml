@@ -151,7 +151,7 @@
             android:id="@+id/pitchButton1"
             android:layout_width="120dip"
             android:layout_height="120dip"
-            android:onClick="showDialog"
+            android:onClick="showPitchDialog"
             android:src="@drawable/pitchbutton"
             app:cb_color="#ffffffff"
             app:cb_pressedRingWidth="8dip"
