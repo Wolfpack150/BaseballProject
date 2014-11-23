@@ -11,7 +11,7 @@ public class Gameplay implements Serializable {
     public int m_home_score;
     public int m_away_score;
     public int m_inningtype;// this is for top or bottom of the inning
-    public double m_inning;
+    public int m_inning;
     public int m_outs;
     public int m_balls;
     public int m_strikes;
@@ -58,8 +58,12 @@ public class Gameplay implements Serializable {
      *                                                                 *
      ******************************************************************/
     public String inningToString(){
-        if(m_inningtype == 0) return "Top";
-        else return "Bottom";
+        if(m_inningtype == 0) return "Top ";
+        else return "Bot ";
+    }
+    public void swapInning(){
+        if(m_inningtype == 0) m_inningtype = 1;
+        else {m_inningtype = 0; m_inning++;}
     }
     /**
      * ***************************************************************
@@ -83,12 +87,12 @@ public class Gameplay implements Serializable {
     public void incrementOut() {
         m_outs++;
         if (m_outs == 3)
-            m_pitcher.stats.m_innings += .8;
+            /*m_pitcher.stats.m_innings += .8*/;
         else
-            m_pitcher.stats.m_innings += .1;
+            /*m_pitcher.stats.m_innings += .1*/;
 
         resetCount();
-        if (m_outs == 0) ;// change innings and swap current teams
+        if (m_outs == 0) swapInning(); // change innings and swap current teams
     }
     /******************************************************************
      *                                                                 *
@@ -105,14 +109,14 @@ public class Gameplay implements Serializable {
      */
     public void incrementStrike() {
         m_strikes++;
-        m_pitcher.stats.m_pitchesThrown++;
-        m_pitcher.stats.m_strikesThrown++;
+        //m_pitcher.stats.m_pitchesThrown++;
+        //m_pitcher.stats.m_strikesThrown++;
         if (m_strikes == 3) {
-            m_pitcher.stats.m_battersFaced++;
-            m_pitcher.stats.m_strikeoutsGiven++;
-            m_hitter.stats.m_strikeouts++;
-            m_hitter.stats.m_plateAppearances++;
-            m_hitter.stats.m_atBats++;
+            //m_pitcher.stats.m_battersFaced++;
+            //m_pitcher.stats.m_strikeoutsGiven++;
+            //m_hitter.stats.m_strikeouts++;
+            //m_hitter.stats.m_plateAppearances++;
+            //m_hitter.stats.m_atBats++;
             incrementOut();
         }
     }
@@ -126,14 +130,15 @@ public class Gameplay implements Serializable {
      */
     public void incrementBall() {
         m_balls++;
-        m_pitcher.stats.m_pitchesThrown++;
-        m_pitcher.stats.m_ballsThrown++;
+        //m_pitcher.stats.m_pitchesThrown++;
+        //m_pitcher.stats.m_ballsThrown++;
         if (m_balls == 4) {
-            m_pitcher.stats.m_battersFaced++;
-            m_pitcher.stats.m_walksGiven++;
-            m_hitter.stats.m_walks++;
-            m_hitter.stats.m_plateAppearances++;
+            //m_pitcher.stats.m_battersFaced++;
+            //m_pitcher.stats.m_walksGiven++;
+            //m_hitter.stats.m_walks++;
+            //m_hitter.stats.m_plateAppearances++;
             // change runners on base
+            resetCount();
         }
     }
 
@@ -146,14 +151,15 @@ public class Gameplay implements Serializable {
      */
     public void incrementIntentionalBall() {
         m_balls++;
-        m_pitcher.stats.m_pitchesThrown++;
-        m_pitcher.stats.m_intentionalBallsThrown++;
+        //m_pitcher.stats.m_pitchesThrown++;
+        //m_pitcher.stats.m_intentionalBallsThrown++;
         if (m_balls == 4) {
-            m_pitcher.stats.m_battersFaced++;
-            m_pitcher.stats.m_intentionalWalksGiven++;
-            m_hitter.stats.m_intentionalWalks++;
-            m_hitter.stats.m_plateAppearances++;
+            //m_pitcher.stats.m_battersFaced++;
+            //m_pitcher.stats.m_intentionalWalksGiven++;
+            //m_hitter.stats.m_intentionalWalks++;
+            //m_hitter.stats.m_plateAppearances++;
             // change runners on base
+            resetCount();
         }
     }
 
@@ -168,8 +174,8 @@ public class Gameplay implements Serializable {
         if (m_strikes != 2)
             incrementStrike();
         else {
-            m_pitcher.stats.m_pitchesThrown++;
-            m_pitcher.stats.m_strikesThrown++;
+            /*m_pitcher.stats.m_pitchesThrown++;
+            m_pitcher.stats.m_strikesThrown++*/;
         }
     }
 
