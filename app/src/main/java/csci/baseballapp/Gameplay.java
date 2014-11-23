@@ -151,13 +151,13 @@ public class Gameplay implements Serializable {
      */
     public void incrementIntentionalBall() {
         m_balls++;
-        m_pitcher.stats.m_pitchesThrown++;
-        m_pitcher.stats.m_intentionalBallsThrown++;
+        //m_pitcher.stats.m_pitchesThrown++;
+        //m_pitcher.stats.m_intentionalBallsThrown++;
         if (m_balls == 4) {
-            m_pitcher.stats.m_battersFaced++;
-            m_pitcher.stats.m_intentionalWalksGiven++;
-            m_hitter.stats.m_intentionalWalks++;
-            m_hitter.stats.m_plateAppearances++;
+            //m_pitcher.stats.m_battersFaced++;
+            //m_pitcher.stats.m_intentionalWalksGiven++;
+            //m_hitter.stats.m_intentionalWalks++;
+            /*m_hitter.stats.m_plateAppearances++*/;
             // change runners on base
         }
     }

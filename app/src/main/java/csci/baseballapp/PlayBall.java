@@ -106,6 +106,30 @@ public class PlayBall extends Activity {
         pitchDialog.show(getFragmentManager(), "Pitch Dialog");
     }
 
+    public void showPitchDialogRefined(){
+        class PitchDialogFragment extends DialogFragment {
+            public PitchDialogFragment() {}
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setItems(R.array.pitchList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
+                        pitchListener(i);
+                    }
+                });
+
+                return alertDialogBuilder.create();
+            }
+
+        }
+        PitchDialogFragment pitchDialog = new PitchDialogFragment();
+        pitchDialog.show(getFragmentManager(), "Pitch Dialog");
+    }
+
     public void showInPlayDialog(){
         class InPlayDialogFragment extends DialogFragment {
             public InPlayDialogFragment() {}
@@ -178,15 +202,15 @@ public class PlayBall extends Activity {
         safeDialog.show(getFragmentManager(), "Safe Dialog");
     }
 
-    public void showOtherDialog(){
-        class OtherDialogFragment extends DialogFragment {
-            public OtherDialogFragment() {}
+    public void showOtherDialogWithBall(){
+        class OtherDialogFragmentBall extends DialogFragment {
+            public OtherDialogFragmentBall() {}
             @Override
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
                 alertDialogBuilder.setTitle("Pick");
-                alertDialogBuilder.setItems(R.array.otherOptionsList, new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setItems(R.array.otherOptionsListBall, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
@@ -198,8 +222,32 @@ public class PlayBall extends Activity {
             }
 
         }
-        OtherDialogFragment otherDialog = new OtherDialogFragment();
-        otherDialog.show(getFragmentManager(), "Other Dialog");
+        OtherDialogFragmentBall otherDialogBall = new OtherDialogFragmentBall();
+        otherDialogBall.show(getFragmentManager(), "Other Dialog With Ball");
+    }
+
+    public void showOtherDialogWithWalk(){
+        class OtherDialogFragmentWalk extends DialogFragment {
+            public OtherDialogFragmentWalk() {}
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setItems(R.array.otherOptionsListWalk, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
+                        otherListener(i);
+                    }
+                });
+
+                return alertDialogBuilder.create();
+            }
+
+        }
+        OtherDialogFragmentWalk otherDialogWalk = new OtherDialogFragmentWalk();
+        otherDialogWalk.show(getFragmentManager(), "Other Dialog With Walk");
     }
 
     private void pitchListener(int result) {
@@ -207,20 +255,24 @@ public class PlayBall extends Activity {
             case 0:
                 game.incrementBall();
                 updateGameView();
+                if(game.m_balls != 0) showPitchDialogRefined();
                 break;
             case 1:
                 game.incrementStrike();
                 updateGameView();
+                if(game.m_strikes != 0) showPitchDialogRefined();
                 break;
             case 2:
                 game.foulball();
-                updateGameView();
+                updateGameView(); showPitchDialogRefined();
                 break;
             case 3:
                 showInPlayDialog();
                 break;
             case 4:
-                showOtherDialog();
+                if(game.m_balls != 3)
+                showOtherDialogWithBall();
+                else showOtherDialogWithWalk();
                 break;
         }
     }
@@ -273,22 +325,21 @@ public class PlayBall extends Activity {
         switch (result) {
             case 0:
                 game.incrementIntentionalBall();
+                updateGameView();
                 break;
             case 1:
-                // only on 3 balls!!!
-                game.incrementIntentionalBall();
-                break;
-            case 2:
                 game.hitByPitch();
                 break;
-            case 3:
+            case 2:
                 // catchers interference
                 break;
-            case 4:
+            case 3:
                 game.balk();
                 break;
         }
     }
+
+
 
     private void updateGameView(){
         TextView visName = (TextView) findViewById(R.id.visName);

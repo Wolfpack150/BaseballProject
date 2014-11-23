@@ -53,8 +53,14 @@
         <item>Fileders Choice</item>
     </string-array>
 
-    <string-array name="otherOptionsList">
+    <string-array name="otherOptionsListBall">
         <item>Intentional Ball</item>
+        <item>Hit By Pitch</item>
+        <item>Cathcers Interference</item>
+        <item>Balk</item>
+    </string-array>
+
+    <string-array name="otherOptionsListWalk">
         <item>Intentional Walk</item>
         <item>Hit By Pitch</item>
         <item>Cathcers Interference</item>
