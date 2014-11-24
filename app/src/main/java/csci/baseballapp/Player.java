@@ -30,7 +30,7 @@ public class Player implements Serializable {
 
     @Override
     public String toString(){
-        return m_firstName + " " + m_lastName + "       #" + m_number;
+        return m_firstName + " " + m_lastName + "       #" + m_number +"     " + m_position;
     }
     // Player statistics in new class?
 

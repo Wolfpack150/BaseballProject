@@ -48,6 +48,14 @@ public class player_create extends Activity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         //watches the Spinner's selection in real time and adds the final selection to return intent
+
+        RadioButton R1 = (RadioButton) findViewById(R.id.radioButtonR);
+        R1.setSelected(true);
+        RadioButton RH = (RadioButton) findViewById(R.id.radioButtonHR);
+        RH.setSelected(true);
+        RadioButton RL = (RadioButton) findViewById(R.id.radioButtonHL);
+        RL.setSelected(false);
+
         spinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
                     @Override
