@@ -1,6 +1,7 @@
 package csci.baseballapp;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by lumpy on 9/24/14.
@@ -15,6 +16,11 @@ public class Gameplay implements Serializable {
     public int m_outs;
     public int m_balls;
     public int m_strikes;
+    public int homeCounter;
+    public int awayCounter;
+    public int counter;
+    public List<Player> m_hitting;
+    public List<Player> m_fielding ;
     // Temporarily using these variables
     public Player m_hitter, m_pitcher;
 //  public Player m_first, m_second, m_third;
@@ -34,6 +40,13 @@ public class Gameplay implements Serializable {
     public Gameplay(Team homeTeam, Team visTeam, int innings){
         m_home = homeTeam;
         m_away = visTeam;
+        m_hitting = m_away.m_roster;
+        m_fielding = m_away.m_roster;
+        m_hitter = m_hitting.get(homeCounter);
+        m_pitcher = null;
+        homeCounter = 0;
+        awayCounter = 0;
+        counter = 0;
         m_numInnings = innings;
         m_home_score = 0;
         m_away_score = 0;
@@ -64,6 +77,32 @@ public class Gameplay implements Serializable {
     public void swapInning(){
         if(m_inningtype == 0) m_inningtype = 1;
         else {m_inningtype = 0; m_inning++;}
+        changeInning();
+
+    }
+    public void nextBatter(){
+        if(counter != m_hitting.size() - 1) {
+            counter++;
+        }
+        else{
+            counter = 0;
+        }
+        m_hitter = m_hitting.get(counter);
+    }
+    public void changeInning (){
+        if(m_hitting == m_away.m_roster){
+            awayCounter = counter;
+            counter = homeCounter;
+            m_hitting = m_home.m_roster;
+            m_fielding = m_away.m_roster;
+        }
+        else{
+            homeCounter = counter;
+            counter = awayCounter;
+            m_hitting = m_away.m_roster;
+            m_fielding = m_home.m_roster;
+        }
+        m_hitter = m_hitting.get(counter);
     }
     /**
      * ***************************************************************
@@ -118,6 +157,7 @@ public class Gameplay implements Serializable {
             //m_hitter.stats.m_plateAppearances++;
             //m_hitter.stats.m_atBats++;
             incrementOut();
+
         }
     }
 

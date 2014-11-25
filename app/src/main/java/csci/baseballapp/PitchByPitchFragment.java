@@ -45,22 +45,12 @@ public class PitchByPitchFragment extends Fragment {
         strikeCount.setText(String.valueOf(game.m_strikes));
         TextView outCount = (TextView) rootView.findViewById(R.id.outCountView);
         outCount.setText(String.valueOf(game.m_outs));
-        //Button pitchButton = (Button) rootView.findViewById(R.id.pitchButton1);
-        /*pitchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openPitchOptions(view);
-
-            }
-            private void openPitchOptions(View view){
-                //AlertDialog alertDialogBuilder = new PitchDialogFragment().show(getFragmentManager(), "MyDialog");
-                DialogFragment df = new DialogFragment();
-                df.getActivity();
-                df.setCancelable(false);
-
-
-            }
-        });*/
+        Button currHitter = (Button) rootView.findViewById(R.id.currHitterButton);
+        currHitter.setText(game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        /*
+        Button currPitcher = (Button) rootView.findViewById(R.id.currPitcherButton);
+        currPitcher.setText(game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
+        */
         return rootView;
     }
 
