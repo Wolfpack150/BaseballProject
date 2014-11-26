@@ -45,7 +45,6 @@
                 android:id="@+id/homeScore"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="0"
                 android:textAllCaps="true"
                 android:textSize="20pt"
                 android:textStyle="bold" />
@@ -54,7 +53,6 @@
                 android:id="@+id/visScore"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="0"
                 android:textAllCaps="true"
                 android:textSize="20pt"
                 android:textStyle="bold" />
@@ -158,11 +156,114 @@
             android:layout_marginBottom="333dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="C"
+            android:id="@+id/catcherText"
+            android:clickable="true"
+            android:layout_marginBottom="130dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/pitcherText"
+            android:layout_alignStart="@+id/pitcherText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="P"
+            android:id="@+id/pitcherText"
+            android:clickable="true"
+            android:layout_above="@+id/pitchButton1"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="CF"
+            android:id="@+id/cfText"
+            android:clickable="true"
+            android:layout_marginTop="165dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="LF"
+            android:id="@+id/lfText"
+            android:clickable="true"
+            android:layout_marginLeft="96dp"
+            android:layout_marginTop="84dp"
+            android:layout_below="@+id/cfText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="RF"
+            android:id="@+id/rfText"
+            android:clickable="true"
+            android:layout_marginRight="75dp"
+            android:layout_alignTop="@+id/lfText"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="SS"
+            android:id="@+id/ssText"
+            android:clickable="true"
+            android:layout_toStartOf="@+id/pitchButton1"
+            android:layout_marginTop="70dp"
+            android:layout_below="@+id/lfText"
+            android:layout_toLeftOf="@+id/pitchButton1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="2B"
+            android:id="@+id/sbText"
+            android:clickable="true"
+            android:layout_alignTop="@+id/ssText"
+            android:layout_toRightOf="@+id/pitchButton1"
+            android:layout_toEndOf="@+id/pitchButton1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="3B"
+            android:id="@+id/tbText"
+            android:clickable="true"
+            android:layout_above="@+id/pitchButton1"
+            android:layout_alignLeft="@+id/lfText"
+            android:layout_alignStart="@+id/lfText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="1B"
+            android:id="@+id/fbText"
+            android:clickable="true"
+            android:layout_above="@+id/pitchButton1"
+            android:layout_alignRight="@+id/rfText"
+            android:layout_alignEnd="@+id/rfText" />
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/primary"
@@ -171,20 +272,49 @@
         <Button
             android:id="@+id/currPitcherButton"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Current Pitcher" />
+            android:layout_height="match_parent"/>
 
-        <Button
-            android:id="@+id/currHitterButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Current Hitter" />
         <TextView
             android:id="@+id/pitchCountView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/currHitterButton"
-            android:textSize="20pt" />
+            android:layout_toRightOf="@+id/currPitcherButton"
+            android:textSize="10pt" />
+
+        <TextView
+            android:id="@+id/pitchCountAmountView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/pitchCountView"
+            android:textSize="15pt" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="right">
+
+            <Button
+                android:id="@+id/currHitterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <Button
+                android:id="@+id/onDeckHitterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <Button
+                android:id="@+id/inTheHoleHitterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
 
 

@@ -45,12 +45,23 @@ public class PitchByPitchFragment extends Fragment {
         strikeCount.setText(String.valueOf(game.m_strikes));
         TextView outCount = (TextView) rootView.findViewById(R.id.outCountView);
         outCount.setText(String.valueOf(game.m_outs));
+
         Button currHitter = (Button) rootView.findViewById(R.id.currHitterButton);
-        currHitter.setText(game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        currHitter.setText("At Bat:\n" + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        Button onDeckHitter = (Button) rootView.findViewById(R.id.onDeckHitterButton);
+        onDeckHitter.setText("On Deck:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        Button inHoleHitter = (Button) rootView.findViewById(R.id.inTheHoleHitterButton);
+        inHoleHitter.setText("In The Hole:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+
         Button currPitcher = (Button) rootView.findViewById(R.id.currPitcherButton);
-        currPitcher.setText(game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
+        currPitcher.setText("Pitcher:\n" + game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
         TextView pitchCount = (TextView) rootView.findViewById(R.id.pitchCountView);
-        pitchCount.setText("Pitch Count: " + String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
+        pitchCount.setText("Pitch\nCount: ");
+        TextView pitchCountAmount = (TextView) rootView.findViewById(R.id.pitchCountAmountView);
+        pitchCountAmount.setText(String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
+
+
+
 
         return rootView;
     }

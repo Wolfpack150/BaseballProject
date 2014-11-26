@@ -86,6 +86,7 @@ public class Gameplay implements Serializable {
         }
         m_hitter = m_hitting.get(counter);
     }
+
     public void changeInning (){
         if(m_inningtype == 0) m_inningtype = 1;
         else {m_inningtype = 0; m_inning++;}
