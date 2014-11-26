@@ -49,6 +49,8 @@ public class PitchByPitchFragment extends Fragment {
         currHitter.setText(game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
         Button currPitcher = (Button) rootView.findViewById(R.id.currPitcherButton);
         currPitcher.setText(game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
+        TextView pitchCount = (TextView) rootView.findViewById(R.id.pitchCountView);
+        pitchCount.setText("Pitch Count: " + String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
 
         return rootView;
     }

@@ -77,15 +77,6 @@ public class PlayBall extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
-
-
-
-
-
-
     public void showPitchDialog(View view){
         class PitchDialogFragment extends DialogFragment {
             public PitchDialogFragment() {}
@@ -260,17 +251,14 @@ public class PlayBall extends Activity {
                 game.incrementBall();
                 if(game.m_balls != 0) showPitchDialogRefined();
                 else game.nextBatter();
-                updateGameView();
                 break;
             case 1:
                 game.incrementStrike();
                 if(game.m_strikes != 0) showPitchDialogRefined();
                 else game.nextBatter();
-                updateGameView();
                 break;
             case 2:
                 game.foulball();
-                updateGameView();
                 showPitchDialogRefined();
                 break;
             case 3:
@@ -282,6 +270,7 @@ public class PlayBall extends Activity {
                 else showOtherDialogWithWalk();
                 break;
         }
+        updateGameView();
     }
 
     private void inPlayListener(int result) {
@@ -370,6 +359,8 @@ public class PlayBall extends Activity {
         currHitter.setText(game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
         Button currPitcher = (Button) findViewById(R.id.currPitcherButton);
         currPitcher.setText(game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
+        TextView pitchCount = (TextView) findViewById(R.id.pitchCountView);
+        pitchCount.setText("Pitch Count: " + String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
     }
 }
 
