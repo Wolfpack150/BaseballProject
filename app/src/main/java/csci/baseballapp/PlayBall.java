@@ -12,11 +12,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import java.util.List;
 
 
 public class PlayBall extends Activity {
@@ -52,14 +55,6 @@ public class PlayBall extends Activity {
 
         gameplayBar.addTab(GameTab);
         gameplayBar.addTab(BoxTab);
-
-        //receivePrevExtras = getIntent().getBundleExtra("prevExtras");
-        /*
-        String inningsString = receivePrevExtras.getString("NumberInnings");
-        int innings = Integer.parseInt(inningsString);
-        */
-        //TextView displayInning = (TextView) findViewById(R.id.inningsView);
-        //displayInning.setText("Innings: " + homeTeam.m_teamName);
     }
 
 
@@ -254,17 +249,17 @@ public class PlayBall extends Activity {
         switch (result) {
             case 0:
                 game.incrementBall();
-                updateGameView();
-                showPitchDialogRefined();
+                if(game.m_balls != 0) showPitchDialogRefined();
+                else game.nextBatter();
                 break;
             case 1:
                 game.incrementStrike();
-                updateGameView();
                 if(game.m_strikes != 0) showPitchDialogRefined();
+                else game.nextBatter();
                 break;
             case 2:
                 game.foulball();
-                updateGameView(); showPitchDialogRefined();
+                showPitchDialogRefined();
                 break;
             case 3:
                 showInPlayDialog();
@@ -275,6 +270,7 @@ public class PlayBall extends Activity {
                 else showOtherDialogWithWalk();
                 break;
         }
+        updateGameView();
     }
 
     private void inPlayListener(int result) {
@@ -340,8 +336,6 @@ public class PlayBall extends Activity {
         }
     }
 
-
-
     private void updateGameView(){
         TextView visName = (TextView) findViewById(R.id.visName);
         visName.setText(game.m_away.m_teamName);
@@ -361,6 +355,12 @@ public class PlayBall extends Activity {
         strikeCount.setText(String.valueOf(game.m_strikes));
         TextView outCount = (TextView) findViewById(R.id.outCountView);
         outCount.setText(String.valueOf(game.m_outs));
+        Button currHitter = (Button) findViewById(R.id.currHitterButton);
+        currHitter.setText(game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        Button currPitcher = (Button) findViewById(R.id.currPitcherButton);
+        currPitcher.setText(game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
+        TextView pitchCount = (TextView) findViewById(R.id.pitchCountView);
+        pitchCount.setText("Pitch Count: " + String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
     }
 }
 

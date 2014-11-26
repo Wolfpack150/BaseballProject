@@ -179,6 +179,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Current Hitter" />
+        <TextView
+            android:id="@+id/pitchCountView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/currHitterButton"
+            android:textSize="20pt" />
     </LinearLayout>
 
 
