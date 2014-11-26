@@ -25,7 +25,7 @@ public class Gameplay implements Serializable {
     public Player m_hitter, m_pitcher;
 //  public Player m_first, m_second, m_third;
     public Team m_home, m_away;
-//  public Player m_home_pitcher, m_away_pitcher;
+    public Player m_home_pitcher, m_away_pitcher;
 //  public Plays possibles;
 
     // declares an array of integers
@@ -41,12 +41,14 @@ public class Gameplay implements Serializable {
         m_home = homeTeam;
         m_away = visTeam;
         m_hitting = m_away.m_roster;
-        m_fielding = m_away.m_roster;
-        m_hitter = m_hitting.get(homeCounter);
-        m_pitcher = null;
+        m_fielding = m_home.m_roster;
         homeCounter = 0;
         awayCounter = 0;
-        counter = 0;
+        counter = awayCounter;
+        m_hitter = m_hitting.get(awayCounter);
+        m_home_pitcher= m_home.m_roster.get(homeCounter);
+        m_away_pitcher = m_away.m_roster.get(awayCounter);
+        m_pitcher = m_home_pitcher;
         m_numInnings = innings;
         m_home_score = 0;
         m_away_score = 0;
@@ -74,12 +76,7 @@ public class Gameplay implements Serializable {
         if(m_inningtype == 0) return "Top ";
         else return "Bot ";
     }
-    public void swapInning(){
-        if(m_inningtype == 0) m_inningtype = 1;
-        else {m_inningtype = 0; m_inning++;}
-        changeInning();
 
-    }
     public void nextBatter(){
         if(counter != m_hitting.size() - 1) {
             counter++;
@@ -90,17 +87,22 @@ public class Gameplay implements Serializable {
         m_hitter = m_hitting.get(counter);
     }
     public void changeInning (){
+        if(m_inningtype == 0) m_inningtype = 1;
+        else {m_inningtype = 0; m_inning++;}
+
         if(m_hitting == m_away.m_roster){
             awayCounter = counter;
             counter = homeCounter;
             m_hitting = m_home.m_roster;
             m_fielding = m_away.m_roster;
+            m_pitcher = m_away_pitcher;
         }
         else{
             homeCounter = counter;
             counter = awayCounter;
             m_hitting = m_away.m_roster;
             m_fielding = m_home.m_roster;
+            m_pitcher = m_home_pitcher;
         }
         m_hitter = m_hitting.get(counter);
     }
@@ -131,7 +133,7 @@ public class Gameplay implements Serializable {
             /*m_pitcher.stats.m_innings += .1*/;
 
         resetCount();
-        if (m_outs == 0) swapInning(); // change innings and swap current teams
+        if (m_outs == 0) changeInning(); // change innings and swap current teams
     }
     /******************************************************************
      *                                                                 *

@@ -33,7 +33,7 @@ public class TeamLineupHome extends ListActivity {
         adapter = new ArrayAdapter<Player>
                     (this, android.R.layout.simple_list_item_1, Players);
 
-        Players.add(new Player("Test", "Player", "69", "C", "S", "L"));
+        Players.add(new Player("Test", "PlayerH", "69", "C", "S", "L"));
         setListAdapter(adapter);
 
         receivePrevExtras = getIntent().getExtras();

@@ -347,8 +347,6 @@ public class PlayBall extends Activity {
         }
     }
 
-
-
     private void updateGameView(){
         TextView visName = (TextView) findViewById(R.id.visName);
         visName.setText(game.m_away.m_teamName);
@@ -370,6 +368,8 @@ public class PlayBall extends Activity {
         outCount.setText(String.valueOf(game.m_outs));
         Button currHitter = (Button) findViewById(R.id.currHitterButton);
         currHitter.setText(game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        Button currPitcher = (Button) findViewById(R.id.currPitcherButton);
+        currPitcher.setText(game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
     }
 }
 
