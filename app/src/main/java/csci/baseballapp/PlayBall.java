@@ -8,6 +8,7 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -298,18 +299,28 @@ public class PlayBall extends Activity {
         switch (result) {
             case 0:
                 game.singles();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 1:
                 game.doubles();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 2:
                 game.triples();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 3:
                 game.homeruns();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 4:
                 game.error();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 5:
                 //fielders choice
@@ -326,9 +337,13 @@ public class PlayBall extends Activity {
                 break;
             case 1:
                 game.hitByPitch();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 2:
                 // catchers interference
+                game.nextBatter();
+                updateGameView();
                 break;
             case 3:
                 game.balk();
@@ -367,6 +382,29 @@ public class PlayBall extends Activity {
         currPitcher.setText("Pitcher:\n" + game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
         TextView pitchCountAmount = (TextView) findViewById(R.id.pitchCountAmountView);
         pitchCountAmount.setText(String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
+
+        Button firstBaseButton = (Button) findViewById(R.id.firstBaseButton);
+        firstBaseButton.setBackgroundColor(Color.WHITE);
+        Button secondBaseButton = (Button) findViewById(R.id.secondBaseButton);
+        secondBaseButton.setBackgroundColor(Color.WHITE);
+        Button thirdBaseButton = (Button) findViewById(R.id.thirdBaseButton);
+        thirdBaseButton.setBackgroundColor(Color.WHITE);
+
+        if(game.basePosition[1] != null)
+            firstBaseButton.setBackgroundColor(Color.BLUE);
+        else
+            firstBaseButton.setBackgroundColor(Color.WHITE);
+
+        if(game.basePosition[2] != null)
+            secondBaseButton.setBackgroundColor(Color.BLUE);
+        else
+            secondBaseButton.setBackgroundColor(Color.WHITE);
+
+        if(game.basePosition[3] != null)
+            thirdBaseButton.setBackgroundColor(Color.BLUE);
+        else
+            thirdBaseButton.setBackgroundColor(Color.WHITE);
+
     }
 }
 

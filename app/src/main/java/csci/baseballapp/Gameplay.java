@@ -26,12 +26,9 @@ public class Gameplay implements Serializable {
 //  public Player m_first, m_second, m_third;
     public Team m_home, m_away;
     public Player m_home_pitcher, m_away_pitcher;
-//  public Plays possibles;
-
     // declares an array of integers
-    Player[] basePosition;
+    Player[] basePosition = {m_hitter,null,null,null,null};
 // allocates memory for 5 integers
-    //basePosition=new Player[4];
     int currBase;
     int base;
 
@@ -85,6 +82,7 @@ public class Gameplay implements Serializable {
             counter = 0;
         }
         m_hitter = m_hitting.get(counter);
+        basePosition[0] = m_hitter;
     }
 
     public void changeInning (){
@@ -180,6 +178,7 @@ public class Gameplay implements Serializable {
             m_pitcher.stats.m_walksGiven++;
             m_hitter.stats.m_walks++;
             m_hitter.stats.m_plateAppearances++;
+            move(m_hitter,0,1);
             resetCount();
         }
     }
@@ -200,6 +199,7 @@ public class Gameplay implements Serializable {
             m_pitcher.stats.m_intentionalWalksGiven++;
             m_hitter.stats.m_intentionalWalks++;
             m_hitter.stats.m_plateAppearances++;
+            move(m_hitter,0,1);
             resetCount();
         }
     }
@@ -244,6 +244,8 @@ public class Gameplay implements Serializable {
         m_pitcher.stats.m_hitByPitchGiven++;
         m_hitter.stats.m_hitByPitch++;
         m_hitter.stats.m_plateAppearances++;
+        move(m_hitter,0,1);
+        resetCount();
         // change runners on base
     }
 
@@ -309,6 +311,8 @@ public class Gameplay implements Serializable {
         m_pitcher.stats.m_singlesGiven++;
         m_hitter.stats.m_singles++;
         m_hitter.stats.m_totalBases++;
+        move(m_hitter,0,1);
+        resetCount();
     }
 
     /**
@@ -321,6 +325,8 @@ public class Gameplay implements Serializable {
         m_pitcher.stats.m_doublesGiven++;
         m_hitter.stats.m_doubles++;
         m_hitter.stats.m_totalBases += 2;
+        move(m_hitter,0,2);
+        resetCount();
     }
 
     /**
@@ -333,6 +339,8 @@ public class Gameplay implements Serializable {
         m_pitcher.stats.m_triplesGiven++;
         m_hitter.stats.m_triples++;
         m_hitter.stats.m_totalBases += 3;
+        move(m_hitter,0,3);
+        resetCount();
     }
 
     /**
@@ -351,6 +359,8 @@ public class Gameplay implements Serializable {
         m_hitter.stats.m_runs++;
         m_hitter.stats.m_runsBattedIn++;
         m_hitter.stats.m_totalBases += 4;
+        move(m_hitter,0,4);
+        resetCount();
     }
 
     /**
@@ -472,11 +482,10 @@ public class Gameplay implements Serializable {
         return 1;
     }
 
-    public void move(int currBase, int base, Player P) {
-
-        //basePosition[] = null;
-       // basePosition[] = Player;
-
+    public void move(Player P, int currBase, int base) {
+        basePosition[base] = P;
+        basePosition[currBase] = null;
+        P.currBase = currBase;
     }
 
     private void onPlay(int numBase, Player P) {
@@ -484,7 +493,7 @@ public class Gameplay implements Serializable {
         for (i = 4; i > 0; i--) {
             if (basePosition[i] != null) {
                 base = askWheretoMove();
-                move(currBase, base, P);
+                move(P, currBase, base);
             }
             // move(m_hitter, numBase);
 

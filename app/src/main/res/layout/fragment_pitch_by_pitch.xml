@@ -223,7 +223,7 @@
             android:id="@+id/ssText"
             android:clickable="true"
             android:layout_toStartOf="@+id/pitchButton1"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="80dp"
             android:layout_below="@+id/lfText"
             android:layout_toLeftOf="@+id/pitchButton1" />
 
@@ -259,6 +259,32 @@
             android:layout_above="@+id/pitchButton1"
             android:layout_alignRight="@+id/rfText"
             android:layout_alignEnd="@+id/rfText" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/thirdBaseButton"
+            android:layout_toEndOf="@+id/tbText"
+            android:layout_marginLeft="81dp"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/tbText"
+            android:layout_toRightOf="@+id/tbText" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/secondBaseButton"
+            android:layout_below="@+id/ssText"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/firstBaseButton"
+            android:layout_alignTop="@+id/thirdBaseButton"
+            android:layout_toLeftOf="@+id/fbText"
+            android:layout_toStartOf="@+id/fbText"
+            android:layout_marginRight="95dp" />
     </RelativeLayout>
 
     <LinearLayout

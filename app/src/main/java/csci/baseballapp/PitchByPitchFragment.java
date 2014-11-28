@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,8 +61,12 @@ public class PitchByPitchFragment extends Fragment {
         TextView pitchCountAmount = (TextView) rootView.findViewById(R.id.pitchCountAmountView);
         pitchCountAmount.setText(String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
 
-
-
+        Button firstBaseButton = (Button) rootView.findViewById(R.id.firstBaseButton);
+        firstBaseButton.setBackgroundColor(Color.WHITE);
+        Button secondBaseButton = (Button) rootView.findViewById(R.id.secondBaseButton);
+        secondBaseButton.setBackgroundColor(Color.WHITE);
+        Button thirdBaseButton = (Button) rootView.findViewById(R.id.thirdBaseButton);
+        thirdBaseButton.setBackgroundColor(Color.WHITE);
 
         return rootView;
     }
