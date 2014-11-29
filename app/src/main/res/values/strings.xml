@@ -67,6 +67,28 @@
         <item>Balk</item>
     </string-array>
 
+    <string-array name="firstBaseList">
+        <item>Second</item>
+        <item>Third</item>
+        <item>Home</item>
+    </string-array>
+
+    <string-array name="secondBaseList">
+        <item>Stay at Second</item>
+        <item>Third</item>
+        <item>Home</item>
+    </string-array>
+
+    <string-array name="secondBaseListForce">
+        <item>Third</item>
+        <item>Home</item>
+    </string-array>
+
+    <string-array name="thirdBaseList">
+        <item>Stay at Third</item>
+        <item>Home</item>
+    </string-array>
+
 
 
     <string name="title_activity_play_ball">Play Ball</string>

@@ -246,6 +246,102 @@ public class PlayBall extends Activity {
         otherDialogWalk.show(getFragmentManager(), "Other Dialog With Walk");
     }
 
+    public void showBaseMoveFirstDialog(){
+        class BaseMoveFirstDialogFragment extends DialogFragment {
+            public BaseMoveFirstDialogFragment() {}
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("Runner moved from 1st to...");
+                alertDialogBuilder.setItems(R.array.firstBaseList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
+                        baseMoveFirstListener(i);
+                    }
+                });
+
+                return alertDialogBuilder.create();
+            }
+
+        }
+        BaseMoveFirstDialogFragment baseMoveFirstDialog = new BaseMoveFirstDialogFragment();
+        baseMoveFirstDialog.show(getFragmentManager(), "Base Move First Dialog");
+    }
+
+    public void showBaseMoveSecondDialog(){
+        class BaseMoveSecondDialogFragment extends DialogFragment {
+            public BaseMoveSecondDialogFragment() {}
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("Runner moved from 2nd to...");
+                alertDialogBuilder.setItems(R.array.secondBaseList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
+                        baseMoveSecondListener(i);
+                    }
+                });
+
+                return alertDialogBuilder.create();
+            }
+
+        }
+        BaseMoveSecondDialogFragment baseMoveSecondDialog = new BaseMoveSecondDialogFragment();
+        baseMoveSecondDialog.show(getFragmentManager(), "Base Move Second Dialog");
+    }
+
+    public void showBaseMoveSecondForceDialog(){
+        class BaseMoveSecondForceDialogFragment extends DialogFragment {
+            public BaseMoveSecondForceDialogFragment() {}
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("Runner moved from 2nd to...");
+                alertDialogBuilder.setItems(R.array.secondBaseListForce, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
+                        baseMoveSecondForceListener(i);
+                    }
+                });
+
+                return alertDialogBuilder.create();
+            }
+
+        }
+        BaseMoveSecondForceDialogFragment baseMoveSecondForceDialog = new BaseMoveSecondForceDialogFragment();
+        baseMoveSecondForceDialog.show(getFragmentManager(), "Base Move Second Force Dialog");
+    }
+
+    public void showBaseMoveThirdDialog(){
+        class BaseMoveThirdDialogFragment extends DialogFragment {
+            public BaseMoveThirdDialogFragment() {}
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("Runner moved from 3rd to...");
+                alertDialogBuilder.setItems(R.array.thirdBaseList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
+                        baseMoveThirdListener(i);
+                    }
+                });
+
+                return alertDialogBuilder.create();
+            }
+
+        }
+        BaseMoveThirdDialogFragment baseMoveThirdDialog = new BaseMoveThirdDialogFragment();
+        baseMoveThirdDialog.show(getFragmentManager(), "Base Move Third Dialog");
+    }
+
     private void pitchListener(int result) {
         switch (result) {
             case 0:
@@ -347,6 +443,66 @@ public class PlayBall extends Activity {
                 break;
             case 3:
                 game.balk();
+                break;
+        }
+    }
+
+    private void baseMoveFirstListener(int result) {
+        switch (result) {
+            case 0:
+                game.move(game.basePosition[1], 1, 2);
+                updateGameView();
+                break;
+            case 1:
+                game.move(game.basePosition[1], 1, 3);
+                updateGameView();
+                break;
+            case 2:
+                game.move(game.basePosition[1], 1, 3);
+                updateGameView();
+                break;
+        }
+    }
+
+    private void baseMoveSecondListener(int result) {
+        switch (result) {
+            case 0:
+                // Should not move // game.move(game.basePosition[2], 2, 2);
+                updateGameView();
+                break;
+            case 1:
+                game.move(game.basePosition[2], 2, 3);
+                updateGameView();
+                break;
+            case 2:
+                game.move(game.basePosition[2], 2, 4);
+                updateGameView();
+                break;
+        }
+    }
+
+    private void baseMoveSecondForceListener(int result) {
+        switch (result) {
+            case 0:
+                game.move(game.basePosition[2], 2, 3);
+                updateGameView();
+                break;
+            case 1:
+                game.move(game.basePosition[2], 2, 4);
+                updateGameView();
+                break;
+        }
+    }
+
+    private void baseMoveThirdListener(int result) {
+        switch (result) {
+            case 0:
+                // should not move // game.move(game.basePosition[3], 3, 3);
+                updateGameView();
+                break;
+            case 1:
+                game.move(game.basePosition[3], 3, 4);
+                updateGameView();
                 break;
         }
     }

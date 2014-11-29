@@ -476,10 +476,16 @@ public class Gameplay implements Serializable {
         incrementOut();
     }
 
-    public int askWheretoMove() {
-
-        // address--;
-        return 1;
+    public void askWheretoMove() {
+        for (int i = 3; i > 0; i--) {
+            switch(i){
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+            }
+            //return 1;
+        }
     }
 
     public void move(Player P, int currBase, int base) {
@@ -489,14 +495,9 @@ public class Gameplay implements Serializable {
     }
 
     private void onPlay(int numBase, Player P) {
-        int i = 4;
-        for (i = 4; i > 0; i--) {
-            if (basePosition[i] != null) {
-                base = askWheretoMove();
-                move(P, currBase, base);
-            }
+
             // move(m_hitter, numBase);
 
-        }
+
     }
 }
