@@ -27,7 +27,6 @@ public class PlayBall extends Activity {
     Gameplay game;
     //Bundle receivePrevExtras;
     ActionBar.Tab GameTab, BoxTab;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -392,6 +391,11 @@ public class PlayBall extends Activity {
     }
 
     private void safeListener(int result) {
+        int playerMove = askWheretoMove();
+        pickCase(playerMove, result);
+    }
+
+    private void pickCase(int pMove, int result){
         switch (result) {
             case 0:
                 game.singles();
@@ -414,6 +418,7 @@ public class PlayBall extends Activity {
                 updateGameView();
                 break;
             case 4:
+                //askWheretoMove();
                 game.error();
                 game.nextBatter();
                 updateGameView();
@@ -423,7 +428,6 @@ public class PlayBall extends Activity {
                 break;
         }
     }
-
     private void otherListener(int result) {
         switch (result) {
             case 0:
@@ -561,6 +565,30 @@ public class PlayBall extends Activity {
         else
             thirdBaseButton.setBackgroundColor(Color.WHITE);
 
+    }
+
+    public int askWheretoMove() {
+        for (int i = 3; i > 0; i--) {
+            if (game.basePosition[i] != null) {
+                switch (i) {
+                    case 3:
+                        if (game.basePosition[1] != null && game.basePosition[2] != null) ;
+                        else showBaseMoveThirdDialog();
+                        break;
+                    case 2:
+                        if (game.basePosition[1] != null)
+                            showBaseMoveSecondForceDialog();
+                        else
+                            showBaseMoveSecondDialog();
+                        break;
+                    case 1:
+                        showBaseMoveFirstDialog();
+                        break;
+                 }
+            }
+            updateGameView();
+        }
+        return 1;
     }
 }
 
