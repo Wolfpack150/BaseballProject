@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class Player implements Serializable {
     // Player Variables
+    public int id;
     public String m_firstName ;
     public String m_lastName;
     public String m_number;
@@ -27,6 +28,7 @@ public class Player implements Serializable {
     }
 
     public Player(){
+        super();
         m_firstName = "New";
         m_lastName = "Player";
         m_number = "00";// = null; <--- ??
@@ -43,6 +45,7 @@ public class Player implements Serializable {
 
 
     {
+        super();
         this.m_firstName = Fname;
         this.m_lastName = Lname;
         this.m_number = number;
