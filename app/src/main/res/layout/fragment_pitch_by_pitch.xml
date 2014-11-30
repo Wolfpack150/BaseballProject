@@ -42,7 +42,7 @@
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/homeScore"
+                android:id="@+id/visScore"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAllCaps="true"
@@ -50,7 +50,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/visScore"
+                android:id="@+id/homeScore"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAllCaps="true"

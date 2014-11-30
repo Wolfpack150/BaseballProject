@@ -84,7 +84,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.pitchList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -108,7 +108,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.pitchList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -132,7 +132,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Batter hit a...");
                 alertDialogBuilder.setItems(R.array.inPlayList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -156,7 +156,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Batter was...");
                 alertDialogBuilder.setItems(R.array.safeOutList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -180,7 +180,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("How did the batter get on base?");
                 alertDialogBuilder.setItems(R.array.safeList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -204,7 +204,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.otherOptionsListBall, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -228,7 +228,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.otherOptionsListWalk, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -391,23 +391,21 @@ public class PlayBall extends Activity {
     }
 
     private void safeListener(int result) {
-        int playerMove = askWheretoMove();
-        pickCase(playerMove, result);
-    }
-
-    private void pickCase(int pMove, int result){
         switch (result) {
             case 0:
+                askWheretoMove();
                 game.singles();
                 game.nextBatter();
                 updateGameView();
                 break;
             case 1:
+                askWheretoMove();
                 game.doubles();
                 game.nextBatter();
                 updateGameView();
                 break;
             case 2:
+                askWheretoMove();
                 game.triples();
                 game.nextBatter();
                 updateGameView();
@@ -428,6 +426,9 @@ public class PlayBall extends Activity {
                 break;
         }
     }
+
+
+
     private void otherListener(int result) {
         switch (result) {
             case 0:
@@ -462,7 +463,7 @@ public class PlayBall extends Activity {
                 updateGameView();
                 break;
             case 2:
-                game.move(game.basePosition[1], 1, 3);
+                game.move(game.basePosition[1], 1, 4);
                 updateGameView();
                 break;
         }
@@ -567,13 +568,15 @@ public class PlayBall extends Activity {
 
     }
 
-    public int askWheretoMove() {
+    public void askWheretoMove() {
         for (int i = 3; i > 0; i--) {
             if (game.basePosition[i] != null) {
                 switch (i) {
                     case 3:
-                        if (game.basePosition[1] != null && game.basePosition[2] != null) ;
-                        else showBaseMoveThirdDialog();
+                        //if (game.basePosition[1] != null && game.basePosition[2] != null)
+                        //    game.move(game.basePosition[3],3,4);
+                        //else
+                        showBaseMoveThirdDialog();
                         break;
                     case 2:
                         if (game.basePosition[1] != null)
@@ -588,7 +591,8 @@ public class PlayBall extends Activity {
             }
             updateGameView();
         }
-        return 1;
     }
+
+
 }
 
