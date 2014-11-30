@@ -26,8 +26,8 @@
     <string-array name="pitchList">
         <item>Ball</item>
         <item>Strike</item>
-        <item>Foul</item>
-        <item>In Play</item>
+        <item>Foul Ball</item>
+        <item>Ball In Play</item>
         <item>Other</item>
     </string-array>
 
@@ -65,6 +65,28 @@
         <item>Hit By Pitch</item>
         <item>Cathcers Interference</item>
         <item>Balk</item>
+    </string-array>
+
+    <string-array name="firstBaseList">
+        <item>Second</item>
+        <item>Third</item>
+        <item>Home</item>
+    </string-array>
+
+    <string-array name="secondBaseList">
+        <item>Stay at Second</item>
+        <item>Third</item>
+        <item>Home</item>
+    </string-array>
+
+    <string-array name="secondBaseListForce">
+        <item>Third</item>
+        <item>Home</item>
+    </string-array>
+
+    <string-array name="thirdBaseList">
+        <item>Stay at Third</item>
+        <item>Home</item>
     </string-array>
 
 

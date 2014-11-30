@@ -26,12 +26,9 @@ public class Gameplay implements Serializable {
 //  public Player m_first, m_second, m_third;
     public Team m_home, m_away;
     public Player m_home_pitcher, m_away_pitcher;
-//  public Plays possibles;
-
     // declares an array of integers
-    Player[] basePosition;
+    Player[] basePosition = {m_hitter,null,null,null,null};
 // allocates memory for 5 integers
-    //basePosition=new Player[4];
     int currBase;
     int base;
 
@@ -85,7 +82,9 @@ public class Gameplay implements Serializable {
             counter = 0;
         }
         m_hitter = m_hitting.get(counter);
+        basePosition[0] = m_hitter;
     }
+
     public void changeInning (){
         if(m_inningtype == 0) m_inningtype = 1;
         else {m_inningtype = 0; m_inning++;}
@@ -179,6 +178,15 @@ public class Gameplay implements Serializable {
             m_pitcher.stats.m_walksGiven++;
             m_hitter.stats.m_walks++;
             m_hitter.stats.m_plateAppearances++;
+            if(basePosition[1] != null) {
+                if (basePosition[2] != null) {
+                    if (basePosition[3] != null)
+                        move(basePosition[3], 3, 4);
+                    move(basePosition[2], 2, 3);
+                }
+                move(basePosition[1],1,2);
+            }
+            move(m_hitter,0,1);
             resetCount();
         }
     }
@@ -199,6 +207,7 @@ public class Gameplay implements Serializable {
             m_pitcher.stats.m_intentionalWalksGiven++;
             m_hitter.stats.m_intentionalWalks++;
             m_hitter.stats.m_plateAppearances++;
+            move(m_hitter,0,1);
             resetCount();
         }
     }
@@ -243,6 +252,8 @@ public class Gameplay implements Serializable {
         m_pitcher.stats.m_hitByPitchGiven++;
         m_hitter.stats.m_hitByPitch++;
         m_hitter.stats.m_plateAppearances++;
+        move(m_hitter,0,1);
+        resetCount();
         // change runners on base
     }
 
@@ -308,6 +319,8 @@ public class Gameplay implements Serializable {
         m_pitcher.stats.m_singlesGiven++;
         m_hitter.stats.m_singles++;
         m_hitter.stats.m_totalBases++;
+        move(m_hitter,0,1);
+        resetCount();
     }
 
     /**
@@ -320,6 +333,8 @@ public class Gameplay implements Serializable {
         m_pitcher.stats.m_doublesGiven++;
         m_hitter.stats.m_doubles++;
         m_hitter.stats.m_totalBases += 2;
+        move(m_hitter,0,2);
+        resetCount();
     }
 
     /**
@@ -332,6 +347,8 @@ public class Gameplay implements Serializable {
         m_pitcher.stats.m_triplesGiven++;
         m_hitter.stats.m_triples++;
         m_hitter.stats.m_totalBases += 3;
+        move(m_hitter,0,3);
+        resetCount();
     }
 
     /**
@@ -350,6 +367,9 @@ public class Gameplay implements Serializable {
         m_hitter.stats.m_runs++;
         m_hitter.stats.m_runsBattedIn++;
         m_hitter.stats.m_totalBases += 4;
+        moveAllHome();
+        move(m_hitter,0,4);
+        resetCount();
     }
 
     /**
@@ -465,28 +485,32 @@ public class Gameplay implements Serializable {
         incrementOut();
     }
 
-    public int askWheretoMove() {
 
-        // address--;
-        return 1;
+    public void move(Player P, int currBase, int base) {
+        basePosition[base] = P;
+        basePosition[currBase] = null;
+        if(basePosition[4] != null){
+            if(m_inningtype == 0)
+                m_away_score++;
+            else
+                m_home_score++;
+            basePosition[4].stats.m_runs++;
+            m_hitter.stats.m_runsBattedIn++;
+            m_pitcher.stats.m_earnedRuns++;
+            m_pitcher.stats.m_runsGiven++;
+            basePosition[4] = null;
+        }
+        //P.currBase = currBase;
     }
 
-    public void move(int currBase, int base, Player P) {
-
-        //basePosition[] = null;
-       // basePosition[] = Player;
-
+    public void moveAllHome(){
+        for(int i = 3; i > 0; i--)
+            move(basePosition[i], i, 4);
     }
-
     private void onPlay(int numBase, Player P) {
-        int i = 4;
-        for (i = 4; i > 0; i--) {
-            if (basePosition[i] != null) {
-                base = askWheretoMove();
-                move(currBase, base, P);
-            }
+
             // move(m_hitter, numBase);
 
-        }
+
     }
 }

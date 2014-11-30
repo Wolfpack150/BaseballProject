@@ -15,6 +15,7 @@ public class Player implements Serializable {
     public String m_position;
     public String m_bats;
     public String m_throws;
+    public int currBase;
     //public String m_hitter = "h";
     public PlayerStats stats;
 
@@ -34,6 +35,7 @@ public class Player implements Serializable {
         m_throws = "R";
         //public String m_hitter = "h";
         stats = new PlayerStats();
+        currBase = 0;
     }
 
     //Overload constructor
@@ -48,6 +50,7 @@ public class Player implements Serializable {
         this.m_bats = bats;
         this.m_throws = Throws;
         stats = new PlayerStats();
+        currBase = 0;
     }
 
     @Override
