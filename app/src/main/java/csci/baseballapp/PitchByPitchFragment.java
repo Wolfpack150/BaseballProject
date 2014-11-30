@@ -52,6 +52,9 @@ public class PitchByPitchFragment extends Fragment {
         TextView pitchCount = (TextView) rootView.findViewById(R.id.pitchCountView);
         pitchCount.setText("Pitch Count: " + String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
 
+        TextView pitcherName = (TextView) rootView.findViewById(R.id.pitcherText);
+        pitcherName.setText(game.m_away.searchPlayer("P"));
+        
         return rootView;
     }
 

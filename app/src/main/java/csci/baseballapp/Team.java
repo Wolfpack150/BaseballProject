@@ -1,6 +1,7 @@
 package csci.baseballapp;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -29,19 +30,19 @@ public class Team implements Serializable {
         m_roster_size++; //Increments the size of the team by one each time new player is added
 
     }
-    /*
-    public Player searchPlayer(String position) //Function that searches for player in Player array
-    {
-        int i;
 
-        for(i = 0; i < m_roster_size; i++)
+    public String searchPlayer(String position) //Function that searches for player in Player array
+    {
+        Iterator iterator = m_roster.iterator();
+
+        for(int i = 0; i < m_roster.size(); i++)
         {
-            if(position == m_roster[i].m_position)
+            if(position == m_roster.get(i).m_position)
             {
-                break;
+                return m_roster.get(i).m_lastName;
             }
         }
-        return m_roster[i];
+        return "No player designated";
     }
-    */
+
 }
