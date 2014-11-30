@@ -8,6 +8,7 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +27,6 @@ public class PlayBall extends Activity {
     Gameplay game;
     //Bundle receivePrevExtras;
     ActionBar.Tab GameTab, BoxTab;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +84,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.pitchList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -108,7 +108,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.pitchList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -132,7 +132,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Batter hit a...");
                 alertDialogBuilder.setItems(R.array.inPlayList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -156,7 +156,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Batter was...");
                 alertDialogBuilder.setItems(R.array.safeOutList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -180,7 +180,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("How did the batter get on base?");
                 alertDialogBuilder.setItems(R.array.safeList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -204,7 +204,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.otherOptionsListBall, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -228,7 +228,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.otherOptionsListWalk, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -243,6 +243,102 @@ public class PlayBall extends Activity {
         }
         OtherDialogFragmentWalk otherDialogWalk = new OtherDialogFragmentWalk();
         otherDialogWalk.show(getFragmentManager(), "Other Dialog With Walk");
+    }
+
+    public void showBaseMoveFirstDialog(){
+        class BaseMoveFirstDialogFragment extends DialogFragment {
+            public BaseMoveFirstDialogFragment() {}
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("Runner moved from 1st to...");
+                alertDialogBuilder.setItems(R.array.firstBaseList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
+                        baseMoveFirstListener(i);
+                    }
+                });
+
+                return alertDialogBuilder.create();
+            }
+
+        }
+        BaseMoveFirstDialogFragment baseMoveFirstDialog = new BaseMoveFirstDialogFragment();
+        baseMoveFirstDialog.show(getFragmentManager(), "Base Move First Dialog");
+    }
+
+    public void showBaseMoveSecondDialog(){
+        class BaseMoveSecondDialogFragment extends DialogFragment {
+            public BaseMoveSecondDialogFragment() {}
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("Runner moved from 2nd to...");
+                alertDialogBuilder.setItems(R.array.secondBaseList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
+                        baseMoveSecondListener(i);
+                    }
+                });
+
+                return alertDialogBuilder.create();
+            }
+
+        }
+        BaseMoveSecondDialogFragment baseMoveSecondDialog = new BaseMoveSecondDialogFragment();
+        baseMoveSecondDialog.show(getFragmentManager(), "Base Move Second Dialog");
+    }
+
+    public void showBaseMoveSecondForceDialog(){
+        class BaseMoveSecondForceDialogFragment extends DialogFragment {
+            public BaseMoveSecondForceDialogFragment() {}
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("Runner moved from 2nd to...");
+                alertDialogBuilder.setItems(R.array.secondBaseListForce, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
+                        baseMoveSecondForceListener(i);
+                    }
+                });
+
+                return alertDialogBuilder.create();
+            }
+
+        }
+        BaseMoveSecondForceDialogFragment baseMoveSecondForceDialog = new BaseMoveSecondForceDialogFragment();
+        baseMoveSecondForceDialog.show(getFragmentManager(), "Base Move Second Force Dialog");
+    }
+
+    public void showBaseMoveThirdDialog(){
+        class BaseMoveThirdDialogFragment extends DialogFragment {
+            public BaseMoveThirdDialogFragment() {}
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setTitle("Runner moved from 3rd to...");
+                alertDialogBuilder.setItems(R.array.thirdBaseList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
+                        baseMoveThirdListener(i);
+                    }
+                });
+
+                return alertDialogBuilder.create();
+            }
+
+        }
+        BaseMoveThirdDialogFragment baseMoveThirdDialog = new BaseMoveThirdDialogFragment();
+        baseMoveThirdDialog.show(getFragmentManager(), "Base Move Third Dialog");
     }
 
     private void pitchListener(int result) {
@@ -297,25 +393,41 @@ public class PlayBall extends Activity {
     private void safeListener(int result) {
         switch (result) {
             case 0:
+                askWheretoMove();
                 game.singles();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 1:
+                askWheretoMove();
                 game.doubles();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 2:
+                askWheretoMove();
                 game.triples();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 3:
                 game.homeruns();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 4:
+                //askWheretoMove();
                 game.error();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 5:
                 //fielders choice
                 break;
         }
     }
+
+
 
     private void otherListener(int result) {
         switch (result) {
@@ -326,12 +438,76 @@ public class PlayBall extends Activity {
                 break;
             case 1:
                 game.hitByPitch();
+                game.nextBatter();
+                updateGameView();
                 break;
             case 2:
                 // catchers interference
+                game.nextBatter();
+                updateGameView();
                 break;
             case 3:
                 game.balk();
+                break;
+        }
+    }
+
+    private void baseMoveFirstListener(int result) {
+        switch (result) {
+            case 0:
+                game.move(game.basePosition[1], 1, 2);
+                updateGameView();
+                break;
+            case 1:
+                game.move(game.basePosition[1], 1, 3);
+                updateGameView();
+                break;
+            case 2:
+                game.move(game.basePosition[1], 1, 4);
+                updateGameView();
+                break;
+        }
+    }
+
+    private void baseMoveSecondListener(int result) {
+        switch (result) {
+            case 0:
+                // Should not move // game.move(game.basePosition[2], 2, 2);
+                updateGameView();
+                break;
+            case 1:
+                game.move(game.basePosition[2], 2, 3);
+                updateGameView();
+                break;
+            case 2:
+                game.move(game.basePosition[2], 2, 4);
+                updateGameView();
+                break;
+        }
+    }
+
+    private void baseMoveSecondForceListener(int result) {
+        switch (result) {
+            case 0:
+                game.move(game.basePosition[2], 2, 3);
+                updateGameView();
+                break;
+            case 1:
+                game.move(game.basePosition[2], 2, 4);
+                updateGameView();
+                break;
+        }
+    }
+
+    private void baseMoveThirdListener(int result) {
+        switch (result) {
+            case 0:
+                // should not move // game.move(game.basePosition[3], 3, 3);
+                updateGameView();
+                break;
+            case 1:
+                game.move(game.basePosition[3], 3, 4);
+                updateGameView();
                 break;
         }
     }
@@ -355,12 +531,68 @@ public class PlayBall extends Activity {
         strikeCount.setText(String.valueOf(game.m_strikes));
         TextView outCount = (TextView) findViewById(R.id.outCountView);
         outCount.setText(String.valueOf(game.m_outs));
+
         Button currHitter = (Button) findViewById(R.id.currHitterButton);
-        currHitter.setText(game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        currHitter.setText("At Bat:\n" + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        Button onDeckHitter = (Button) findViewById(R.id.onDeckHitterButton);
+        onDeckHitter.setText("On Deck:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        Button inHoleHitter = (Button) findViewById(R.id.inTheHoleHitterButton);
+        inHoleHitter.setText("In The Hole:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+
         Button currPitcher = (Button) findViewById(R.id.currPitcherButton);
-        currPitcher.setText(game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
-        TextView pitchCount = (TextView) findViewById(R.id.pitchCountView);
-        pitchCount.setText("Pitch Count: " + String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
+        currPitcher.setText("Pitcher:\n" + game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
+        TextView pitchCountAmount = (TextView) findViewById(R.id.pitchCountAmountView);
+        pitchCountAmount.setText(String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
+
+        Button firstBaseButton = (Button) findViewById(R.id.firstBaseButton);
+        firstBaseButton.setBackgroundColor(Color.WHITE);
+        Button secondBaseButton = (Button) findViewById(R.id.secondBaseButton);
+        secondBaseButton.setBackgroundColor(Color.WHITE);
+        Button thirdBaseButton = (Button) findViewById(R.id.thirdBaseButton);
+        thirdBaseButton.setBackgroundColor(Color.WHITE);
+
+        if(game.basePosition[1] != null)
+            firstBaseButton.setBackgroundColor(Color.BLUE);
+        else
+            firstBaseButton.setBackgroundColor(Color.WHITE);
+
+        if(game.basePosition[2] != null)
+            secondBaseButton.setBackgroundColor(Color.BLUE);
+        else
+            secondBaseButton.setBackgroundColor(Color.WHITE);
+
+        if(game.basePosition[3] != null)
+            thirdBaseButton.setBackgroundColor(Color.BLUE);
+        else
+            thirdBaseButton.setBackgroundColor(Color.WHITE);
+
     }
+
+    public void askWheretoMove() {
+        for (int i = 3; i > 0; i--) {
+            if (game.basePosition[i] != null) {
+                switch (i) {
+                    case 3:
+                        //if (game.basePosition[1] != null && game.basePosition[2] != null)
+                        //    game.move(game.basePosition[3],3,4);
+                        //else
+                        showBaseMoveThirdDialog();
+                        break;
+                    case 2:
+                        if (game.basePosition[1] != null)
+                            showBaseMoveSecondForceDialog();
+                        else
+                            showBaseMoveSecondDialog();
+                        break;
+                    case 1:
+                        showBaseMoveFirstDialog();
+                        break;
+                 }
+            }
+            updateGameView();
+        }
+    }
+
+
 }
 
