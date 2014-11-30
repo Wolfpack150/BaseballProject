@@ -69,7 +69,23 @@ public class PitchByPitchFragment extends Fragment {
         thirdBaseButton.setBackgroundColor(Color.WHITE);
 
         TextView pitcherName = (TextView) rootView.findViewById(R.id.pitcherText);
-        pitcherName.setText(game.m_away.searchPlayer("P"));
+        pitcherName.setText(game.m_home.searchPlayer("P"));
+        TextView catcherName = (TextView) rootView.findViewById(R.id.catcherText);
+        catcherName.setText(game.m_home.searchPlayer("C"));
+        TextView firstBaseName = (TextView) rootView.findViewById(R.id.fbText);
+        firstBaseName.setText(game.m_home.searchPlayer("1B"));
+        TextView secondBaseName = (TextView) rootView.findViewById(R.id.sbText);
+        secondBaseName.setText(game.m_home.searchPlayer("2B"));
+        TextView thirdBaseName = (TextView) rootView.findViewById(R.id.tbText);
+        thirdBaseName.setText(game.m_home.searchPlayer("3B"));
+        TextView shortStopName = (TextView) rootView.findViewById(R.id.ssText);
+        shortStopName.setText(game.m_home.searchPlayer("SS"));
+        TextView leftFieldName = (TextView) rootView.findViewById(R.id.lfText);
+        leftFieldName.setText(game.m_home.searchPlayer("LF"));
+        TextView centerFieldName = (TextView) rootView.findViewById(R.id.cfText);
+        centerFieldName.setText(game.m_home.searchPlayer("CF"));
+        TextView rightFieldName = (TextView) rootView.findViewById(R.id.rfText);
+        rightFieldName.setText(game.m_home.searchPlayer("RF"));
         
         return rootView;
     }

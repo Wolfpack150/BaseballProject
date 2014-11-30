@@ -33,11 +33,9 @@ public class Team implements Serializable {
 
     public String searchPlayer(String position) //Function that searches for player in Player array
     {
-        Iterator iterator = m_roster.iterator();
-
         for(int i = 0; i < m_roster.size(); i++)
         {
-            if(position == m_roster.get(i).m_position)
+            if(position.equals(m_roster.get(i).m_position))
             {
                 return m_roster.get(i).m_lastName;
             }
