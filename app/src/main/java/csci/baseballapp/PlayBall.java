@@ -565,7 +565,46 @@ public class PlayBall extends Activity {
             thirdBaseButton.setBackgroundColor(Color.BLUE);
         else
             thirdBaseButton.setBackgroundColor(Color.WHITE);
-
+        if(game.m_inningtype == 0) {
+            TextView pitcherName = (TextView) findViewById(R.id.pitcherText);
+            pitcherName.setText(game.m_home.searchPlayer("P"));
+            TextView catcherName = (TextView) findViewById(R.id.catcherText);
+            catcherName.setText(game.m_home.searchPlayer("C"));
+            TextView firstBaseName = (TextView) findViewById(R.id.fbText);
+            firstBaseName.setText(game.m_home.searchPlayer("1B"));
+            TextView secondBaseName = (TextView) findViewById(R.id.sbText);
+            secondBaseName.setText(game.m_home.searchPlayer("2B"));
+            TextView thirdBaseName = (TextView) findViewById(R.id.tbText);
+            thirdBaseName.setText(game.m_home.searchPlayer("3B"));
+            TextView shortStopName = (TextView) findViewById(R.id.ssText);
+            shortStopName.setText(game.m_home.searchPlayer("SS"));
+            TextView leftFieldName = (TextView) findViewById(R.id.lfText);
+            leftFieldName.setText(game.m_home.searchPlayer("LF"));
+            TextView centerFieldName = (TextView) findViewById(R.id.cfText);
+            centerFieldName.setText(game.m_home.searchPlayer("CF"));
+            TextView rightFieldName = (TextView) findViewById(R.id.rfText);
+            rightFieldName.setText(game.m_home.searchPlayer("RF"));
+        }
+        else {
+            TextView pitcherName = (TextView) findViewById(R.id.pitcherText);
+            pitcherName.setText(game.m_away.searchPlayer("P"));
+            TextView catcherName = (TextView) findViewById(R.id.catcherText);
+            catcherName.setText(game.m_away.searchPlayer("C"));
+            TextView firstBaseName = (TextView) findViewById(R.id.fbText);
+            firstBaseName.setText(game.m_away.searchPlayer("1B"));
+            TextView secondBaseName = (TextView) findViewById(R.id.sbText);
+            secondBaseName.setText(game.m_away.searchPlayer("2B"));
+            TextView thirdBaseName = (TextView) findViewById(R.id.tbText);
+            thirdBaseName.setText(game.m_away.searchPlayer("3B"));
+            TextView shortStopName = (TextView) findViewById(R.id.ssText);
+            shortStopName.setText(game.m_away.searchPlayer("SS"));
+            TextView leftFieldName = (TextView) findViewById(R.id.lfText);
+            leftFieldName.setText(game.m_away.searchPlayer("LF"));
+            TextView centerFieldName = (TextView) findViewById(R.id.cfText);
+            centerFieldName.setText(game.m_away.searchPlayer("CF"));
+            TextView rightFieldName = (TextView) findViewById(R.id.rfText);
+            rightFieldName.setText(game.m_away.searchPlayer("RF"));
+        }
     }
 
     public void askWheretoMove() {
