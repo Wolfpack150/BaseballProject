@@ -62,6 +62,7 @@ public class EditPlayer extends Activity {
         RadioButton batS = (RadioButton) findViewById(R.id.radioButtonS);
         if(EditingPlayer.m_bats.charAt(0) == 'L') {
             batL.setSelected(true);
+            //batL.setActivated(true);
             batL.setChecked(true);
             batS.setChecked(false);
             batR.setChecked(false);
@@ -69,12 +70,14 @@ public class EditPlayer extends Activity {
         if(EditingPlayer.m_bats.charAt(0) == 'R') {
             batR.setSelected(true);
             batR.setChecked(true);
+            //batR.setActivated(true);
             batL.setChecked(false);
             batS.setChecked(false);
         }
         if (EditingPlayer.m_bats.charAt(0) == 'S') {
             batS.setSelected(true);
             batS.setChecked(true);
+            //batS.setActivated(true);
             batL.setChecked(false);
             batR.setChecked(false);
         }
@@ -136,9 +139,7 @@ public class EditPlayer extends Activity {
             case R.id.radioButtonR:
                 if (checked)
                     bat = "R";
-                intent.putExtra("Bats", bat);  Spinner spinner;
-
-
+                intent.putExtra("Bats", bat);
                 break;
             case R.id.radioButtonS:
                 if (checked)

@@ -32,15 +32,15 @@ public class TeamLineupVisitor extends ListActivity {
         adapter = new ArrayAdapter<Player>
                     (this, android.R.layout.simple_list_item_1, Players);
         //Players.add(new Player("Test", "PlayerV", "69", "C", "S", "L"));
-        Players.add(new Player("Gregor", "Blanco", "7", "CF", "L", "L"));
-        Players.add(new Player("Joe", "Panik", "12", "2B", "L", "R"));
-        Players.add(new Player("Buster", "Posey", "28", "C", "R", "R"));
-        Players.add(new Player("Pablo", "Sandoval", "48", "3B", "S", "R"));
-        Players.add(new Player("Hunter", "Pence", "8", "RF", "R", "R"));
-        Players.add(new Player("Brandon", "Belt", "9", "1B", "L", "L"));
-        Players.add(new Player("Travis", "Ishikawa", "45", "LF", "L", "L"));
-        Players.add(new Player("Brandon", "Crawford", "35", "SS", "L", "R"));
-        Players.add(new Player("Madison", "Bumgarner", "40", "P", "L", "L"));
+        Players.add(new Player("Gregor", "Blanco", "7", "CF", "L", "L", 7));
+        Players.add(new Player("Joe", "Panik", "12", "2B", "L", "R", 3));
+        Players.add(new Player("Buster", "Posey", "28", "C", "R", "R", 1));
+        Players.add(new Player("Pablo", "Sandoval", "48", "3B", "S", "R", 4));
+        Players.add(new Player("Hunter", "Pence", "8", "RF", "R", "R", 8));
+        Players.add(new Player("Brandon", "Belt", "9", "1B", "L", "L", 2));
+        Players.add(new Player("Travis", "Ishikawa", "45", "LF", "L", "L", 6));
+        Players.add(new Player("Brandon", "Crawford", "35", "SS", "L", "R", 5));
+        Players.add(new Player("Madison", "Bumgarner", "40", "P", "L", "L", 0));
         setListAdapter(adapter);
 
         receivePrevExtras = getIntent().getBundleExtra("prevExtras");
