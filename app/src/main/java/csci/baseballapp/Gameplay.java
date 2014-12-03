@@ -178,6 +178,14 @@ public class Gameplay implements Serializable {
             m_pitcher.stats.m_walksGiven++;
             m_hitter.stats.m_walks++;
             m_hitter.stats.m_plateAppearances++;
+            if(basePosition[1] != null) {
+                if (basePosition[2] != null) {
+                    if (basePosition[3] != null)
+                        move(basePosition[3], 3, 4);
+                    move(basePosition[2], 2, 3);
+                }
+                move(basePosition[1],1,2);
+            }
             move(m_hitter,0,1);
             resetCount();
         }
@@ -359,6 +367,7 @@ public class Gameplay implements Serializable {
         m_hitter.stats.m_runs++;
         m_hitter.stats.m_runsBattedIn++;
         m_hitter.stats.m_totalBases += 4;
+        moveAllHome();
         move(m_hitter,0,4);
         resetCount();
     }
@@ -480,9 +489,24 @@ public class Gameplay implements Serializable {
     public void move(Player P, int currBase, int base) {
         basePosition[base] = P;
         basePosition[currBase] = null;
+        if(basePosition[4] != null){
+            if(m_inningtype == 0)
+                m_away_score++;
+            else
+                m_home_score++;
+            basePosition[4].stats.m_runs++;
+            m_hitter.stats.m_runsBattedIn++;
+            m_pitcher.stats.m_earnedRuns++;
+            m_pitcher.stats.m_runsGiven++;
+            basePosition[4] = null;
+        }
         //P.currBase = currBase;
     }
 
+    public void moveAllHome(){
+        for(int i = 3; i > 0; i--)
+            move(basePosition[i], i, 4);
+    }
     private void onPlay(int numBase, Player P) {
 
             // move(m_hitter, numBase);

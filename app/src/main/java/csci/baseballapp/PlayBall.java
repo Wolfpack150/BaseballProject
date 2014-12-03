@@ -84,7 +84,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.pitchList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -108,7 +108,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.pitchList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -132,7 +132,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Batter hit a...");
                 alertDialogBuilder.setItems(R.array.inPlayList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -156,7 +156,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Batter was...");
                 alertDialogBuilder.setItems(R.array.safeOutList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -180,7 +180,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("How did the batter get on base?");
                 alertDialogBuilder.setItems(R.array.safeList, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -204,7 +204,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.otherOptionsListBall, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -228,7 +228,7 @@ public class PlayBall extends Activity {
             public Dialog onCreateDialog(Bundle savedInstanceState) {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setTitle("Pick");
+                alertDialogBuilder.setTitle("Pitch resulted in a...");
                 alertDialogBuilder.setItems(R.array.otherOptionsListWalk, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -391,23 +391,21 @@ public class PlayBall extends Activity {
     }
 
     private void safeListener(int result) {
-        int playerMove = askWheretoMove();
-        pickCase(playerMove, result);
-    }
-
-    private void pickCase(int pMove, int result){
         switch (result) {
             case 0:
+                askWheretoMove();
                 game.singles();
                 game.nextBatter();
                 updateGameView();
                 break;
             case 1:
+                askWheretoMove();
                 game.doubles();
                 game.nextBatter();
                 updateGameView();
                 break;
             case 2:
+                askWheretoMove();
                 game.triples();
                 game.nextBatter();
                 updateGameView();
@@ -428,6 +426,9 @@ public class PlayBall extends Activity {
                 break;
         }
     }
+
+
+
     private void otherListener(int result) {
         switch (result) {
             case 0:
@@ -462,7 +463,7 @@ public class PlayBall extends Activity {
                 updateGameView();
                 break;
             case 2:
-                game.move(game.basePosition[1], 1, 3);
+                game.move(game.basePosition[1], 1, 4);
                 updateGameView();
                 break;
         }
@@ -564,16 +565,57 @@ public class PlayBall extends Activity {
             thirdBaseButton.setBackgroundColor(Color.BLUE);
         else
             thirdBaseButton.setBackgroundColor(Color.WHITE);
-
+        if(game.m_inningtype == 0) {
+            TextView pitcherName = (TextView) findViewById(R.id.pitcherText);
+            pitcherName.setText(game.m_home.searchPlayer("P"));
+            TextView catcherName = (TextView) findViewById(R.id.catcherText);
+            catcherName.setText(game.m_home.searchPlayer("C"));
+            TextView firstBaseName = (TextView) findViewById(R.id.fbText);
+            firstBaseName.setText(game.m_home.searchPlayer("1B"));
+            TextView secondBaseName = (TextView) findViewById(R.id.sbText);
+            secondBaseName.setText(game.m_home.searchPlayer("2B"));
+            TextView thirdBaseName = (TextView) findViewById(R.id.tbText);
+            thirdBaseName.setText(game.m_home.searchPlayer("3B"));
+            TextView shortStopName = (TextView) findViewById(R.id.ssText);
+            shortStopName.setText(game.m_home.searchPlayer("SS"));
+            TextView leftFieldName = (TextView) findViewById(R.id.lfText);
+            leftFieldName.setText(game.m_home.searchPlayer("LF"));
+            TextView centerFieldName = (TextView) findViewById(R.id.cfText);
+            centerFieldName.setText(game.m_home.searchPlayer("CF"));
+            TextView rightFieldName = (TextView) findViewById(R.id.rfText);
+            rightFieldName.setText(game.m_home.searchPlayer("RF"));
+        }
+        else {
+            TextView pitcherName = (TextView) findViewById(R.id.pitcherText);
+            pitcherName.setText(game.m_away.searchPlayer("P"));
+            TextView catcherName = (TextView) findViewById(R.id.catcherText);
+            catcherName.setText(game.m_away.searchPlayer("C"));
+            TextView firstBaseName = (TextView) findViewById(R.id.fbText);
+            firstBaseName.setText(game.m_away.searchPlayer("1B"));
+            TextView secondBaseName = (TextView) findViewById(R.id.sbText);
+            secondBaseName.setText(game.m_away.searchPlayer("2B"));
+            TextView thirdBaseName = (TextView) findViewById(R.id.tbText);
+            thirdBaseName.setText(game.m_away.searchPlayer("3B"));
+            TextView shortStopName = (TextView) findViewById(R.id.ssText);
+            shortStopName.setText(game.m_away.searchPlayer("SS"));
+            TextView leftFieldName = (TextView) findViewById(R.id.lfText);
+            leftFieldName.setText(game.m_away.searchPlayer("LF"));
+            TextView centerFieldName = (TextView) findViewById(R.id.cfText);
+            centerFieldName.setText(game.m_away.searchPlayer("CF"));
+            TextView rightFieldName = (TextView) findViewById(R.id.rfText);
+            rightFieldName.setText(game.m_away.searchPlayer("RF"));
+        }
     }
 
-    public int askWheretoMove() {
+    public void askWheretoMove() {
         for (int i = 3; i > 0; i--) {
             if (game.basePosition[i] != null) {
                 switch (i) {
                     case 3:
-                        if (game.basePosition[1] != null && game.basePosition[2] != null) ;
-                        else showBaseMoveThirdDialog();
+                        //if (game.basePosition[1] != null && game.basePosition[2] != null)
+                        //    game.move(game.basePosition[3],3,4);
+                        //else
+                        showBaseMoveThirdDialog();
                         break;
                     case 2:
                         if (game.basePosition[1] != null)
@@ -588,7 +630,8 @@ public class PlayBall extends Activity {
             }
             updateGameView();
         }
-        return 1;
     }
+
+
 }
 

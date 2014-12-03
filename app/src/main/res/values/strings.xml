@@ -26,8 +26,8 @@
     <string-array name="pitchList">
         <item>Ball</item>
         <item>Strike</item>
-        <item>Foul</item>
-        <item>In Play</item>
+        <item>Foul Ball</item>
+        <item>Ball In Play</item>
         <item>Other</item>
     </string-array>
 
