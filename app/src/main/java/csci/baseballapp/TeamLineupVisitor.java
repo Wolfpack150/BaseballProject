@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class TeamLineupVisitor extends ListActivity {
 
     private static final int REQUEST_CODE = 100;
+    private static final int EDIT_R_CODE = 150;
     List<Player> Players = new Player().getPlayers();
     ArrayAdapter<Player> adapter;
     Bundle receivePrevExtras;
@@ -30,15 +32,15 @@ public class TeamLineupVisitor extends ListActivity {
         adapter = new ArrayAdapter<Player>
                     (this, android.R.layout.simple_list_item_1, Players);
         //Players.add(new Player("Test", "PlayerV", "69", "C", "S", "L"));
-        Players.add(new Player("Gregor", "Blanco", "7", "CF", "L", "L"));
-        Players.add(new Player("Joe", "Panik", "12", "2B", "L", "R"));
-        Players.add(new Player("Buster", "Posey", "28", "C", "R", "R"));
-        Players.add(new Player("Pablo", "Sandoval", "48", "3B", "S", "R"));
-        Players.add(new Player("Hunter", "Pence", "8", "RF", "R", "R"));
-        Players.add(new Player("Brandon", "Belt", "9", "1B", "L", "L"));
-        Players.add(new Player("Travis", "Ishikawa", "45", "LF", "L", "L"));
-        Players.add(new Player("Brandon", "Crawford", "35", "SS", "L", "R"));
-        Players.add(new Player("Madison", "Bumgarner", "40", "P", "L", "L"));
+        Players.add(new Player("Gregor", "Blanco", "7", "CF", "L", "L", 7));
+        Players.add(new Player("Joe", "Panik", "12", "2B", "L", "R", 3));
+        Players.add(new Player("Buster", "Posey", "28", "C", "R", "R", 1));
+        Players.add(new Player("Pablo", "Sandoval", "48", "3B", "S", "R", 4));
+        Players.add(new Player("Hunter", "Pence", "8", "RF", "R", "R", 8));
+        Players.add(new Player("Brandon", "Belt", "9", "1B", "L", "L", 2));
+        Players.add(new Player("Travis", "Ishikawa", "45", "LF", "L", "L", 6));
+        Players.add(new Player("Brandon", "Crawford", "35", "SS", "L", "R", 5));
+        Players.add(new Player("Madison", "Bumgarner", "40", "P", "L", "L", 0));
         setListAdapter(adapter);
 
         receivePrevExtras = getIntent().getBundleExtra("prevExtras");
@@ -50,6 +52,14 @@ public class TeamLineupVisitor extends ListActivity {
         gameButton.setText("Finish " + visName + " lineup");
     }
 
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        // process click on item #position
+        Player item = (Player) l.getItemAtPosition(position);
+        Intent intent = new Intent(TeamLineupVisitor.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos" ,position);
+        startActivityForResult(intent, EDIT_R_CODE);
+    }
 
 
     @Override
@@ -79,6 +89,20 @@ public class TeamLineupVisitor extends ListActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == EDIT_R_CODE && resultCode == RESULT_OK)
+        {
+            String FirstName = data.getStringExtra("FirstN");
+            String LastName = data.getStringExtra("LastN");
+            String Pnumber = data.getStringExtra("Num");
+            String Position = data.getStringExtra("pos");
+            String Bats  = data.getStringExtra("Bats");
+            String Hits = data.getStringExtra("Hits");
+            int PositionArr = data.getIntExtra("posnum",0);
+            Player editP = new Player(FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
+            Players.set(data.getIntExtra("ListPosition",0),editP);
+            adapter.notifyDataSetChanged();
+        }
+
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             //get the data and save it to a new object
             //push the new object to an array
@@ -88,12 +112,13 @@ public class TeamLineupVisitor extends ListActivity {
             String Position = data.getStringExtra("pos");
             String Bats  = data.getStringExtra("Bats");
             String Hits = data.getStringExtra("Hits");
+            int PositionArr = data.getIntExtra("posnum",0);
             //do the test thing
             Toast.makeText(this,
                     "added "+ FirstName + " " + LastName +
                             " pos: " + Position + " Bats " + Bats + " Hits: " + Hits,
                     Toast.LENGTH_LONG).show();
-            Players.add(new Player(FirstName, LastName, Pnumber, Position, Bats, Hits));
+            Players.add(new Player(FirstName, LastName, Pnumber, Position, Bats, Hits,PositionArr));
             adapter.notifyDataSetChanged();
         }
     }

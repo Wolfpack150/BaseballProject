@@ -9,15 +9,15 @@ import java.util.List;
  */
 public class Player implements Serializable {
     // Player Variables
-    public int id;
     public String m_firstName ;
     public String m_lastName;
     public String m_number;
     public String m_position;
     public String m_bats;
     public String m_throws;
+    public int m_positionArray;
     public int currBase;
-    //public String m_hitter = "h";
+    public int base;
     public PlayerStats stats;
 
     private List<Player> Players = new ArrayList<Player>();
@@ -28,7 +28,6 @@ public class Player implements Serializable {
     }
 
     public Player(){
-        super();
         m_firstName = "New";
         m_lastName = "Player";
         m_number = "00";// = null; <--- ??
@@ -39,13 +38,14 @@ public class Player implements Serializable {
         stats = new PlayerStats();
         currBase = 0;
     }
+    // Player statistics in new class?
 
     //Overload constructor
-    public Player(String Fname,String Lname,String number,String pos,String bats,String Throws)
+    public Player(String Fname,String Lname,String number,String pos,String bats,String Throws,int posArr)
 
 
     {
-        super();
+        this.m_positionArray = posArr;
         this.m_firstName = Fname;
         this.m_lastName = Lname;
         this.m_number = number;
@@ -60,7 +60,6 @@ public class Player implements Serializable {
     public String toString(){
         return m_firstName + " " + m_lastName + "       #" + m_number +"     " + m_position;
     }
-
 
     public void setFirstName(){
         // m_firstName = some function that lets user type in first name

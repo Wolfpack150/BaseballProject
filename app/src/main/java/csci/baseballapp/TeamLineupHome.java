@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ListAdapter;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import java.util.List;
 public class TeamLineupHome extends ListActivity {
 
     private static final int REQUEST_CODE = 100;
+    private static final int EDIT_R_CODE=150;
     List<Player> Players = new Player().getPlayers();
     ArrayAdapter<Player> adapter;
     Bundle receivePrevExtras;
@@ -34,15 +36,15 @@ public class TeamLineupHome extends ListActivity {
                     (this, android.R.layout.simple_list_item_1, Players);
 
         //Players.add(new Player("Test", "PlayerH", "69", "C", "S", "L"));
-        Players.add(new Player("Dee", "Gordon", "9", "2B", "L", "R"));
-        Players.add(new Player("Yasiel", "Puig", "66", "CF", "R", "R"));
-        Players.add(new Player("Adrian", "Gonzalez", "23", "1B", "L", "L"));
-        Players.add(new Player("Matt", "Kemp", "27", "RF", "R", "R"));
-        Players.add(new Player("Hanley", "Ramirez", "13", "SS", "R", "R"));
-        Players.add(new Player("Carl", "Crawford", "3", "LF", "L", "L"));
-        Players.add(new Player("Juan", "Uribe", "5", "3B", "R", "R"));
-        Players.add(new Player("A.J.", "Ellis", "17", "C", "R", "R"));
-        Players.add(new Player("Clayton", "Kershaw", "22", "P", "L", "L"));
+        Players.add(new Player("Dee", "Gordon", "9", "2B", "L", "R", 3));
+        Players.add(new Player("Yasiel", "Puig", "66", "CF", "R", "R", 7));
+        Players.add(new Player("Adrian", "Gonzalez", "23", "1B", "L", "L", 2));
+        Players.add(new Player("Matt", "Kemp", "27", "RF", "R", "R", 8));
+        Players.add(new Player("Hanley", "Ramirez", "13", "SS", "R", "R", 5));
+        Players.add(new Player("Carl", "Crawford", "3", "LF", "L", "L", 6));
+        Players.add(new Player("Juan", "Uribe", "5", "3B", "R", "R", 4));
+        Players.add(new Player("A.J.", "Ellis", "17", "C", "R", "R", 1));
+        Players.add(new Player("Clayton", "Kershaw", "22", "P", "L", "L", 0));
         setListAdapter(adapter);
 
         receivePrevExtras = getIntent().getExtras();
@@ -53,6 +55,14 @@ public class TeamLineupHome extends ListActivity {
         nextLineupButton.setText("Finish " + homeName + " lineup");
     }
 
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        // process click on item #position
+        Player item = (Player) l.getItemAtPosition(position);
+        Intent intent = new Intent(TeamLineupHome.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos" ,position);
+        startActivityForResult(intent,EDIT_R_CODE);
+    }
 
 
     @Override
@@ -82,21 +92,35 @@ public class TeamLineupHome extends ListActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-            //get the data and save it to a new object
-            //push the new object to an array
+        if(requestCode == EDIT_R_CODE && resultCode == RESULT_OK)
+        {
             String FirstName = data.getStringExtra("FirstN");
             String LastName = data.getStringExtra("LastN");
             String Pnumber = data.getStringExtra("Num");
             String Position = data.getStringExtra("pos");
             String Bats  = data.getStringExtra("Bats");
             String Hits = data.getStringExtra("Hits");
+            int PositionArr = data.getIntExtra("posnum",0);
+            Player editP = new Player(FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
+            Players.set(data.getIntExtra("ListPosition",0),editP);
+            adapter.notifyDataSetChanged(); //important
+        }
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            //get the data and save it to a new object
+            //push the new object to an array
+            String FirstName = data.getStringExtra("FirstN");
+            String LastName  = data.getStringExtra("LastN");
+            String Pnumber   = data.getStringExtra("Num");
+            String Position  = data.getStringExtra("pos");
+            String Bats      = data.getStringExtra("Bats");
+            String Hits      = data.getStringExtra("Hits");
+            int positionNum  = data.getIntExtra("posnum",0);
             //do the test thing
             Toast.makeText(this,
                 "added "+ FirstName + " " + LastName +
                 " pos: " + Position + " Bats " + Bats + " Hits: " + Hits,
             Toast.LENGTH_LONG).show();
-            Players.add(new Player(FirstName, LastName, Pnumber, Position, Bats, Hits));
+            Players.add(new Player(FirstName, LastName, Pnumber, Position, Bats, Hits,positionNum));
             adapter.notifyDataSetChanged();
         }
     }
