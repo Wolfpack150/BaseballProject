@@ -26,8 +26,15 @@ public class MYSQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_PLAYER_TABLE = "CREATE TABLE players ( " + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT, " + "at bats INTEGER, " + "hits INTEGER )";
-        db.execSQL("CREATE_PLAYER_TABLE");
+        //Log.d("check", "found oncreate");
+        //db.execSQL("DROP TABLE IF EXISTS players");
+
+    }
+
+    public void test(){
+        this.getWritableDatabase().execSQL("DROP TABLE IF EXISTS players");
+        String CREATE_PLAYER_TABLE = "CREATE TABLE players ( " + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "team INTEGER, " + "name TEXT, " + "position INTEGER, " + "bats INTEGER, " + "hits INTEGER )";
+        this.getWritableDatabase().execSQL(CREATE_PLAYER_TABLE);
     }
 
     @Override
@@ -37,18 +44,22 @@ public class MYSQLiteHelper extends SQLiteOpenHelper {
     }
 
     public static final String TABLE_PLAYER_STATS = "players",
+    KEY_TEAMID = "team",
     KEY_ID = "id",
     KEY_NAME = "name",
-    KEY_AT_BATS = "at bats",
+    KEY_POSITION = "position",
+    KEY_AT_BATS = "bats",
     KEY_HITS = "hits";
 
-    private static final String[] COLUMNS = {KEY_ID, KEY_NAME, KEY_AT_BATS, KEY_HITS};
+    private static final String[] COLUMNS = {KEY_ID, KEY_TEAMID, KEY_NAME, KEY_POSITION, KEY_AT_BATS, KEY_HITS};
 
     public void createPlayerStats(Player player) {
         Log.d("addPlayer", player.toString());
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(KEY_TEAMID, player.teamID);
+        values.put(KEY_POSITION, player.m_positionArray);
         values.put(KEY_NAME, player.m_lastName);
         values.put(KEY_AT_BATS, player.stats.m_atBats);
         values.put(KEY_HITS, player.stats.m_hits);
@@ -65,10 +76,12 @@ public class MYSQLiteHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         Player player = new Player();
-        player.id = Integer.parseInt(cursor.getString(0));
-        player.m_lastName = cursor.getString(1);
-        player.stats.m_atBats = Integer.parseInt(cursor.getString(2));
-        player.stats.m_hits = Integer.parseInt(cursor.getString(3));
+        player.playerID = Integer.parseInt(cursor.getString(0));
+        player.teamID = Integer.parseInt(cursor.getString(1));
+        player.m_lastName = cursor.getString(2);
+        player.m_positionArray = Integer.parseInt(cursor.getString(3));
+        player.stats.m_atBats = Integer.parseInt(cursor.getString(4));
+        player.stats.m_hits = Integer.parseInt(cursor.getString(5));
 
         Log.d("getPlayer(" + id + ")", player.toString());
         //db.close();
@@ -78,7 +91,7 @@ public class MYSQLiteHelper extends SQLiteOpenHelper {
 
     public void deletePlayer(Player player){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_PLAYER_STATS, KEY_ID + "=?", new String[] {String.valueOf(player.id)});
+        db.delete(TABLE_PLAYER_STATS, KEY_ID + "=?", new String[] {String.valueOf(player.playerID)});
         db.close();
         Log.d("deletePlayer", player.toString());
     }
@@ -98,18 +111,20 @@ public class MYSQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(KEY_TEAMID, player.teamID);
+        values.put(KEY_POSITION, player.m_positionArray);
         values.put(KEY_NAME, player.m_lastName);
         values.put(KEY_AT_BATS, player.stats.m_atBats);
         values.put(KEY_HITS, player.stats.m_hits);
 
-        int thisRow = db.update(TABLE_PLAYER_STATS, values, KEY_ID + "=?", new String[] {String.valueOf(player.id)});
+        int thisRow = db.update(TABLE_PLAYER_STATS, values, KEY_ID + "=?", new String[] {String.valueOf(player.playerID)});
         db.close();
         return thisRow;
     }
 
-    public List<Player> getAllPlayers(){
+    public List<Player> getAllPlayersFromTeam(int teamID){
         List<Player> players = new ArrayList<Player>();
-        String query = "Select * From " + TABLE_PLAYER_STATS;
+        String query = "Select * From " + TABLE_PLAYER_STATS + " where team = " + teamID;
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
@@ -117,16 +132,44 @@ public class MYSQLiteHelper extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             do {
                 player = new Player();
-                player.id = Integer.parseInt(cursor.getString(0));
-                player.m_lastName = cursor.getString(1);
-                player.stats.m_atBats = Integer.parseInt(cursor.getString(2));
-                player.stats.m_hits = Integer.parseInt(cursor.getString(3));
+                player.playerID = Integer.parseInt(cursor.getString(0));
+                player.teamID = Integer.parseInt(cursor.getString(1));
+                player.m_lastName = cursor.getString(2);
+                player.m_positionArray = Integer.parseInt(cursor.getString(3));
+                player.stats.m_atBats = Integer.parseInt(cursor.getString(4));
+                player.stats.m_hits = Integer.parseInt(cursor.getString(5));
 
                 players.add(player);
             }
             while (cursor.moveToNext());
         }
         Log.d("getAllPlayers()", players.toString());
+
+        return players;
+    }
+
+    public List<Player> getAllPitchersFromTeam(int teamID){
+        List<Player> players = new ArrayList<Player>();
+        String query = "Select * From " + TABLE_PLAYER_STATS + " where position = " + 0 + " and team = " + teamID;
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        Player player = null;
+        if(cursor.moveToFirst()){
+            do {
+                player = new Player();
+                player.playerID = Integer.parseInt(cursor.getString(0));
+                player.teamID = Integer.parseInt(cursor.getString(1));
+                player.m_lastName = cursor.getString(2);
+                player.m_positionArray = Integer.parseInt(cursor.getString(3));
+                player.stats.m_atBats = Integer.parseInt(cursor.getString(4));
+                player.stats.m_hits = Integer.parseInt(cursor.getString(5));
+
+                players.add(player);
+            }
+            while (cursor.moveToNext());
+        }
+        Log.d("getAllPitchers()", players.toString());
 
         return players;
     }

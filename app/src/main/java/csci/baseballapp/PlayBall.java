@@ -40,7 +40,7 @@ public class PlayBall extends Activity {
         gamefragmenttab.setArguments(gameBundle);
 
         Fragment boxfragmenttab = new BoxFragment();
-        //gamefragmenttab.setArguments(gameBundle);
+        boxfragmenttab.setArguments(gameBundle);
 
         ActionBar gameplayBar = getActionBar();
         gameplayBar.setDisplayShowHomeEnabled(false);
