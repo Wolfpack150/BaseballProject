@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,22 +46,47 @@ public class PitchByPitchFragment extends Fragment {
         strikeCount.setText(String.valueOf(game.m_strikes));
         TextView outCount = (TextView) rootView.findViewById(R.id.outCountView);
         outCount.setText(String.valueOf(game.m_outs));
-        Button pitchButton = (Button) rootView.findViewById(R.id.pitchButton1);
-        /*pitchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openPitchOptions(view);
 
-            }
-            private void openPitchOptions(View view){
-                //AlertDialog alertDialogBuilder = new PitchDialogFragment().show(getFragmentManager(), "MyDialog");
-                DialogFragment df = new DialogFragment();
-                df.getActivity();
-                df.setCancelable(false);
+        Button currHitter = (Button) rootView.findViewById(R.id.currHitterButton);
+        currHitter.setText("At Bat:\n" + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        Button onDeckHitter = (Button) rootView.findViewById(R.id.onDeckHitterButton);
+        onDeckHitter.setText("On Deck:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        Button inHoleHitter = (Button) rootView.findViewById(R.id.inTheHoleHitterButton);
+        inHoleHitter.setText("In The Hole:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
 
+        Button currPitcher = (Button) rootView.findViewById(R.id.currPitcherButton);
+        currPitcher.setText("Pitcher:\n" + game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
+        TextView pitchCount = (TextView) rootView.findViewById(R.id.pitchCountView);
+        pitchCount.setText("Pitch\nCount: ");
+        TextView pitchCountAmount = (TextView) rootView.findViewById(R.id.pitchCountAmountView);
+        pitchCountAmount.setText(String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
 
-            }
-        });*/
+        Button firstBaseButton = (Button) rootView.findViewById(R.id.firstBaseButton);
+        firstBaseButton.setBackgroundColor(Color.WHITE);
+        Button secondBaseButton = (Button) rootView.findViewById(R.id.secondBaseButton);
+        secondBaseButton.setBackgroundColor(Color.WHITE);
+        Button thirdBaseButton = (Button) rootView.findViewById(R.id.thirdBaseButton);
+        thirdBaseButton.setBackgroundColor(Color.WHITE);
+
+        TextView pitcherName = (TextView) rootView.findViewById(R.id.pitcherText);
+        pitcherName.setText(game.m_home.searchPlayer("P"));
+        TextView catcherName = (TextView) rootView.findViewById(R.id.catcherText);
+        catcherName.setText(game.m_home.searchPlayer("C"));
+        TextView firstBaseName = (TextView) rootView.findViewById(R.id.fbText);
+        firstBaseName.setText(game.m_home.searchPlayer("1B"));
+        TextView secondBaseName = (TextView) rootView.findViewById(R.id.sbText);
+        secondBaseName.setText(game.m_home.searchPlayer("2B"));
+        TextView thirdBaseName = (TextView) rootView.findViewById(R.id.tbText);
+        thirdBaseName.setText(game.m_home.searchPlayer("3B"));
+        TextView shortStopName = (TextView) rootView.findViewById(R.id.ssText);
+        shortStopName.setText(game.m_home.searchPlayer("SS"));
+        TextView leftFieldName = (TextView) rootView.findViewById(R.id.lfText);
+        leftFieldName.setText(game.m_home.searchPlayer("LF"));
+        TextView centerFieldName = (TextView) rootView.findViewById(R.id.cfText);
+        centerFieldName.setText(game.m_home.searchPlayer("CF"));
+        TextView rightFieldName = (TextView) rootView.findViewById(R.id.rfText);
+        rightFieldName.setText(game.m_home.searchPlayer("RF"));
+        
         return rootView;
     }
 

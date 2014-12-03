@@ -4,7 +4,9 @@ package csci.baseballapp;
 	Date: 22 Sept 2014
 */
 
-public class PlayerStats {
+import java.io.Serializable;
+
+public class PlayerStats implements Serializable {
     // Pitchers Statistics
     public double m_innings;
     public int m_hitsGiven;
@@ -66,7 +68,7 @@ public class PlayerStats {
      will set the value of every value to zero
      ***********************************************/
 
-    public PlayerStats(){
+    public PlayerStats() {
         this.m_innings = 0;
         this.m_hitsGiven = 0;
         this.m_runsGiven = 0;

@@ -13,6 +13,7 @@ import android.widget.Toast;
  */
 public class PitchDialogFragment extends DialogFragment {
     public PitchDialogFragment() {}
+    public Integer result;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
@@ -22,29 +23,14 @@ public class PitchDialogFragment extends DialogFragment {
         alertDialogBuilder.setTitle("Pick");
         alertDialogBuilder.setItems(R.array.pitchList, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+            public void onClick(DialogInterface dialogInterface, final int i) {
                 Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
-            }
-        });
-       /*
-        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), "Negative", Toast.LENGTH_SHORT).show();
-                    }
-            //dismiss
-        });
-        alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getActivity(), "Positive", Toast.LENGTH_SHORT).show();
-            }
-            //dismiss
-        });
-        */
 
+            }
+        });
 
 
         return alertDialogBuilder.create();
     }
+
 }

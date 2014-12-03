@@ -1,147 +1,346 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameViewLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/gameViewLayout">
+    android:layout_height="match_parent">
+
     <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#ff898897">
+        android:background="#ff898897"
+        android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
                 android:id="@+id/visName"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:textSize="20pt"/>
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/homeName"
-                android:textStyle="bold"
+                android:textAllCaps="true"
                 android:textSize="20pt"
-                android:textAllCaps="true"/>
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/homeName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAllCaps="true"
+                android:textSize="20pt"
+                android:textStyle="bold" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp"
-            >
+            android:padding="10dp">
+
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/homeScore"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:textSize="20pt"
-                android:text="0"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:id="@+id/visScore"
-                android:textStyle="bold"
-                android:textSize="20pt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:textAllCaps="true"
-                android:text="0"/>
+                android:textSize="20pt"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/homeScore"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAllCaps="true"
+                android:textSize="20pt"
+                android:textStyle="bold" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:padding="10dp">
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textSize="20pt"
-                android:id="@+id/innTypeView"
-                android:gravity="center_vertical"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textSize="20pt"
-                android:id="@+id/innCurrView"
-                android:gravity="center_vertical"
-                android:layout_toRightOf="@+id/innTypeView"/>    
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/ballView"
-                android:textSize="15pt"
-                android:text="B "
-                android:gravity="center_vertical"
-                android:layout_toRightOf="@+id/innCurrView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/ballCountView"
-                android:textSize="20pt"
-                android:gravity="center_vertical"
-                android:layout_toRightOf="@+id/ballView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/strikeView"
-                android:textSize="15pt"
-                android:text="S "
-                android:gravity="center_vertical"
-                android:layout_toRightOf="@+id/ballCountView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/strikeCountView"
-                android:textSize="20pt"
-                android:gravity="center_vertical"
-                android:layout_toRightOf="@+id/strikeView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/outView"
-                android:textSize="15pt"
-                android:text="O "
-                android:gravity="center_vertical"
-                android:layout_toRightOf="@+id/strikeCountView"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/outCountView"
-                android:textSize="20pt"
-                android:gravity="center_vertical"
-                android:layout_toRightOf="@+id/outView"/>
+
+                <TextView
+                    android:id="@+id/innTypeView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textSize="20pt" />
+
+                <TextView
+                    android:id="@+id/innCurrView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/innTypeView"
+                    android:gravity="center_vertical"
+                    android:textSize="20pt" />
+
+                <TextView
+                    android:id="@+id/ballView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/innCurrView"
+                    android:gravity="center_vertical"
+                    android:text=" B "
+                    android:textSize="15pt" />
+
+                <TextView
+                    android:id="@+id/ballCountView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/ballView"
+                    android:gravity="center_vertical"
+                    android:textSize="20pt" />
+
+                <TextView
+                    android:id="@+id/strikeView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/ballCountView"
+                    android:gravity="center_vertical"
+                    android:text=" S "
+                    android:textSize="15pt" />
+
+                <TextView
+                    android:id="@+id/strikeCountView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/strikeView"
+                    android:gravity="center_vertical"
+                    android:textSize="20pt" />
+
+                <TextView
+                    android:id="@+id/outView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/strikeCountView"
+                    android:gravity="center_vertical"
+                    android:text=" O "
+                    android:textSize="15pt" />
+
+                <TextView
+                    android:id="@+id/outCountView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/outView"
+                    android:gravity="center_vertical"
+                    android:textSize="20pt" />
             </RelativeLayout>
-            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pitchButton1"
-        android:onClick="showDialog"/>
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomBar"
+        android:layout_below="@+id/topBar"
+        android:background="@drawable/gameviewtest">
+
+        <at.markushi.ui.CircleButton
+            android:id="@+id/pitchButton1"
+            android:layout_width="120dip"
+            android:layout_height="120dip"
+            android:onClick="showPitchDialog"
+            android:src="@drawable/pitchbutton"
+            app:cb_color="#ffffffff"
+            app:cb_pressedRingWidth="8dip"
+            android:layout_marginBottom="333dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="C"
+            android:id="@+id/catcherText"
+            android:clickable="true"
+            android:layout_marginBottom="130dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/pitcherText"
+            android:layout_alignStart="@+id/pitcherText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="P"
+            android:id="@+id/pitcherText"
+            android:clickable="true"
+            android:layout_above="@+id/pitchButton1"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="CF"
+            android:id="@+id/cfText"
+            android:clickable="true"
+            android:layout_marginTop="165dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="LF"
+            android:id="@+id/lfText"
+            android:clickable="true"
+            android:layout_marginLeft="96dp"
+            android:layout_marginTop="84dp"
+            android:layout_below="@+id/cfText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="RF"
+            android:id="@+id/rfText"
+            android:clickable="true"
+            android:layout_marginRight="75dp"
+            android:layout_alignTop="@+id/lfText"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="SS"
+            android:id="@+id/ssText"
+            android:clickable="true"
+            android:layout_toStartOf="@+id/pitchButton1"
+            android:layout_marginTop="80dp"
+            android:layout_below="@+id/lfText"
+            android:layout_toLeftOf="@+id/pitchButton1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="2B"
+            android:id="@+id/sbText"
+            android:clickable="true"
+            android:layout_alignTop="@+id/ssText"
+            android:layout_toRightOf="@+id/pitchButton1"
+            android:layout_toEndOf="@+id/pitchButton1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="3B"
+            android:id="@+id/tbText"
+            android:clickable="true"
+            android:layout_above="@+id/pitchButton1"
+            android:layout_alignLeft="@+id/lfText"
+            android:layout_alignStart="@+id/lfText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="1B"
+            android:id="@+id/fbText"
+            android:clickable="true"
+            android:layout_above="@+id/pitchButton1"
+            android:layout_alignRight="@+id/rfText"
+            android:layout_alignEnd="@+id/rfText" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/thirdBaseButton"
+            android:layout_toEndOf="@+id/tbText"
+            android:layout_marginLeft="81dp"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/tbText"
+            android:layout_toRightOf="@+id/tbText" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/secondBaseButton"
+            android:layout_below="@+id/ssText"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/firstBaseButton"
+            android:layout_alignTop="@+id/thirdBaseButton"
+            android:layout_toLeftOf="@+id/fbText"
+            android:layout_toStartOf="@+id/fbText"
+            android:layout_marginRight="95dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
         android:background="@color/primary"
-        android:layout_alignParentBottom="true">
+        android:orientation="horizontal">
+
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:id="@+id/currPitcherButton"
-            android:text="Current Pitcher"/>
-        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/pitchCountView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/currHitterButton"
-            android:text="Current Hitter"/>
+            android:layout_toRightOf="@+id/currPitcherButton"
+            android:textSize="10pt" />
+
+        <TextView
+            android:id="@+id/pitchCountAmountView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/pitchCountView"
+            android:textSize="15pt" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="right">
+
+            <Button
+                android:id="@+id/currHitterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <Button
+                android:id="@+id/onDeckHitterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+            <Button
+                android:id="@+id/inTheHoleHitterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
 
 

@@ -31,7 +31,16 @@ public class TeamLineupVisitor extends ListActivity {
         setContentView(R.layout.activity_team_lineup_visitor);
         adapter = new ArrayAdapter<Player>
                     (this, android.R.layout.simple_list_item_1, Players);
-        Players.add(new Player("Test", "Player", "69", "C", "S", "L",0));
+        //Players.add(new Player("Test", "PlayerV", "69", "C", "S", "L"));
+        Players.add(new Player("Gregor", "Blanco", "7", "CF", "L", "L"));
+        Players.add(new Player("Joe", "Panik", "12", "2B", "L", "R"));
+        Players.add(new Player("Buster", "Posey", "28", "C", "R", "R"));
+        Players.add(new Player("Pablo", "Sandoval", "48", "3B", "S", "R"));
+        Players.add(new Player("Hunter", "Pence", "8", "RF", "R", "R"));
+        Players.add(new Player("Brandon", "Belt", "9", "1B", "L", "L"));
+        Players.add(new Player("Travis", "Ishikawa", "45", "LF", "L", "L"));
+        Players.add(new Player("Brandon", "Crawford", "35", "SS", "L", "R"));
+        Players.add(new Player("Madison", "Bumgarner", "40", "P", "L", "L"));
         setListAdapter(adapter);
 
         receivePrevExtras = getIntent().getBundleExtra("prevExtras");
@@ -41,7 +50,6 @@ public class TeamLineupVisitor extends ListActivity {
         visNameTextView.setText("Visitor Team: " + visName);
         Button gameButton = (Button) findViewById(R.id.goToGameButton);
         gameButton.setText("Finish " + visName + " lineup");
-
     }
 
     protected void onListItemClick(ListView l, View v, int position, long id) {
@@ -52,8 +60,6 @@ public class TeamLineupVisitor extends ListActivity {
         intent.putExtra("ListPos" ,position);
         startActivityForResult(intent, EDIT_R_CODE);
     }
-
-
 
 
     @Override

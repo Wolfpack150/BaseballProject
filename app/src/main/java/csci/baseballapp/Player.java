@@ -9,13 +9,12 @@ import java.util.List;
  */
 public class Player implements Serializable {
     // Player Variables
-    public String m_firstName = "New";
-    public String m_lastName = "Player";
-    public String m_number;// = null; <--- ??
-    public String m_position = "Bench";
-    public String m_bats = "R";
-    public String m_throws = "R";
-    public String m_hitter = "h";
+    public String m_firstName ;
+    public String m_lastName;
+    public String m_number;
+    public String m_position;
+    public String m_bats;
+    public String m_throws;
     public int m_positionArray;
     public int currBase;
     public int base;
@@ -28,31 +27,20 @@ public class Player implements Serializable {
         Players.add(item);
     }
 
-    @Override
-    public String toString(){
-        return m_firstName + " " + m_lastName + "       #" + m_number;
+    public Player(){
+        m_firstName = "New";
+        m_lastName = "Player";
+        m_number = "00";// = null; <--- ??
+        m_position = "Bench";
+        m_bats = "R";
+        m_throws = "R";
+        //public String m_hitter = "h";
+        stats = new PlayerStats();
+        currBase = 0;
     }
     // Player statistics in new class?
 
-    //NOTE:
-	/*	1. These are all public for now, but will most likely be set to private.
-		2. The "m_" is added in front of each variable to specify that it is the
-		   member variable for this class. This makes it easier to tell which variable
-		   is being updated. For example:
-
-			   	public Player(int number){
-\					this.number = number;  <--- hard to know what is what
-				}
-
-				public Player(int number){
-					this.m_number = number; <--- much easier
-		}
-		However, this is up for discussion!
-
-	*/
-
-    //Default constructor
-    public Player(){};
+    //Overload constructor
     public Player(String Fname,String Lname,String number,String pos,String bats,String Throws,int posArr)
 
 
@@ -64,7 +52,13 @@ public class Player implements Serializable {
         this.m_position = pos;
         this.m_bats = bats;
         this.m_throws = Throws;
+        stats = new PlayerStats();
+        currBase = 0;
+    }
 
+    @Override
+    public String toString(){
+        return m_firstName + " " + m_lastName + "       #" + m_number +"     " + m_position;
     }
 
     public void setFirstName(){
