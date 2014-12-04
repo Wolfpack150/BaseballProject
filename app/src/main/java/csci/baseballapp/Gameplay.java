@@ -127,9 +127,9 @@ public class Gameplay implements Serializable {
     public void incrementOut() {
         m_outs++;
         if (m_outs == 3)
-            /*m_pitcher.stats.m_innings += .8*/;
+            m_pitcher.stats.m_innings += .8;
         else
-            /*m_pitcher.stats.m_innings += .1*/;
+            m_pitcher.stats.m_innings += .1;
 
         resetCount();
         if (m_outs == 0) changeInning(); // change innings and swap current teams
