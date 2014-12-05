@@ -167,7 +167,9 @@
             android:layout_marginBottom="130dp"
             android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/pitcherText"
-            android:layout_alignStart="@+id/pitcherText" />
+            android:layout_alignStart="@+id/pitcherText"
+            android:onClick="EditC"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -177,7 +179,9 @@
             android:id="@+id/pitcherText"
             android:clickable="true"
             android:layout_above="@+id/pitchButton1"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:onClick="EditP"
+            />
 
         <TextView
             android:layout_width="wrap_content"

@@ -43,6 +43,8 @@ public class EditPlayer extends Activity {
         spinner.setAdapter(adapter);
 
         int Arraypos = getIntent().getIntExtra("ListPos",0);
+        int rosterpos= getIntent().getIntExtra("arrpos", 0);
+        intent.putExtra("arrPosition",rosterpos);
         intent.putExtra("ListPosition", Arraypos);
 
         EditingPlayer = (Player) getIntent().getSerializableExtra("PlayerInfo");
@@ -146,6 +148,7 @@ public class EditPlayer extends Activity {
                     bat = "S";
                 intent.putExtra("Bats", bat);
                 break;
+
         }
     }
 
@@ -166,6 +169,7 @@ public class EditPlayer extends Activity {
                     hit = "L";
                 intent.putExtra("Hits", hit);
                 break;
+
         }
     }
 

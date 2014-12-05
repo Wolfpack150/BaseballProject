@@ -43,4 +43,14 @@ public class Team implements Serializable {
         return "No player designated";
     }
 
+    public Player getPlayerByPos(int posnum)
+    {
+        for(int i =0; i <m_roster.size(); i++) {
+            if (posnum == m_roster.get(i).m_positionArray)
+                return m_roster.get(i);
+        }
+                return null;
+    }
+
+
 }

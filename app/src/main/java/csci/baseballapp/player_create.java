@@ -103,9 +103,10 @@ public class player_create extends Activity {
                     bat = "S";
                     intent.putExtra("Bats", bat);
                 break;
+
         }
     }
-
+           //by hits I mean throws, im dumb, I know
     public void HitsClick (View view)
     {
         boolean checked = ((RadioButton) view).isChecked();
@@ -123,6 +124,7 @@ public class player_create extends Activity {
                     hit = "L";
                 intent.putExtra("Hits", hit);
                 break;
+
         }
     }
 

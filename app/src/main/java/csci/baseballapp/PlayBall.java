@@ -25,6 +25,7 @@ import java.util.List;
 
 public class PlayBall extends Activity {
     Gameplay game;
+    static final int EDIT_PP_CODE = 121;
     //Bundle receivePrevExtras;
     ActionBar.Tab GameTab, BoxTab;
     @Override
@@ -567,7 +568,7 @@ public class PlayBall extends Activity {
             thirdBaseButton.setBackgroundColor(Color.WHITE);
         if(game.m_inningtype == 0) {
             TextView pitcherName = (TextView) findViewById(R.id.pitcherText);
-            pitcherName.setText(game.m_home.searchPlayer("P"));
+            pitcherName.setText(game.m_home.getPlayerByPos(0).m_lastName);
             TextView catcherName = (TextView) findViewById(R.id.catcherText);
             catcherName.setText(game.m_home.searchPlayer("C"));
             TextView firstBaseName = (TextView) findViewById(R.id.fbText);
@@ -604,6 +605,211 @@ public class PlayBall extends Activity {
             centerFieldName.setText(game.m_away.searchPlayer("CF"));
             TextView rightFieldName = (TextView) findViewById(R.id.rfText);
             rightFieldName.setText(game.m_away.searchPlayer("RF"));
+        }
+    }
+
+    public void EditP (View V)
+    {
+        Player item=null;
+        int listpos=0;
+        if (game.m_inningtype==0) {
+            item = game.m_home.getPlayerByPos(0);
+            listpos = game.m_home.m_roster.indexOf(item);
+        }
+        if (game.m_inningtype==1) {
+            item = game.m_away.getPlayerByPos(0);
+            listpos = game.m_away.m_roster.indexOf(item);
+        }
+
+        Intent intent = new Intent(PlayBall.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos", 0);
+        intent.putExtra("arrpos", listpos);
+        startActivityForResult(intent,EDIT_PP_CODE);
+    }
+
+    public void EditC (View V)
+    {
+        Player item=null;
+        int listpos=0;
+        if (game.m_inningtype==0) {
+            item = game.m_home.getPlayerByPos(1);
+            listpos = game.m_home.m_roster.indexOf(item);
+        }
+        if (game.m_inningtype==1) {
+            item = game.m_away.getPlayerByPos(1);
+            listpos = game.m_away.m_roster.indexOf(item);
+        }
+
+        Intent intent = new Intent(PlayBall.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos", 1);
+        intent.putExtra("arrpos", listpos);
+        startActivityForResult(intent,EDIT_PP_CODE);
+    }
+
+    public void Edit1B (View V)
+    {
+        Player item=null;
+        int listpos=0;
+        if (game.m_inningtype==0) {
+            item = game.m_home.getPlayerByPos(2);
+            listpos = game.m_home.m_roster.indexOf(item);
+        }
+        if (game.m_inningtype==1) {
+            item = game.m_away.getPlayerByPos(2);
+            listpos = game.m_away.m_roster.indexOf(item);
+        }
+
+        Intent intent = new Intent(PlayBall.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos", 2);
+        intent.putExtra("arrpos", listpos);
+        startActivityForResult(intent,EDIT_PP_CODE);
+    }
+
+    public void Edit2B (View V)
+    {
+        Player item=null;
+        int listpos=0;
+        if (game.m_inningtype==0) {
+            item = game.m_home.getPlayerByPos(3);
+            listpos = game.m_home.m_roster.indexOf(item);
+        }
+        if (game.m_inningtype==1) {
+            item = game.m_away.getPlayerByPos(3);
+            listpos = game.m_away.m_roster.indexOf(item);
+        }
+
+        Intent intent = new Intent(PlayBall.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos", 3);
+        intent.putExtra("arrpos", listpos);
+        startActivityForResult(intent,EDIT_PP_CODE);
+    }
+
+    public void Edit3B (View V)
+    {
+        Player item=null;
+        int listpos=0;
+        if (game.m_inningtype==0) {
+            item = game.m_home.getPlayerByPos(4);
+            listpos = game.m_home.m_roster.indexOf(item);
+        }
+        if (game.m_inningtype==1) {
+            item = game.m_away.getPlayerByPos(4);
+            listpos = game.m_away.m_roster.indexOf(item);
+        }
+
+        Intent intent = new Intent(PlayBall.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos", 4);
+        intent.putExtra("arrpos", listpos);
+        startActivityForResult(intent,EDIT_PP_CODE);
+    }
+
+    public void EditSS (View V)
+    {
+        Player item=null;
+        int listpos=0;
+        if (game.m_inningtype==0) {
+            item = game.m_home.getPlayerByPos(5);
+            listpos = game.m_home.m_roster.indexOf(item);
+        }
+        if (game.m_inningtype==1) {
+            item = game.m_away.getPlayerByPos(5);
+            listpos = game.m_away.m_roster.indexOf(item);
+        }
+
+        Intent intent = new Intent(PlayBall.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos", 5);
+        intent.putExtra("arrpos", listpos);
+        startActivityForResult(intent,EDIT_PP_CODE);
+    }
+
+    public void EditLF (View V)
+    {
+        Player item=null;
+        int listpos=0;
+        if (game.m_inningtype==0) {
+            item = game.m_home.getPlayerByPos(6);
+            listpos = game.m_home.m_roster.indexOf(item);
+        }
+        if (game.m_inningtype==1) {
+            item = game.m_away.getPlayerByPos(6);
+            listpos = game.m_away.m_roster.indexOf(item);
+        }
+
+        Intent intent = new Intent(PlayBall.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos", 6);
+        intent.putExtra("arrpos", listpos);
+        startActivityForResult(intent,EDIT_PP_CODE);
+    }
+
+    public void EditCF (View V)
+    {
+        Player item=null;
+        int listpos=0;
+        if (game.m_inningtype==0) {
+            item = game.m_home.getPlayerByPos(7);
+            listpos = game.m_home.m_roster.indexOf(item);
+        }
+        if (game.m_inningtype==1) {
+            item = game.m_away.getPlayerByPos(7);
+            listpos = game.m_away.m_roster.indexOf(item);
+        }
+
+        Intent intent = new Intent(PlayBall.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos", 7);
+        intent.putExtra("arrpos", listpos);
+        startActivityForResult(intent,EDIT_PP_CODE);
+    }
+
+    public void EditRF (View V)
+    {
+        Player item=null;
+        int listpos=0;
+        if (game.m_inningtype==0) {
+            item = game.m_home.getPlayerByPos(8);
+            listpos = game.m_home.m_roster.indexOf(item);
+        }
+        if (game.m_inningtype==1) {
+            item = game.m_away.getPlayerByPos(8);
+            listpos = game.m_away.m_roster.indexOf(item);
+        }
+
+        Intent intent = new Intent(PlayBall.this, EditPlayer.class);
+        intent.putExtra("PlayerInfo",(java.io.Serializable) item);
+        intent.putExtra("ListPos", 8);
+        intent.putExtra("arrpos", listpos);
+        startActivityForResult(intent,EDIT_PP_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == EDIT_PP_CODE && resultCode == RESULT_OK)
+        {
+            String FirstName = data.getStringExtra("FirstN");
+            String LastName = data.getStringExtra("LastN");
+            String Pnumber = data.getStringExtra("Num");
+            String Position = data.getStringExtra("pos");
+            String Bats  = data.getStringExtra("Bats");
+            String Hits = data.getStringExtra("Hits");
+            int PositionArr = data.getIntExtra("posnum",0);
+            int arrPosition = data.getIntExtra("arrPosition", 0);
+            Player editP = new Player(FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
+            if(game.m_inningtype==0){
+                game.m_home.m_roster.set(arrPosition,editP);
+            }
+            if(game.m_inningtype==1){
+                game.m_away.m_roster.set(arrPosition,editP);
+            }
+            updateGameView();
+
         }
     }
 
