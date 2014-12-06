@@ -272,7 +272,8 @@
             android:layout_marginLeft="81dp"
             android:layout_marginTop="40dp"
             android:layout_below="@+id/tbText"
-            android:layout_toRightOf="@+id/tbText" />
+            android:layout_toRightOf="@+id/tbText"
+            android:onClick="editPlayer(3B)"/>
 
         <Button
             android:layout_width="30dp"

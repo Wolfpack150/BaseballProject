@@ -9,6 +9,8 @@ import java.util.List;
  */
 public class Player implements Serializable {
     // Player Variables
+    public int playerID;
+    public int teamID;
     public String m_firstName ;
     public String m_lastName;
     public String m_number;
@@ -41,10 +43,11 @@ public class Player implements Serializable {
     // Player statistics in new class?
 
     //Overload constructor
-    public Player(String Fname,String Lname,String number,String pos,String bats,String Throws,int posArr)
+    public Player(int tID, String Fname,String Lname,String number,String pos,String bats,String Throws,int posArr)
 
 
     {
+        this.teamID = tID;
         this.m_positionArray = posArr;
         this.m_firstName = Fname;
         this.m_lastName = Lname;

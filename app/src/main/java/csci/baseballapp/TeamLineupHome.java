@@ -36,15 +36,15 @@ public class TeamLineupHome extends ListActivity {
                     (this, android.R.layout.simple_list_item_1, Players);
 
         //Players.add(new Player("Test", "PlayerH", "69", "C", "S", "L"));
-        Players.add(new Player("Dee", "Gordon", "9", "2B", "L", "R", 3));
-        Players.add(new Player("Yasiel", "Puig", "66", "CF", "R", "R", 7));
-        Players.add(new Player("Adrian", "Gonzalez", "23", "1B", "L", "L", 2));
-        Players.add(new Player("Matt", "Kemp", "27", "RF", "R", "R", 8));
-        Players.add(new Player("Hanley", "Ramirez", "13", "SS", "R", "R", 5));
-        Players.add(new Player("Carl", "Crawford", "3", "LF", "L", "L", 6));
-        Players.add(new Player("Juan", "Uribe", "5", "3B", "R", "R", 4));
-        Players.add(new Player("A.J.", "Ellis", "17", "C", "R", "R", 1));
-        Players.add(new Player("Clayton", "Kershaw", "22", "P", "L", "L", 0));
+        Players.add(new Player(1,"Dee", "Gordon", "9", "2B", "L", "R", 3));
+        Players.add(new Player(1,"Yasiel", "Puig", "66", "CF", "R", "R", 7));
+        Players.add(new Player(1,"Adrian", "Gonzalez", "23", "1B", "L", "L", 2));
+        Players.add(new Player(1,"Matt", "Kemp", "27", "RF", "R", "R", 8));
+        Players.add(new Player(1,"Hanley", "Ramirez", "13", "SS", "R", "R", 5));
+        Players.add(new Player(1,"Carl", "Crawford", "3", "LF", "L", "L", 6));
+        Players.add(new Player(1,"Juan", "Uribe", "5", "3B", "R", "R", 4));
+        Players.add(new Player(1,"A.J.", "Ellis", "17", "C", "R", "R", 1));
+        Players.add(new Player(1,"Clayton", "Kershaw", "22", "P", "L", "L", 0));
         setListAdapter(adapter);
 
         receivePrevExtras = getIntent().getExtras();
@@ -101,7 +101,7 @@ public class TeamLineupHome extends ListActivity {
             String Bats  = data.getStringExtra("Bats");
             String Hits = data.getStringExtra("Hits");
             int PositionArr = data.getIntExtra("posnum",0);
-            Player editP = new Player(FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
+            Player editP = new Player(1,FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
             Players.set(data.getIntExtra("ListPosition",0),editP);
             adapter.notifyDataSetChanged(); //important
         }
@@ -120,7 +120,7 @@ public class TeamLineupHome extends ListActivity {
                 "added "+ FirstName + " " + LastName +
                 " pos: " + Position + " Bats " + Bats + " Hits: " + Hits,
             Toast.LENGTH_LONG).show();
-            Players.add(new Player(FirstName, LastName, Pnumber, Position, Bats, Hits,positionNum));
+            Players.add(new Player(1,FirstName, LastName, Pnumber, Position, Bats, Hits,positionNum));
             adapter.notifyDataSetChanged();
         }
     }

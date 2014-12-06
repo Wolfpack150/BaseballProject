@@ -21,16 +21,10 @@ public class Gameplay implements Serializable {
     public int counter;
     public List<Player> m_hitting;
     public List<Player> m_fielding ;
-    // Temporarily using these variables
     public Player m_hitter, m_pitcher;
-//  public Player m_first, m_second, m_third;
     public Team m_home, m_away;
     public Player m_home_pitcher, m_away_pitcher;
-    // declares an array of integers
-    Player[] basePosition = {m_hitter,null,null,null,null};
-// allocates memory for 5 integers
-    int currBase;
-    int base;
+    public Player[] basePosition = {m_hitter,null,null,null,null};
 
 
     //Default constructor
@@ -104,6 +98,10 @@ public class Gameplay implements Serializable {
             m_pitcher = m_home_pitcher;
         }
         m_hitter = m_hitting.get(counter);
+        for(int i = 1; i < 4; i++){
+            if(basePosition[i] != null)
+                basePosition[i] = null;
+        }
     }
     /**
      * ***************************************************************
@@ -127,9 +125,9 @@ public class Gameplay implements Serializable {
     public void incrementOut() {
         m_outs++;
         if (m_outs == 3)
-            /*m_pitcher.stats.m_innings += .8*/;
+            m_pitcher.stats.m_innings += .8;
         else
-            /*m_pitcher.stats.m_innings += .1*/;
+            m_pitcher.stats.m_innings += .1;
 
         resetCount();
         if (m_outs == 0) changeInning(); // change innings and swap current teams
@@ -361,11 +359,11 @@ public class Gameplay implements Serializable {
     public void homeruns() {
         hit();
         m_pitcher.stats.m_homerunsGiven++;
-        m_pitcher.stats.m_runsGiven++;
+        //m_pitcher.stats.m_runsGiven++;
         //  m_pitcher.stats.m_earnedRuns++;
         m_hitter.stats.m_homeruns++;
-        m_hitter.stats.m_runs++;
-        m_hitter.stats.m_runsBattedIn++;
+        //m_hitter.stats.m_runs++;
+        //m_hitter.stats.m_runsBattedIn++;
         m_hitter.stats.m_totalBases += 4;
         moveAllHome();
         move(m_hitter,0,4);
