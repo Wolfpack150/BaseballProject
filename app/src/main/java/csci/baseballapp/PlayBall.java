@@ -879,7 +879,7 @@ public class PlayBall extends Activity {
             String Hits = data.getStringExtra("Hits");
             int PositionArr = data.getIntExtra("posnum",0);
             int arrPosition = data.getIntExtra("arrPosition", 0);
-            Player editP = new Player(FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
+            Player editP = new Player(0,FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
             if(game.m_inningtype==0){
                 game.m_home.m_roster.set(arrPosition,editP);
             }

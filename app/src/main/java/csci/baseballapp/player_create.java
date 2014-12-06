@@ -78,6 +78,8 @@ public class player_create extends Activity {
 
                 }
         );
+        intent.putExtra("Bats", "R");
+        intent.putExtra("Hits", "R");
 
     }
 

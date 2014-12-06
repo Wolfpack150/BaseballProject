@@ -124,6 +124,8 @@ public class EditPlayer extends Activity {
 
                 }
         );
+        intent.putExtra("Bats", EditingPlayer.m_bats);
+        intent.putExtra("Hits", EditingPlayer.m_throws);
     }
 
     public void BatsClick (View view)

@@ -192,7 +192,9 @@
             android:clickable="true"
             android:layout_marginTop="165dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:onClick="EditCF"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -205,7 +207,8 @@
             android:layout_marginTop="84dp"
             android:layout_below="@+id/cfText"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:onClick="EditLF"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -217,7 +220,8 @@
             android:layout_marginRight="75dp"
             android:layout_alignTop="@+id/lfText"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:onClick="EditRF"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -229,7 +233,8 @@
             android:layout_toStartOf="@+id/pitchButton1"
             android:layout_marginTop="80dp"
             android:layout_below="@+id/lfText"
-            android:layout_toLeftOf="@+id/pitchButton1" />
+            android:layout_toLeftOf="@+id/pitchButton1"
+            android:onClick="EditSS"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -240,7 +245,9 @@
             android:clickable="true"
             android:layout_alignTop="@+id/ssText"
             android:layout_toRightOf="@+id/pitchButton1"
-            android:layout_toEndOf="@+id/pitchButton1" />
+            android:layout_toEndOf="@+id/pitchButton1"
+            android:onClick="Edit2B"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -251,7 +258,9 @@
             android:clickable="true"
             android:layout_above="@+id/pitchButton1"
             android:layout_alignLeft="@+id/lfText"
-            android:layout_alignStart="@+id/lfText" />
+            android:layout_alignStart="@+id/lfText"
+            android:onClick="Edit3B"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -262,7 +271,8 @@
             android:clickable="true"
             android:layout_above="@+id/pitchButton1"
             android:layout_alignRight="@+id/rfText"
-            android:layout_alignEnd="@+id/rfText" />
+            android:layout_alignEnd="@+id/rfText"
+            android:onClick="Edit1B"/>
 
         <Button
             android:layout_width="30dp"
@@ -273,7 +283,7 @@
             android:layout_marginTop="40dp"
             android:layout_below="@+id/tbText"
             android:layout_toRightOf="@+id/tbText"
-            android:onClick="editPlayer(3B)"/>
+            />
 
         <Button
             android:layout_width="30dp"
