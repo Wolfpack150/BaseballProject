@@ -612,11 +612,11 @@ public class PlayBall extends Activity {
         outCount.setText(String.valueOf(game.m_outs));
 
         Button currHitter = (Button) findViewById(R.id.currHitterButton);
-        currHitter.setText("At Bat:\n" + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        currHitter.setText("At Bat:\n" + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number + "\nBats: " + game.m_hitter.m_bats);
         Button onDeckHitter = (Button) findViewById(R.id.onDeckHitterButton);
-        onDeckHitter.setText("On Deck:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        onDeckHitter.setText("On Deck:\n" + game.m_onDeck.m_firstName + " " + game.m_onDeck.m_lastName + " " + game.m_onDeck.m_number + "\nBats: " + game.m_onDeck.m_bats);
         Button inHoleHitter = (Button) findViewById(R.id.inTheHoleHitterButton);
-        inHoleHitter.setText("In The Hole:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        inHoleHitter.setText("In The Hole:\n" + game.m_inHole.m_firstName + " " + game.m_inHole.m_lastName + " " + game.m_inHole.m_number + "\nBats: " + game.m_inHole.m_bats);
 
         Button currPitcher = (Button) findViewById(R.id.currPitcherButton);
         currPitcher.setText("Pitcher:\n" + game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
@@ -879,7 +879,7 @@ public class PlayBall extends Activity {
             String Hits = data.getStringExtra("Hits");
             int PositionArr = data.getIntExtra("posnum",0);
             int arrPosition = data.getIntExtra("arrPosition", 0);
-            Player editP = new Player(FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
+            Player editP = new Player(0,FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
             if(game.m_inningtype==0){
                 game.m_home.m_roster.set(arrPosition,editP);
             }
