@@ -61,12 +61,30 @@ public class PitchByPitchFragment extends Fragment {
         TextView pitchCountAmount = (TextView) rootView.findViewById(R.id.pitchCountAmountView);
         pitchCountAmount.setText(String.valueOf(game.m_pitcher.stats.m_pitchesThrown));
 
-        Button firstBaseButton = (Button) rootView.findViewById(R.id.firstBaseButton);
-        firstBaseButton.setBackgroundColor(Color.WHITE);
-        Button secondBaseButton = (Button) rootView.findViewById(R.id.secondBaseButton);
-        secondBaseButton.setBackgroundColor(Color.WHITE);
-        Button thirdBaseButton = (Button) rootView.findViewById(R.id.thirdBaseButton);
-        thirdBaseButton.setBackgroundColor(Color.WHITE);
+        if(game.basePosition[1] != null){
+            Button firstBaseButton = (Button) rootView.findViewById(R.id.firstBaseButton);
+            firstBaseButton.setBackgroundColor(Color.BLUE);
+        }
+        else {
+            Button firstBaseButton = (Button) rootView.findViewById(R.id.firstBaseButton);
+            firstBaseButton.setBackgroundColor(Color.WHITE);
+        }
+        if(game.basePosition[2] != null){
+            Button secondBaseButton = (Button) rootView.findViewById(R.id.secondBaseButton);
+            secondBaseButton.setBackgroundColor(Color.BLUE);
+        }
+        else{
+            Button secondBaseButton = (Button) rootView.findViewById(R.id.secondBaseButton);
+            secondBaseButton.setBackgroundColor(Color.WHITE);
+        }
+        if(game.basePosition[3] != null){
+            Button thirdBaseButton = (Button) rootView.findViewById(R.id.thirdBaseButton);
+            thirdBaseButton.setBackgroundColor(Color.BLUE);
+        }
+        else{
+            Button thirdBaseButton = (Button) rootView.findViewById(R.id.thirdBaseButton);
+            thirdBaseButton.setBackgroundColor(Color.WHITE);
+        }
 
         TextView pitcherName = (TextView) rootView.findViewById(R.id.pitcherText);
         pitcherName.setText(game.m_home.searchPlayer("P"));

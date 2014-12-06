@@ -31,13 +31,18 @@ public class PlayBall extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ball);
+
         Team homeTeam = (Team) getIntent().getSerializableExtra("HomeTeamClass");
         Team visTeam = (Team) getIntent().getSerializableExtra("VisTeamClass");
+
         game = new Gameplay(homeTeam, visTeam, 9);
-        Fragment gamefragmenttab = new PitchByPitchFragment();
+
+
         Bundle gameBundle = new Bundle();
         gameBundle.putSerializable("gameBundleKey", game);
-        gamefragmenttab.setArguments(gameBundle);
+
+        Fragment gameFragmenTab = new PitchByPitchFragment();
+        gameFragmenTab.setArguments(gameBundle);
 
         Fragment boxfragmenttab = new BoxFragment();
         boxfragmenttab.setArguments(gameBundle);
@@ -50,7 +55,7 @@ public class PlayBall extends Activity {
         GameTab = gameplayBar.newTab().setText("Game View");
         BoxTab = gameplayBar.newTab().setText("Box Score");
 
-        GameTab.setTabListener(new TabListener(gamefragmenttab));
+        GameTab.setTabListener(new TabListener(gameFragmenTab));
         BoxTab.setTabListener(new TabListener(boxfragmenttab));
 
         gameplayBar.addTab(GameTab);
@@ -245,7 +250,7 @@ public class PlayBall extends Activity {
         otherDialogWalk.show(getFragmentManager(), "Other Dialog With Walk");
     }
 
-    public void showBaseMoveFirstDialog(){
+    public void showBaseMoveFirstDialog(final int hitType){
         class BaseMoveFirstDialogFragment extends DialogFragment {
             public BaseMoveFirstDialogFragment() {}
             @Override
@@ -257,7 +262,7 @@ public class PlayBall extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
-                        baseMoveFirstListener(i);
+                        baseMoveFirstListener(i,hitType);
                     }
                 });
 
@@ -269,7 +274,7 @@ public class PlayBall extends Activity {
         baseMoveFirstDialog.show(getFragmentManager(), "Base Move First Dialog");
     }
 
-    public void showBaseMoveSecondDialog(){
+    public void showBaseMoveSecondDialog(final int hitType){
         class BaseMoveSecondDialogFragment extends DialogFragment {
             public BaseMoveSecondDialogFragment() {}
             @Override
@@ -281,7 +286,7 @@ public class PlayBall extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
-                        baseMoveSecondListener(i);
+                        baseMoveSecondListener(i,hitType);
                     }
                 });
 
@@ -293,7 +298,7 @@ public class PlayBall extends Activity {
         baseMoveSecondDialog.show(getFragmentManager(), "Base Move Second Dialog");
     }
 
-    public void showBaseMoveSecondForceDialog(){
+    public void showBaseMoveSecondForceDialog(final int hitType){
         class BaseMoveSecondForceDialogFragment extends DialogFragment {
             public BaseMoveSecondForceDialogFragment() {}
             @Override
@@ -305,7 +310,7 @@ public class PlayBall extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
-                        baseMoveSecondForceListener(i);
+                        baseMoveSecondForceListener(i,hitType);
                     }
                 });
 
@@ -317,7 +322,7 @@ public class PlayBall extends Activity {
         baseMoveSecondForceDialog.show(getFragmentManager(), "Base Move Second Force Dialog");
     }
 
-    public void showBaseMoveThirdDialog(){
+    public void showBaseMoveThirdDialog(final int hitType){
         class BaseMoveThirdDialogFragment extends DialogFragment {
             public BaseMoveThirdDialogFragment() {}
             @Override
@@ -329,7 +334,7 @@ public class PlayBall extends Activity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), "Item was selected " + i, Toast.LENGTH_SHORT).show();
-                        baseMoveThirdListener(i);
+                        baseMoveThirdListener(i,hitType);
                     }
                 });
 
@@ -393,38 +398,30 @@ public class PlayBall extends Activity {
     private void safeListener(int result) {
         switch (result) {
             case 0:
-                askWheretoMove();
-                game.singles();
-                game.nextBatter();
-                updateGameView();
+                askWheretoMove(1);
+                //game.singles();
                 break;
             case 1:
-                askWheretoMove();
-                game.doubles();
-                game.nextBatter();
-                updateGameView();
+                askWheretoMove(2);
+                //game.doubles();
                 break;
             case 2:
-                askWheretoMove();
-                game.triples();
-                game.nextBatter();
-                updateGameView();
+                askWheretoMove(3);
+                //game.triples();
                 break;
             case 3:
                 game.homeruns();
-                game.nextBatter();
-                updateGameView();
                 break;
             case 4:
                 //askWheretoMove();
-                game.error();
-                game.nextBatter();
-                updateGameView();
+                //game.error();
                 break;
             case 5:
                 //fielders choice
                 break;
         }
+        updateGameView();
+
     }
 
 
@@ -452,7 +449,7 @@ public class PlayBall extends Activity {
         }
     }
 
-    private void baseMoveFirstListener(int result) {
+    private void baseMoveFirstListener(int result, int hitType) {
         switch (result) {
             case 0:
                 game.move(game.basePosition[1], 1, 2);
@@ -467,9 +464,26 @@ public class PlayBall extends Activity {
                 updateGameView();
                 break;
         }
+        switch (hitType) {
+            case 1:
+                game.singles();
+                break;
+            case 2:
+                game.doubles();
+                break;
+            case 3:
+                game.triples();
+                break;
+            case 4:
+                game.error();
+                break;
+        }
+        game.nextBatter();
+        updateGameView();
+
     }
 
-    private void baseMoveSecondListener(int result) {
+    private void baseMoveSecondListener(int result, int hitType) {
         switch (result) {
             case 0:
                 // Should not move // game.move(game.basePosition[2], 2, 2);
@@ -484,9 +498,25 @@ public class PlayBall extends Activity {
                 updateGameView();
                 break;
         }
+        switch (hitType) {
+            case 1:
+                game.singles();
+                break;
+            case 2:
+                game.doubles();
+                break;
+            case 3:
+                game.triples();
+                break;
+            case 4:
+                game.error();
+                break;
+        }
+        game.nextBatter();
+        updateGameView();
     }
 
-    private void baseMoveSecondForceListener(int result) {
+    private void baseMoveSecondForceListener(int result, int hitType) {
         switch (result) {
             case 0:
                 game.move(game.basePosition[2], 2, 3);
@@ -497,9 +527,30 @@ public class PlayBall extends Activity {
                 updateGameView();
                 break;
         }
+        if(game.basePosition[1] != null){
+            showBaseMoveFirstDialog(hitType);
+        }
+        else{
+            switch (hitType) {
+                case 1:
+                    game.singles();
+                    break;
+                case 2:
+                    game.doubles();
+                    break;
+                case 3:
+                    game.triples();
+                    break;
+                case 4:
+                    game.error();
+                    break;
+            }
+            game.nextBatter();
+            updateGameView();
+        }
     }
 
-    private void baseMoveThirdListener(int result) {
+    private void baseMoveThirdListener(int result, int hitType) {
         switch (result) {
             case 0:
                 // should not move // game.move(game.basePosition[3], 3, 3);
@@ -509,6 +560,33 @@ public class PlayBall extends Activity {
                 game.move(game.basePosition[3], 3, 4);
                 updateGameView();
                 break;
+        }
+        if(game.basePosition[2] != null) {
+            if (game.basePosition[1] != null)
+                showBaseMoveSecondForceDialog(hitType);
+            else
+                showBaseMoveSecondDialog(hitType);
+        }
+        else if(game.basePosition[1] != null){
+            showBaseMoveFirstDialog(hitType);
+        }
+        else{
+            switch (hitType) {
+                case 1:
+                    game.singles();
+                    break;
+                case 2:
+                    game.doubles();
+                    break;
+                case 3:
+                    game.triples();
+                    break;
+                case 4:
+                    game.error();
+                    break;
+            }
+            game.nextBatter();
+            updateGameView();
         }
     }
 
@@ -607,7 +685,8 @@ public class PlayBall extends Activity {
         }
     }
 
-    public void askWheretoMove() {
+    public void askWheretoMove(int hitType) {
+        boolean used = false;
         for (int i = 3; i > 0; i--) {
             if (game.basePosition[i] != null) {
                 switch (i) {
@@ -615,21 +694,44 @@ public class PlayBall extends Activity {
                         //if (game.basePosition[1] != null && game.basePosition[2] != null)
                         //    game.move(game.basePosition[3],3,4);
                         //else
-                        showBaseMoveThirdDialog();
+                        used = true;
+                        showBaseMoveThirdDialog(hitType);
                         break;
                     case 2:
+                        used = true;
                         if (game.basePosition[1] != null)
-                            showBaseMoveSecondForceDialog();
+                            showBaseMoveSecondForceDialog(hitType);
                         else
-                            showBaseMoveSecondDialog();
+                            showBaseMoveSecondDialog(hitType);
                         break;
                     case 1:
-                        showBaseMoveFirstDialog();
+                        used = true;
+                        showBaseMoveFirstDialog(hitType);
                         break;
                  }
             }
+            if(used)
+                break;
+        }
+        if(used == false) {
+            switch (hitType) {
+                case 1:
+                    game.singles();
+                    break;
+                case 2:
+                    game.doubles();
+                    break;
+                case 3:
+                    game.triples();
+                    break;
+                case 4:
+                    game.error();
+                    break;
+            }
+            game.nextBatter();
             updateGameView();
         }
+
     }
 
 
