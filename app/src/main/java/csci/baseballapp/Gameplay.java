@@ -141,6 +141,7 @@ public class Gameplay implements Serializable {
             m_pitcher.stats.m_innings += .1;
 
         resetCount();
+        nextBatter();
         if (m_outs == 0) changeInning(); // change innings and swap current teams
     }
     /******************************************************************
@@ -197,6 +198,7 @@ public class Gameplay implements Serializable {
             }
             move(m_hitter,0,1);
             resetCount();
+            nextBatter();
         }
     }
 
@@ -218,6 +220,7 @@ public class Gameplay implements Serializable {
             m_hitter.stats.m_plateAppearances++;
             move(m_hitter,0,1);
             resetCount();
+            nextBatter();
         }
     }
 
@@ -263,6 +266,7 @@ public class Gameplay implements Serializable {
         m_hitter.stats.m_plateAppearances++;
         move(m_hitter,0,1);
         resetCount();
+        nextBatter();
         // change runners on base
     }
 
@@ -330,6 +334,7 @@ public class Gameplay implements Serializable {
         m_hitter.stats.m_totalBases++;
         move(m_hitter,0,1);
         resetCount();
+        nextBatter();
     }
 
     /**
@@ -344,6 +349,7 @@ public class Gameplay implements Serializable {
         m_hitter.stats.m_totalBases += 2;
         move(m_hitter,0,2);
         resetCount();
+        nextBatter();
     }
 
     /**
@@ -358,6 +364,7 @@ public class Gameplay implements Serializable {
         m_hitter.stats.m_totalBases += 3;
         move(m_hitter,0,3);
         resetCount();
+        nextBatter();
     }
 
     /**
@@ -379,6 +386,7 @@ public class Gameplay implements Serializable {
         moveAllHome();
         move(m_hitter,0,4);
         resetCount();
+        nextBatter();
     }
 
     /**

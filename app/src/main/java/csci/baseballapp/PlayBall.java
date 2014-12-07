@@ -352,12 +352,12 @@ public class PlayBall extends Activity {
             case 0:
                 game.incrementBall();
                 if(game.m_balls != 0) showPitchDialogRefined();
-                else game.nextBatter();
+                //else game.nextBatter();
                 break;
             case 1:
                 game.incrementStrike();
                 if(game.m_strikes != 0) showPitchDialogRefined();
-                else game.nextBatter();
+                //else game.nextBatter();
                 break;
             case 2:
                 game.foulball();
@@ -436,12 +436,12 @@ public class PlayBall extends Activity {
                 break;
             case 1:
                 game.hitByPitch();
-                game.nextBatter();
+                //game.nextBatter();
                 updateGameView();
                 break;
             case 2:
                 // catchers interference
-                game.nextBatter();
+                //game.nextBatter();
                 updateGameView();
                 break;
             case 3:
@@ -479,7 +479,7 @@ public class PlayBall extends Activity {
                 game.error();
                 break;
         }
-        game.nextBatter();
+        //game.nextBatter();
         updateGameView();
 
     }
@@ -513,7 +513,7 @@ public class PlayBall extends Activity {
                 game.error();
                 break;
         }
-        game.nextBatter();
+        //game.nextBatter();
         updateGameView();
     }
 
@@ -546,7 +546,7 @@ public class PlayBall extends Activity {
                     game.error();
                     break;
             }
-            game.nextBatter();
+            //game.nextBatter();
             updateGameView();
         }
     }
@@ -586,7 +586,7 @@ public class PlayBall extends Activity {
                     game.error();
                     break;
             }
-            game.nextBatter();
+            //game.nextBatter();
             updateGameView();
         }
     }
@@ -934,7 +934,7 @@ public class PlayBall extends Activity {
                     game.error();
                     break;
             }
-            game.nextBatter();
+            //game.nextBatter();
             updateGameView();
         }
 
