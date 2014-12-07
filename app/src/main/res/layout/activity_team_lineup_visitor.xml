@@ -21,11 +21,12 @@
         android:textAllCaps="true"
         android:textStyle="bold"></TextView>
 
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="fill_parent"
+    <csci.baseballapp.DynamicListView
+        android:id="@+id/listview2"
+        android:background="#0000"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="100" />
+        />
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"

@@ -20,20 +20,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TeamLineupHome extends ListActivity {
+public class TeamLineupHome extends Activity {
 
     private static final int REQUEST_CODE = 100;
     private static final int EDIT_R_CODE=150;
-    List<Player> Players = new Player().getPlayers();
-    ArrayAdapter<Player> adapter;
+    ArrayList<Player> Players = (ArrayList<Player>) new Player().getPlayers();
+    StableArrayAdapter adapter;
     Bundle receivePrevExtras;
     String homeName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_team_lineup_home);
-        adapter = new ArrayAdapter<Player>
-                    (this, android.R.layout.simple_list_item_1, Players);
+        adapter = new StableArrayAdapter(this, R.layout.text_view, Players);
 
         //Players.add(new Player("Test", "PlayerH", "69", "C", "S", "L"));
         Players.add(new Player(1,"Dee", "Gordon", "9", "2B", "L", "R", 3));
@@ -45,7 +45,10 @@ public class TeamLineupHome extends ListActivity {
         Players.add(new Player(1,"Juan", "Uribe", "5", "3B", "R", "R", 4));
         Players.add(new Player(1,"A.J.", "Ellis", "17", "C", "R", "R", 1));
         Players.add(new Player(1,"Clayton", "Kershaw", "22", "P", "L", "L", 0));
-        setListAdapter(adapter);
+        DynamicListView listview = (DynamicListView) findViewById(R.id.listview);
+        listview.setCheeseList(Players);
+        listview.setAdapter(adapter);
+        listview.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         receivePrevExtras = getIntent().getExtras();
         homeName = receivePrevExtras.getString("HomeTeamName");

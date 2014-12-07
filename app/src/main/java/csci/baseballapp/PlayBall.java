@@ -881,10 +881,12 @@ public class PlayBall extends Activity {
             int arrPosition = data.getIntExtra("arrPosition", 0);
             Player editP = new Player(0,FirstName,LastName,Pnumber,Position,Bats,Hits,PositionArr);
             if(game.m_inningtype==0){
-                game.m_home.m_roster.set(arrPosition,editP);
+                Player temp = game.m_home.m_roster.set(arrPosition,editP);
+                editP.stats = temp.stats;
             }
             if(game.m_inningtype==1){
-                game.m_away.m_roster.set(arrPosition,editP);
+                Player temp = game.m_away.m_roster.set(arrPosition,editP);
+                editP.stats = temp.stats;
             }
             updateGameView();
 

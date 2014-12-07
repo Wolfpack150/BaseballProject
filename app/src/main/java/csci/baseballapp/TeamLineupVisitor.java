@@ -1,8 +1,10 @@
 package csci.baseballapp;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,18 +22,19 @@ public class TeamLineupVisitor extends ListActivity {
 
     private static final int REQUEST_CODE = 100;
     private static final int EDIT_R_CODE = 150;
-    List<Player> Players = new Player().getPlayers();
-    ArrayAdapter<Player> adapter;
+    ArrayList<Player> Players = (ArrayList<Player>) new Player().getPlayers();
+    StableArrayAdapter adapter;
     Bundle receivePrevExtras;
     Team homeTeam;
     String visName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_lineup_visitor);
-        adapter = new ArrayAdapter<Player>
-                    (this, android.R.layout.simple_list_item_1, Players);
+        setContentView(R.layout.activity_team_lineup_home);
+        adapter = new StableArrayAdapter(this, R.layout.text_view, Players);
         //Players.add(new Player("Test", "PlayerV", "69", "C", "S", "L"));
         Players.add(new Player(2,"Gregor", "Blanco", "7", "CF", "L", "L", 7));
         Players.add(new Player(2,"Joe", "Panik", "12", "2B", "L", "R", 3));
@@ -41,7 +45,10 @@ public class TeamLineupVisitor extends ListActivity {
         Players.add(new Player(2,"Travis", "Ishikawa", "45", "LF", "L", "L", 6));
         Players.add(new Player(2,"Brandon", "Crawford", "35", "SS", "L", "R", 5));
         Players.add(new Player(2,"Madison", "Bumgarner", "40", "P", "L", "L", 0));
-        setListAdapter(adapter);
+        DynamicListView listview = (DynamicListView) findViewById(R.id.listview2);
+        listview.setCheeseList(Players);
+        listview.setAdapter(adapter);
+        listview.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         receivePrevExtras = getIntent().getBundleExtra("prevExtras");
         homeTeam = (Team) getIntent().getSerializableExtra("HomeTeamClass");
@@ -54,7 +61,9 @@ public class TeamLineupVisitor extends ListActivity {
 
     protected void onListItemClick(ListView l, View v, int position, long id) {
         // process click on item #position
+
         Player item = (Player) l.getItemAtPosition(position);
+
         Intent intent = new Intent(TeamLineupVisitor.this, EditPlayer.class);
         intent.putExtra("PlayerInfo",(java.io.Serializable) item);
         intent.putExtra("ListPos" ,position);
