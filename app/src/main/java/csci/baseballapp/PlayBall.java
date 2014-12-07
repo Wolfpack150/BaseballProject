@@ -352,12 +352,12 @@ public class PlayBall extends Activity {
             case 0:
                 game.incrementBall();
                 if(game.m_balls != 0) showPitchDialogRefined();
-                else game.nextBatter();
+                //else game.nextBatter();
                 break;
             case 1:
                 game.incrementStrike();
                 if(game.m_strikes != 0) showPitchDialogRefined();
-                else game.nextBatter();
+                //else game.nextBatter();
                 break;
             case 2:
                 game.foulball();
@@ -436,12 +436,12 @@ public class PlayBall extends Activity {
                 break;
             case 1:
                 game.hitByPitch();
-                game.nextBatter();
+                //game.nextBatter();
                 updateGameView();
                 break;
             case 2:
                 // catchers interference
-                game.nextBatter();
+                //game.nextBatter();
                 updateGameView();
                 break;
             case 3:
@@ -479,7 +479,7 @@ public class PlayBall extends Activity {
                 game.error();
                 break;
         }
-        game.nextBatter();
+        //game.nextBatter();
         updateGameView();
 
     }
@@ -513,7 +513,7 @@ public class PlayBall extends Activity {
                 game.error();
                 break;
         }
-        game.nextBatter();
+        //game.nextBatter();
         updateGameView();
     }
 
@@ -546,7 +546,7 @@ public class PlayBall extends Activity {
                     game.error();
                     break;
             }
-            game.nextBatter();
+            //game.nextBatter();
             updateGameView();
         }
     }
@@ -586,7 +586,7 @@ public class PlayBall extends Activity {
                     game.error();
                     break;
             }
-            game.nextBatter();
+            //game.nextBatter();
             updateGameView();
         }
     }
@@ -612,11 +612,11 @@ public class PlayBall extends Activity {
         outCount.setText(String.valueOf(game.m_outs));
 
         Button currHitter = (Button) findViewById(R.id.currHitterButton);
-        currHitter.setText("At Bat:\n" + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        currHitter.setText("At Bat:\n" + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number + "\nBats: " + game.m_hitter.m_bats);
         Button onDeckHitter = (Button) findViewById(R.id.onDeckHitterButton);
-        onDeckHitter.setText("On Deck:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        onDeckHitter.setText("On Deck:\n" + game.m_onDeck.m_firstName + " " + game.m_onDeck.m_lastName + " " + game.m_onDeck.m_number + "\nBats: " + game.m_onDeck.m_bats);
         Button inHoleHitter = (Button) findViewById(R.id.inTheHoleHitterButton);
-        inHoleHitter.setText("In The Hole:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        inHoleHitter.setText("In The Hole:\n" + game.m_inHole.m_firstName + " " + game.m_inHole.m_lastName + " " + game.m_inHole.m_number + "\nBats: " + game.m_inHole.m_bats);
 
         Button currPitcher = (Button) findViewById(R.id.currPitcherButton);
         currPitcher.setText("Pitcher:\n" + game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
@@ -934,7 +934,7 @@ public class PlayBall extends Activity {
                     game.error();
                     break;
             }
-            game.nextBatter();
+            //game.nextBatter();
             updateGameView();
         }
 
