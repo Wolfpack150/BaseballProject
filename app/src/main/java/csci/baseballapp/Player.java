@@ -1,39 +1,67 @@
 package csci.baseballapp;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by lumpy on 10/3/14.
  */
-public class Player {
+public class Player implements Serializable {
     // Player Variables
-    public String m_firstName = "New";
-    public String m_lastName = "Player";
-    public int m_number;// = null; <--- ??
-    public String m_position = "Bench";
-    public char m_bats = 'R';
-    public char m_throws = 'R';
+    public int playerID;
+    public int teamID;
+    public String m_firstName ;
+    public String m_lastName;
+    public String m_number;
+    public String m_position;
+    public String m_bats;
+    public String m_throws;
+    public int m_positionArray;
+    public int currBase;
+    public int base;
     public PlayerStats stats;
+
+    private List<Player> Players = new ArrayList<Player>();
+    public List<Player> getPlayers() {return Players;}
+
+    public void addPlayer(Player item) {
+        Players.add(item);
+    }
+
+    public Player(){
+        m_firstName = "New";
+        m_lastName = "Player";
+        m_number = "00";// = null; <--- ??
+        m_position = "Bench";
+        m_bats = "R";
+        m_throws = "R";
+        //public String m_hitter = "h";
+        stats = new PlayerStats();
+        currBase = 0;
+    }
     // Player statistics in new class?
 
-    //NOTE:
-	/*	1. These are all public for now, but will most likely be set to private.
-		2. The "m_" is added in front of each variable to specify that it is the
-		   member variable for this class. This makes it easier to tell which variable
-		   is being updated. For example:
+    //Overload constructor
+    public Player(int tID, String Fname,String Lname,String number,String pos,String bats,String Throws,int posArr)
 
-			   	public Player(int number){
-\					this.number = number;  <--- hard to know what is what
-				}
 
-				public Player(int number){
-					this.m_number = number; <--- much easier
-		}
-		However, this is up for discussion!
+    {
+        this.teamID = tID;
+        this.m_positionArray = posArr;
+        this.m_firstName = Fname;
+        this.m_lastName = Lname;
+        this.m_number = number;
+        this.m_position = pos;
+        this.m_bats = bats;
+        this.m_throws = Throws;
+        stats = new PlayerStats();
+        currBase = 0;
+    }
 
-	*/
-
-    //Default constructor
-    public Player(){
-        //System.out.println("Constructor of " + this.m_firstName + " " + this.m_lastName);
+    @Override
+    public String toString(){
+        return m_firstName + " " + m_lastName + "       #" + m_number +"     " + m_position;
     }
 
     public void setFirstName(){
@@ -54,6 +82,21 @@ public class Player {
     public void setThrows(){
         // m_throws = input
     }
+    private void initBatter () {
+        //basePosition[0] = m_hitter;
+        }
+    private void move(int currBase, int newBase, int Player) {
+       // basePosition[1] = null;
+       // base position[3] = Player;
+    }
+
+
+
+
+
+
+
+
 
 
     // NOTE:

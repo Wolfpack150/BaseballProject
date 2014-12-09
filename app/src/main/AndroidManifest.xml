@@ -9,30 +9,50 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game_type" />
+        <activity
+            android:name=".Game_type"
+            android:label="@string/title_activity_game_type"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".player_create"
-            android:label="@string/title_activity_player_create" >
+            android:label="@string/title_activity_player_create"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name=".score_screen"
-            android:label="@string/title_activity_score_screen" >
+            android:label="@string/title_activity_score_screen"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".box"
-            android:label="@string/title_activity_box" >
+            android:name=".TeamLineupHome"
+            android:label="@string/title_activity_team_lineups"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".team_lineups"
-            android:label="@string/title_activity_team_lineups" >
+            android:name=".PlayBall"
+            android:label="@string/title_activity_play_ball"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".TeamLineupVisitor"
+            android:label="@string/title_activity_team_lineup_visitor"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".EditPlayer"
+            android:label="@string/title_activity_edit_player" >
         </activity>
     </application>
+
 
 </manifest>

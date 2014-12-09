@@ -1,82 +1,155 @@
-<LinearLayout
-    android:layout_height="fill_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background2"
     android:orientation="vertical"
-
     android:weightSum="1">
 
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="First Name"
-        android:ems="10"
         android:id="@+id/editText"
-        android:layout_gravity="center_horizontal" />
-
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Last Name"
-        android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_gravity="center_horizontal" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="Player #"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="true" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Last Name"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="true" />
+
+    <EditText
         android:id="@+id/editText3"
-        android:layout_gravity="center_horizontal" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Player #"
+        android:inputType="number"
+
+        android:selectAllOnFocus="true" />
 
     <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:id="@+id/spinner" />
+        android:layout_marginTop="15dp" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="15dp"
         android:text="Bats"
-        android:id="@+id/textView2"
-        android:layout_gravity="center_horizontal" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.11">
+        android:orientation="horizontal"
+        android:id="@+id/radioG1"
+        android:checkedButton="@+id/radioButtonR"
+        >
+
 
         <RadioButton
+            android:id="@+id/radioButtonR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="R"
-            android:id="@+id/radioButton" />
+            android:layout_marginLeft="116dp"
+            android:background="@drawable/custom_bg_button"
+            android:button="@android:color/transparent"
+            android:onClick="BatsClick"
+            android:text="R" />
 
         <RadioButton
+            android:id="@+id/radioButtonL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="L"
-            android:id="@+id/radioButton2" />
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/custom_bg_button"
+            android:button="@android:color/transparent"
+            android:onClick="BatsClick"
+            android:text="L" />
 
         <RadioButton
+            android:id="@+id/radioButtonS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="S"
-            android:id="@+id/radioButton3" />
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/custom_bg_button"
+            android:button="@android:color/transparent"
+            android:onClick="BatsClick"
+            android:text="S" />
     </RadioGroup>
 
-    <Button
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Player"
-        android:id="@+id/button2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="15dp"
+        android:text="Throws"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RadioG2"
+        android:orientation="horizontal"
+
+        >
+
+        <RadioButton
+            android:id="@+id/radioButtonHR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="143dp"
+            android:background="@drawable/custom_bg_button"
+            android:button="@android:color/transparent"
+            android:onClick="HitsClick"
+            android:text="R" />
+
+        <RadioButton
+            android:id="@+id/radioButtonHL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/custom_bg_button"
+            android:button="@android:color/transparent"
+            android:onClick="HitsClick"
+            android:text="L" />
+    </RadioGroup>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_button"
+            android:onClick="ReturnPlayer"
+            android:text="Create Player"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
 
 </LinearLayout>

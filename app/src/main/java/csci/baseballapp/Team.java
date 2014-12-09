@@ -1,30 +1,45 @@
 package csci.baseballapp;
 
+import java.io.Serializable;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * Created by lumpy on 10/3/14.
  */
-public class Team {
+public class Team implements Serializable {
     //Team Variables
     public String m_teamName;
-    public Player[] m_roster;
+    public List<Player> m_roster;
     public int m_roster_size;
 
     //Default constructor for team
-    public Team(){
-        m_teamName = "New Team";
-        m_roster_size = 0;
+    public Team(String name, List<Player> roster, int size){
+        m_teamName = name;
+        m_roster = roster;
+        m_roster_size = size;
     }
 
-    //Class functions
-    public void setTeamName() // Function that allows user to enter the name of the team
+    public String searchPlayer(String position) //Function that searches for player in Player array
     {
-
+        for(int i = 0; i < m_roster.size(); i++)
+        {
+            if(position.equals(m_roster.get(i).m_position))
+            {
+                return m_roster.get(i).m_lastName;
+            }
+        }
+        return "No player designated";
     }
 
-    public void addPlayer() //Function that allows user to add new player to team
+    public Player getPlayerByPos(int posnum)
     {
-        Player newPlayer = new Player();
-        m_roster_size++; //Increments the size of the team by one each time new player is added
-
+        for(int i =0; i <m_roster.size(); i++) {
+            if (posnum == m_roster.get(i).m_positionArray)
+                return m_roster.get(i);
+        }
+                return null;
     }
+
+
 }
