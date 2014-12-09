@@ -48,14 +48,14 @@ public class PitchByPitchFragment extends Fragment {
         outCount.setText(String.valueOf(game.m_outs));
 
         Button currHitter = (Button) rootView.findViewById(R.id.currHitterButton);
-        currHitter.setText("At Bat:\n" + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        currHitter.setText("At Bat:\n" + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number + "\nBats: " + game.m_hitter.m_bats);
         Button onDeckHitter = (Button) rootView.findViewById(R.id.onDeckHitterButton);
-        onDeckHitter.setText("On Deck:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        onDeckHitter.setText("On Deck:\n" + game.m_onDeck.m_firstName + " " + game.m_onDeck.m_lastName + " " + game.m_onDeck.m_number + "\nBats: " + game.m_onDeck.m_bats);
         Button inHoleHitter = (Button) rootView.findViewById(R.id.inTheHoleHitterButton);
-        inHoleHitter.setText("In The Hole:\n");// + game.m_hitter.m_firstName + " " + game.m_hitter.m_lastName + " " + game.m_hitter.m_number);
+        inHoleHitter.setText("In The Hole:\n" + game.m_inHole.m_firstName + " " + game.m_inHole.m_lastName + " " + game.m_inHole.m_number + "\nBats: " + game.m_inHole.m_bats);
 
         Button currPitcher = (Button) rootView.findViewById(R.id.currPitcherButton);
-        currPitcher.setText("Pitcher:\n" + game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number);
+        currPitcher.setText("Pitcher:\n" + game.m_pitcher.m_firstName + " " + game.m_pitcher.m_lastName + " " + game.m_pitcher.m_number + "\nThrows: " + game.m_pitcher.m_throws);
         TextView pitchCount = (TextView) rootView.findViewById(R.id.pitchCountView);
         pitchCount.setText("Pitch\nCount: ");
         TextView pitchCountAmount = (TextView) rootView.findViewById(R.id.pitchCountAmountView);
@@ -114,6 +114,8 @@ public class PitchByPitchFragment extends Fragment {
 
 
     }
+
+
 
 }
 

@@ -21,7 +21,7 @@ public class Gameplay implements Serializable {
     public int counter;
     public List<Player> m_hitting;
     public List<Player> m_fielding ;
-    public Player m_hitter, m_pitcher;
+    public Player m_hitter, m_pitcher, m_onDeck, m_inHole;
     public Team m_home, m_away;
     public Player m_home_pitcher, m_away_pitcher;
     public Player[] basePosition = {m_hitter,null,null,null,null};
@@ -37,8 +37,12 @@ public class Gameplay implements Serializable {
         awayCounter = 0;
         counter = awayCounter;
         m_hitter = m_hitting.get(awayCounter);
-        m_home_pitcher= m_home.m_roster.get(8);
-        m_away_pitcher = m_away.m_roster.get(8);
+        m_onDeck = m_hitting.get(awayCounter + 1);
+        m_inHole = m_hitting.get(awayCounter + 2);
+
+        m_home_pitcher= m_home.getPlayerByPos(0);
+        m_away_pitcher = m_away.getPlayerByPos(0);
+
         m_pitcher = m_home_pitcher;
         m_numInnings = innings;
         m_home_score = 0;
@@ -75,7 +79,11 @@ public class Gameplay implements Serializable {
         else{
             counter = 0;
         }
+
         m_hitter = m_hitting.get(counter);
+        m_onDeck = m_hitting.get((counter + 1) % m_hitting.size());
+        m_inHole = m_hitting.get((counter + 2) % m_hitting.size());
+
         basePosition[0] = m_hitter;
     }
 
@@ -98,6 +106,9 @@ public class Gameplay implements Serializable {
             m_pitcher = m_home_pitcher;
         }
         m_hitter = m_hitting.get(counter);
+        m_onDeck = m_hitting.get((counter + 1) % m_hitting.size());
+        m_inHole = m_hitting.get((counter + 2) % m_hitting.size());
+
         for(int i = 1; i < 4; i++){
             if(basePosition[i] != null)
                 basePosition[i] = null;
@@ -130,6 +141,7 @@ public class Gameplay implements Serializable {
             m_pitcher.stats.m_innings += .1;
 
         resetCount();
+        nextBatter();
         if (m_outs == 0) changeInning(); // change innings and swap current teams
     }
     /******************************************************************
@@ -186,6 +198,7 @@ public class Gameplay implements Serializable {
             }
             move(m_hitter,0,1);
             resetCount();
+            nextBatter();
         }
     }
 
@@ -207,6 +220,7 @@ public class Gameplay implements Serializable {
             m_hitter.stats.m_plateAppearances++;
             move(m_hitter,0,1);
             resetCount();
+            nextBatter();
         }
     }
 
@@ -252,6 +266,7 @@ public class Gameplay implements Serializable {
         m_hitter.stats.m_plateAppearances++;
         move(m_hitter,0,1);
         resetCount();
+        nextBatter();
         // change runners on base
     }
 
@@ -319,6 +334,7 @@ public class Gameplay implements Serializable {
         m_hitter.stats.m_totalBases++;
         move(m_hitter,0,1);
         resetCount();
+        nextBatter();
     }
 
     /**
@@ -333,6 +349,7 @@ public class Gameplay implements Serializable {
         m_hitter.stats.m_totalBases += 2;
         move(m_hitter,0,2);
         resetCount();
+        nextBatter();
     }
 
     /**
@@ -347,6 +364,7 @@ public class Gameplay implements Serializable {
         m_hitter.stats.m_totalBases += 3;
         move(m_hitter,0,3);
         resetCount();
+        nextBatter();
     }
 
     /**
@@ -368,6 +386,7 @@ public class Gameplay implements Serializable {
         moveAllHome();
         move(m_hitter,0,4);
         resetCount();
+        nextBatter();
     }
 
     /**
@@ -498,17 +517,10 @@ public class Gameplay implements Serializable {
             m_pitcher.stats.m_runsGiven++;
             basePosition[4] = null;
         }
-        //P.currBase = currBase;
     }
 
     public void moveAllHome(){
         for(int i = 3; i > 0; i--)
             move(basePosition[i], i, 4);
-    }
-    private void onPlay(int numBase, Player P) {
-
-            // move(m_hitter, numBase);
-
-
     }
 }
