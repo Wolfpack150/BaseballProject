@@ -40,8 +40,8 @@ public class Gameplay implements Serializable {
         m_onDeck = m_hitting.get(awayCounter + 1);
         m_inHole = m_hitting.get(awayCounter + 2);
 
-        m_home_pitcher= m_home.m_roster.get(8);
-        m_away_pitcher = m_away.m_roster.get(8);
+        m_home_pitcher= m_home.getPlayerByPos(0);
+        m_away_pitcher = m_away.getPlayerByPos(0);
 
         m_pitcher = m_home_pitcher;
         m_numInnings = innings;
